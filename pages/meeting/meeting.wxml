@@ -1,0 +1,39 @@
+<!--pages/meeting/meeting.wxml-->
+<view class="container {{iphoneX?'container-x':''}}">
+  <view class="input-wraper">
+      <input bindinput="searchInput" placeholder="会议" class="keyword"/>
+      <image src="./../../static/common/search-icon.svg" class="search-icon"></image>
+      <!-- <view class="filter-wraper">
+        <text>全部SIG</text>
+        <image src="./../../static/common/" />
+      </view> -->
+  </view>
+  <view class="list">
+    <block wx:for="list" wx:key="index">
+      
+      <van-swipe-cell right-width="{{ level ? 135 : 67.5 }}" async-close="{{true}}">
+        <view class="item">
+          <view class="name">
+            openEuler
+          </view>
+          <view class="date">
+            <image src="./../../static/index/date.svg"></image>
+            <text>8月4日 08:00-09:00</text>
+          </view>
+          <view class="sig-name">
+            <image src="./../../static/index/group.svg"></image>
+            <text>xxxxxxSIG组</text>
+          </view>
+          <view class="desc">
+            <image src="./../../static/index/desc.svg"></image>
+            <text>会议内容会议内容会议内容会议内容会议内容会议内容会议内容会议内容会议内容会议内容</text>
+          </view>
+        </view>
+        <view slot="right" class="slot" style="width: {{level?'135px':'67.5px'}}">
+          <text bindtap="getAddr" class="get-addr" data-addr="{{item}}">获取地址</text>
+          <text bindtap="delMeeting" class="del-meeting" wx:if="{{level}}" data-id="{{item}}">删除</text>
+        </view>
+      </van-swipe-cell>
+    </block>
+  </view>
+</view>

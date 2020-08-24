@@ -1,0 +1,53 @@
+<!--pages/meeting/detail.wxml-->
+<view class="container">
+  <view class="detail-item">
+    <view class="name">
+      openEuler
+    </view>
+    <view class="date">
+      <image src="./../../static/index/date.svg"></image>
+      <text>8月4日 08:00-09:00</text>
+    </view>
+    <view class="sponsor">
+      <image src="./../../static/index/sponsor.svg"></image>
+      <text>发起人</text>
+    </view>
+    <view class="sig-name">
+      <image src="./../../static/index/group.svg"></image>
+      <text>xxxxxxSIG组</text>
+    </view>
+    <view class="desc">
+      <image src="./../../static/index/desc.svg"></image>
+      <text>会议内容会议内容会议内容会议内容会议内容会议内容会议内容会议内容会议内内容会议内容会议内内容会议内容会议内内容会议内容会议内内容会议内容会议内内容会议内容会议内容会议内容</text>
+    </view>
+  </view>
+  <view class="detail-item">
+    <view class="name">
+      Etherpad链接
+    </view>
+    <view class="link">
+      <image src="./../../static/index/link.svg"></image>
+      <text>https://www.fwefwefwefw/fewf/fewfwfewfwfewfewfwfwefwefw.com</text>
+    </view>
+    <view class="btn-wraper">
+      <button>复制</button>
+    </view>
+  </view>
+  <view class="detail-item">
+    <view class="name">
+      Zoom
+    </view>
+    <view class="id">
+      <image src="./../../static/index/link.svg"></image>
+      <text>ID: 122 32392323023 323</text>
+    </view>
+    <view class="link">
+      <image src="./../../static/index/link.svg"></image>
+      <text>https://www.fwefwefwefw/fewfwfewf/fewfwfewf/fewfwfewfewfwfwefwefw.com</text>
+    </view>
+    <view class="btn-wraper">
+      <button>复制ID</button>
+      <button>复制链接</button>
+    </view>
+  </view>
+</view>

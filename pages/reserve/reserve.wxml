@@ -1,0 +1,4 @@
+<!--pages/reserve/reserve.wxml-->
+<view class="container">
+  <textarea maxlength="50" auto-height placeholder="自动变高" />
+</view>
