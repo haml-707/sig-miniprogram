@@ -1,6 +1,7 @@
 //index.js
 const mixin = require("../../utils/page-mixin.js").$pageMixin;
 const sessionUtil = require("../../utils/app-session.js");
+var appAjax = require('./../../utils/app-ajax');
 let that = null;
 let localMethods = {
   getCurText () {
@@ -38,9 +39,39 @@ let localMethods = {
     }
   }
 }
+let remoteMethods = {
+  getMettingDaily: function (_callback) {
+    appAjax.postJson({
+      autoShowWait: true,
+      type: 'GET',
+			service: "GET_MEETING_DAILY",
+			success: function(ret) {
+				_callback && _callback(ret);
+			}
+		});
+  },
+  delMeeting: function (id,_callback) {
+    appAjax.postJson({
+      autoShowWait: true,
+      type: 'DELETE',
+			service: "DEL_MEETING",
+			otherParams: {
+        id: id
+      },
+			success: function(ret) {
+				_callback && _callback(ret);
+			}
+		});
+  }
+}
 Page(mixin({
   data: {
-    userId: "",
+    curMid: '',
+    curJoinUrl: '',
+    cellInstance: null,
+    delId: '',
+    copy: '',
+    userId: '',
     level: 0,
     text: '',
     avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
@@ -50,12 +81,7 @@ Page(mixin({
       './../../static/index/swiper2.png',
       './../../static/index/swiper3.png'
     ],
-    list: [
-      '1',
-      '2',
-      '3',
-      '4'
-    ],
+    list: [],
     iphoneX: false,
     showDialog: false,
     showDialogDel: false
@@ -72,20 +98,34 @@ Page(mixin({
     })
   },
   getAddr: function (e) {
-    console.log(e);
     this.setData({
-      showDialog: true
+      showDialog: true,
+      curMid: e.currentTarget.dataset.id,
+      curJoinUrl: e.currentTarget.dataset.addr
     })
     
   },
   copyLink: function () {
-    this.setData({
-      showDialog: false
+    wx.setClipboardData({
+      data: this.data.curJoinUrl,
+      success: function (res) {
+        that.data.cellInstance.close();
+        that.setData({
+          showDialog: false
+        })
+      }
     })
+    
   },
   copyId: function () {
-    this.setData({
-      showDialog: false
+    wx.setClipboardData({
+      data: this.data.curMid,
+      success: function (res) {
+        that.data.cellInstance.close();
+        that.setData({
+          showDialog: false
+        })
+      }
     })
   },
   closeDialog: function () {
@@ -95,12 +135,30 @@ Page(mixin({
   },
   delMeeting: function (e) {
     this.setData({
+      delId: e.currentTarget.dataset.id
+    })
+    this.setData({
       showDialogDel: true
     })
   },
   del: function () {
+    remoteMethods.delMeeting(this.data.delId, function (data) {
+      if(data.code == 204){
+        that.setData({
+          showDialogDel: false
+        })
+        remoteMethods.getMettingDaily(function (data) {
+          that.data.cellInstance.close();
+          that.setData({
+            list: data
+          })
+        })
+      }
+    })
+  },
+  onClose: function (e) {
     this.setData({
-      showDialogDel: false
+      cellInstance: e.detail.instance
     })
   },
   delCancel: function () {
@@ -108,9 +166,9 @@ Page(mixin({
       showDialogDel: false
     })
   },
-  toDetail: function () {
+  toDetail: function (e) {
     wx.navigateTo({
-      url: '/pages/meeting/detail'
+      url: '/pages/meeting/detail?id=' + e.currentTarget.dataset.id
     })
   },
   swithTabMeeting: function () {
@@ -126,6 +184,11 @@ Page(mixin({
   onShow: function () {
     this.getTabBar().setData({
       _tabbat: 0
+    })
+    remoteMethods.getMettingDaily(function (data) {
+      that.setData({
+        list: data
+      })
     })
   }
 }))

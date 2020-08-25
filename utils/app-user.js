@@ -43,9 +43,12 @@ var privateMethods = {
    				
    				wx.getUserInfo({
 	        		success: function (res) {
-	        			
+	        			console.log(data.code);
 									// 登录
 	          			appAjax.postJson({
+										headers: {
+											Authorization: ''
+										},
 										service: "LOGIN",
 										data: {
 											userInfo: res.userInfo,
@@ -54,6 +57,7 @@ var privateMethods = {
 										success: function(result) {
 											res.userInfo.access = result.access;
 											res.userInfo.level = result.level;
+											res.userInfo.gitee = result.gitee_name;
 											res.userInfo.userId = result.user_id;
 											// // 缓存用户信息
 											appUser.saveLoginInfo(res.userInfo || {});

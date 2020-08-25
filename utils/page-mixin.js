@@ -73,20 +73,14 @@ const lifeCycle = {
 			let userInfo = wx.getStorageSync(constants.APP_USERINFO_SESSION);
 			
 			if(url != 'pages/auth/auth') {
-				wx.navigateTo({
-					url: '/pages/reserve/reserve'
-				})
+				// wx.navigateTo({
+				// 	url: '/pages/meeting/meeting-success'
+				// })
 				if(!userInfo && !userInfo.access) {
 					wx.reLaunch({
 						url: '/pages/auth/auth'
 					})
 				}			
-			} else {
-				if(userInfo && userInfo.access) {
-					wx.switchTab({
-						url: '/pages/index/index'
-					})
-				}
 			}
 			console.log("onLoad before")
 		},

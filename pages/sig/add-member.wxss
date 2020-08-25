@@ -5,6 +5,14 @@
   margin-bottom: 150rpx;
   padding: 0;
 }
+.container .fill {
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #6d7278;
+  height: 28rpx;
+  background-color: #f5f7fa;
+}
 .container .input-wraper {
   box-sizing: border-box;
   margin: 20rpx 0 0 0;
@@ -29,10 +37,6 @@
   position: absolute;
   top: 34rpx;
   left: 32rpx;
-}
-.container .fill {
-  height: 30rpx;
-  background-color: #f5f7fa;
 }
 .container .add-item {
   border-bottom: 0.5rpx solid #c7cad0;

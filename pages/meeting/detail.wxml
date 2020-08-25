@@ -2,23 +2,23 @@
 <view class="container">
   <view class="detail-item">
     <view class="name">
-      openEuler
+      {{info.topic}}
     </view>
     <view class="date">
       <image src="./../../static/index/date.svg"></image>
-      <text>8月4日 08:00-09:00</text>
+      <text>{{info.date}} {{info.start}}-{{info.end}}</text>
     </view>
     <view class="sponsor">
       <image src="./../../static/index/sponsor.svg"></image>
-      <text>发起人</text>
+      <text>{{info.sponsor}}</text>
     </view>
     <view class="sig-name">
       <image src="./../../static/index/group.svg"></image>
-      <text>xxxxxxSIG组</text>
+      <text>{{info.group_name}}</text>
     </view>
     <view class="desc">
       <image src="./../../static/index/desc.svg"></image>
-      <text>会议内容会议内容会议内容会议内容会议内容会议内容会议内容会议内容会议内内容会议内容会议内内容会议内容会议内内容会议内容会议内内容会议内容会议内内容会议内容会议内容会议内容</text>
+      <text>{{info.agenda}}</text>
     </view>
   </view>
   <view class="detail-item">
@@ -27,10 +27,10 @@
     </view>
     <view class="link">
       <image src="./../../static/index/link.svg"></image>
-      <text>https://www.fwefwefwefw/fewf/fewfwfewfwfewfewfwfwefwefw.com</text>
+      <text>{{info.etherpad}}</text>
     </view>
     <view class="btn-wraper">
-      <button>复制</button>
+      <button bindtap="copy" data-copy="{{info.etherpad}}">复制</button>
     </view>
   </view>
   <view class="detail-item">
@@ -39,15 +39,15 @@
     </view>
     <view class="id">
       <image src="./../../static/index/link.svg"></image>
-      <text>ID: 122 32392323023 323</text>
+      <text>ID: {{info.mid}}</text>
     </view>
     <view class="link">
       <image src="./../../static/index/link.svg"></image>
-      <text>https://www.fwefwefwefw/fewfwfewf/fewfwfewf/fewfwfewfewfwfwefwefw.com</text>
+      <text>{{info.join_url}}</text>
     </view>
     <view class="btn-wraper">
-      <button>复制ID</button>
-      <button>复制链接</button>
+      <button bindtap="copy" data-copy="{{info.mid}}">复制ID</button>
+      <button bindtap="copy" data-copy="{{info.join_url}}">复制链接</button>
     </view>
   </view>
 </view>

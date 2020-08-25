@@ -75,7 +75,8 @@ Page({
           title: '操作成功',
           icon : "success",
           duration: 2000
-      });
+        });
+        wx.navigateBack();
       }
     })
   },

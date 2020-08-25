@@ -117,6 +117,12 @@ var appAjax = {
 	        data : ajaxParams.data,
 	        success: function( res ) {
 						console.log(res);
+						if(res.statusCode === 401){
+							wx.reLaunch({
+								url: '/pages/auth/auth'
+							})
+							return;
+						}
 							if(res.statusCode.toString()[0] != 2){
 								var message = "有点忙开个小差，稍后再试~";
 								if(ajaxParams.error){
