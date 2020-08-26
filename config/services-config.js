@@ -36,8 +36,14 @@ var commonServiceConfig = {
 	// 获取当日会议列表
 	GET_MEETING_DAILY: "/meetings_daily/",
 
+	// 获取前后一周会议列表
+	GET_MEETING_WEEKLY: "/meetings_weekly/",
+
 	// 删除会议
 	DEL_MEETING: "/meeting/{id}/",
+
+	// 获取用户状态
+	GET_USER_STATUS: "/userinfo/{id}/",
 
 	// 保存用户giteename
 	SAVE_MEMBER_DETAIL: '/user/{id}/'

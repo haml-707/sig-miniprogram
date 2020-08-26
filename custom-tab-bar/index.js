@@ -11,6 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    show: true,
     _tabbat: 0,
     iPhoneX: null,
     urls: [

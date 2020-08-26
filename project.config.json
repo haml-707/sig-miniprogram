@@ -31,7 +31,7 @@
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.12.0",
+	"libVersion": "2.12.1",
 	"appid": "wx6eaef4f2eacd9329",
 	"projectname": "openeuler",
 	"debugOptions": {

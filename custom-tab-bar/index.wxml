@@ -1,5 +1,5 @@
 <!--custom-tab-bar/index.wxml-->
-<view class="_tabbar {{iPhoneX?'_iPhoneX':''}}">
+<view class="_tabbar {{iPhoneX?'_iPhoneX':''}}" wx:if="{{show}}">
     <view class="titem {{_tabbat==0?'tCdk':''}}" data-index="0" bind:tap="switchTap">
         <image class="img" src="{{_tabbat==0?'./../static/tabbar/home-selected.png':'./../static/tabbar/home.png'}}" />
         <text>首页</text>

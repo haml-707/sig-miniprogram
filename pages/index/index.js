@@ -1,6 +1,7 @@
 //index.js
 const mixin = require("../../utils/page-mixin.js").$pageMixin;
 const sessionUtil = require("../../utils/app-session.js");
+const appUser = require("../../utils/app-user.js");
 var appAjax = require('./../../utils/app-ajax');
 let that = null;
 let localMethods = {
@@ -91,10 +92,9 @@ Page(mixin({
     localMethods.getCurText();
     this.setData({
       iphoneX: this.getTabBar().data.iPhoneX,
-      level: sessionUtil.getUserInfoByKey('level'),
+      userId: sessionUtil.getUserInfoByKey('userId'),
       avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
-      nickName: sessionUtil.getUserInfoByKey('nickName'),
-      userId: sessionUtil.getUserInfoByKey('userId')
+      nickName: sessionUtil.getUserInfoByKey('nickName')
     })
   },
   getAddr: function (e) {
@@ -185,10 +185,24 @@ Page(mixin({
     this.getTabBar().setData({
       _tabbat: 0
     })
+    
+    appUser.updateUserInfo(function () {
+      that.setData({
+        level: sessionUtil.getUserInfoByKey('level')
+      })
+      remoteMethods.getMettingDaily(function (data) {
+        that.setData({
+          list: data
+        })
+      })
+    });
+  },
+  onPullDownRefresh: function () {
     remoteMethods.getMettingDaily(function (data) {
       that.setData({
         list: data
       })
+      wx.stopPullDownRefresh();
     })
   }
 }))

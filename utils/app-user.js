@@ -238,6 +238,26 @@ var appUser = {
 	saveLoginInfo : function(result){
 
 		wx.setStorageSync(constants.APP_USERINFO_SESSION, result);
+	},
+
+	updateUserInfo: function (callback) {
+		let userInfo = wx.getStorageSync(constants.APP_USERINFO_SESSION);
+			if(userInfo && userInfo.userId){
+				appAjax.postJson({
+					autoShowWait: true,
+					type: 'GET',
+					service: "GET_USER_STATUS",
+					otherParams: {
+						id : userInfo.userId
+					},
+					success: function(ret) {
+						userInfo.gitee = ret.gitee_name;
+						userInfo.level = ret.level;
+						wx.setStorageSync(constants.APP_USERINFO_SESSION, userInfo);
+						callback && callback();
+					}
+				});	
+			}
 	}
 };
 

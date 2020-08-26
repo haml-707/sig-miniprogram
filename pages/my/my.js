@@ -1,4 +1,5 @@
 // pages/my/my.js
+const appUser = require("../../utils/app-user.js");
 Page({
 
   /**
@@ -31,6 +32,7 @@ Page({
     this.getTabBar().setData({
       _tabbat: 2
     })
+    appUser.updateUserInfo();
   },
 
   /**

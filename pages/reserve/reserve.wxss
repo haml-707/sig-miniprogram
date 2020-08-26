@@ -167,3 +167,9 @@ textarea {
   background-color: #fff;
   border: 1rpx solid #002fa7;
 }
+.container .dialog-slot-content text {
+  white-space: unset;
+  overflow: unset;
+  text-overflow: unset;
+
+}

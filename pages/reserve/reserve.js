@@ -3,6 +3,7 @@ var appAjax = require('./../../utils/app-ajax');
 var appSession = require("./../../utils/app-session.js");
 var utils = require("./../../utils/utils.js");
 utils.formateDate();
+let that = null;
 let remoteMethods = {
   getUserGroup: function (id,_callback) {
     appAjax.postJson({
@@ -27,6 +28,42 @@ let remoteMethods = {
 				_callback && _callback(ret);
 			}
 		});
+  }
+}
+let localMethods = {
+  validation: function (that) {
+    if(!that.data.topic){
+      this.toast('请输入会议名称');
+      return;
+    }
+    if(!that.data.sponsor){
+      this.toast('请联系管理员编辑您的gitee name');
+      return;
+    }
+    if(!that.data.groupId){
+      this.toast('请选择所属SIG');
+      return;
+    }
+    if(!that.data.date){
+      this.toast('请选择日期');
+      return;
+    }
+    if(!that.data.start){
+      this.toast('请选择开始时间');
+      return;
+    }
+    if(!that.data.end){
+      this.toast('请选择结束时间');
+      return;
+    }
+    return true;
+  },
+  toast: function (msg) {
+    wx.showToast({
+      title: msg,
+      icon : "none",
+      duration: 2000
+    });
   }
 }
 Page({
@@ -58,7 +95,8 @@ Page({
     endTimePopShow: false,
     currentEndTime:'08:00',
     minEndTime: 8,
-    maxEndTime: 22
+    maxEndTime: 22,
+    showDialogWarn: false
   },
 
   /**
@@ -68,7 +106,9 @@ Page({
 
   },
   meeting: function () {
-
+    if(!localMethods.validation(this)){
+      return;
+    }
     remoteMethods.saveMeeting({
       topic: this.data.topic,
       sponsor: this.data.sponsor,
@@ -143,6 +183,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    that = this;
     this.setData({
       sponsor: appSession.getUserInfoByKey('gitee') || ''
     })
@@ -161,8 +202,19 @@ Page({
     })
   },
   selSig: function () {
+    if(!this.data.sigList.length) {
+      this.setData({
+        showDialogWarn: true
+      })
+      return;
+    }
     this.setData({
       sigPopShow: true
+    })
+  },
+  warnCancel: function () {
+    this.setData({
+      showDialogWarn: false
     })
   },
   sigCancel: function () {

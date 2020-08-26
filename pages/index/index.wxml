@@ -80,8 +80,8 @@
     close-on-click-overlay="{{true}}"
   >
       <view class="dialog-slot-content">
-        <text>101 392 394 23</text>
-        <text>dasdffrefrefeerferferfeerferferferfrefeedsdsdsdsrfef</text>
+        <text>{{curMid}}</text>
+        <text>{{curJoinUrl}}</text>
         <view>
           <button bindtap="copyLink">复制链接</button>
           <button bindtap="copyId">复制ID</button>
