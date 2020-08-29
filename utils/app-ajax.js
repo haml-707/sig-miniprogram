@@ -116,7 +116,6 @@ var appAjax = {
 	        method : ajaxParams["type"] || 'POST',
 	        data : ajaxParams.data,
 	        success: function( res ) {
-						console.log(res);
 						if(res.statusCode === 401){
 							wx.reLaunch({
 								url: '/pages/auth/auth'
@@ -146,7 +145,7 @@ var appAjax = {
 	        complete : function(res) {
 	        	if(!res.errMsg.includes('ok')){
 							wx.showToast({
-									title: '无法连接服务器,请稍后再试~',
+									title: res.errMsg,
 									icon : "none",
 									duration: 2000
 							});

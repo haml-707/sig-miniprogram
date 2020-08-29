@@ -43,7 +43,6 @@ var privateMethods = {
    				
    				wx.getUserInfo({
 	        		success: function (res) {
-	        			console.log(data.code);
 									// 登录
 	          			appAjax.postJson({
 										headers: {

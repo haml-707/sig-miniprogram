@@ -29,7 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(666)
+    
   },
   /**
    * 生命周期函数--监听页面显示
@@ -50,7 +50,7 @@ Page({
   },
   toAddMember: function (e) {
     wx.navigateTo({
-      url: '/pages/sig/add-sig-member?id=' + e.currentTarget.dataset.id
+      url: '/pages/sig/add-sig-member?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name
     })
   },
   searchInput: function (e) {

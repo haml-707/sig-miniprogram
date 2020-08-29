@@ -16,13 +16,13 @@ var commonServiceConfig = {
 	SIG_EXCLUDE_MEMBER_LIST: "/users_exclude/{id}/",
 
 	// 获取sig组未添加成员列表
-	ADD_MEMBER_LIST: "/groupuser_new/",
+	ADD_MEMBER_LIST: "/groupuser/action/new/",
 
 	// 获取sig组已添加成员列表
 	SIG_CLUDE_MEMBER_LIST: "/users_include/{id}/",
 
 	// 获取sig组未添加成员列表
-	DEL_MEMBER_LIST: "/groupuser_del/",
+	DEL_MEMBER_LIST: "/groupuser/action/del/",
 	
 	// 获取sig组未添加成员列表
 	GET_USER_GROUP: "/usergroup/{id}/",

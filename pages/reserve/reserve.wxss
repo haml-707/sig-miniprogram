@@ -6,6 +6,9 @@ textarea {
   height: 45rpx;
   flex: 1;
 }
+input {
+  flex: 1;
+}
 .require {
   color: #f76270;
 }

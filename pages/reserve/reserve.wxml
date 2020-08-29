@@ -3,7 +3,7 @@
   <view class="form">
     <view class="form-item">
       <text class="label">会议名称<text class="require">*</text></text>
-      <input maxlength="{{20}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
+      <input value="{{topic}}" maxlength="{{20}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
     </view>
     <view class="form-item">
       <text class="label">发起人<text class="require">*</text></text>
@@ -38,13 +38,13 @@
     </view>
     <view class="form-item meeting-desc">
       <text class="label">会议内容</text>
-      <textarea maxlength="{{50}}" placeholder-class="placeholder" bindinput="agendaInput"  placeholder="请输入会议内容">
+      <textarea value="{{agenda}}" hidden="{{sigPopShow||datePopShow||timePopShow||endTimePopShow}}" maxlength="{{50}}" placeholder-class="placeholder" bindinput="agendaInput"  placeholder="请输入会议内容">
         <text class="hint">{{agenda.length}}/50</text>
       </textarea>
     </view>
     <view class="form-item">
       <text class="label">邮件地址</text>
-      <textarea maxlength="{{100}}" placeholder-class="placeholder" bindinput="emailInput" placeholder="请输入电子邮件地址"></textarea>
+      <input value="{{emaillist}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="emailInput" placeholder="请输入电子邮件地址"></input>
     </view>
   </view>
   <view class="info">
@@ -60,7 +60,7 @@
   </view>
   <view class="commit">
     <button class="meeting-btn" bindtap="meeting">立即预定</button>
-    <button class="meeting-reset">重置</button>
+    <button class="meeting-reset" bindtap="reset">重置</button>
   </view>
   <van-popup
     show="{{ sigPopShow }}"
@@ -97,7 +97,7 @@
       <van-datetime-picker
         show-toolbar="{{false}}"
         type="date"
-        value="{{ currentDate }}"
+        value="{{ curDate }}"
         bind:input="dateOnInput"
         min-date="{{ minDate }}"
       />
@@ -119,7 +119,7 @@
       <van-datetime-picker
         show-toolbar="{{false}}"
         type="time"
-        value="{{ currentTime }}"
+        value="{{ start }}"
         bind:input="timeOnInput"
         min-hour="{{ minTime }}"
         max-hour="{{maxTime}}"
@@ -142,7 +142,7 @@
       <van-datetime-picker
         show-toolbar="{{false}}"
         type="time"
-        value="{{ currentEndTime }}"
+        value="{{ end }}"
         bind:input="endTimeOnInput"
         min-hour="{{ minEndTime }}"
         max-hour="{{maxEndTime}}"

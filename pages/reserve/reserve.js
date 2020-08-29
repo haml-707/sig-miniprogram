@@ -56,6 +56,10 @@ let localMethods = {
       this.toast('请选择结束时间');
       return;
     }
+    if((that.data.start.split(':')[0] > that.data.end.split(':')[0]) || (that.data.start.split(':')[0] == that.data.end.split(':')[0] && that.data.start.split(':')[1] >= that.data.end.split(':')[1])){
+      this.toast('开始时间必须小于结束时间');
+      return;
+    }
     return true;
   },
   toast: function (msg) {
@@ -86,6 +90,7 @@ Page({
     sigResult: '',
     sigList: [],
     datePopShow: false,
+    curDate: new Date().getTime(),
     currentDate: new Date().getTime(),
     minDate: new Date().getTime(),
     timePopShow: false,
@@ -104,6 +109,21 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  reset: function () {
+    this.setData({
+        topic: '',
+        groupName: '',
+        group_name: '',
+        group_id: '',
+        groupId: '',
+        date: '',
+        start:'',
+        end: '',
+        etherpad: '',
+        agenda: '',
+        emaillist: ''
+    })
   },
   meeting: function () {
     if(!localMethods.validation(this)){
@@ -125,6 +145,12 @@ Page({
           wx.redirectTo({
             url: '/pages/meeting/meeting-success?id=' + data.id,
           })
+      }else{
+        wx.showToast({
+            title: data.massage,
+            icon : "none",
+            duration: 2000
+        });
       }
     })
   },

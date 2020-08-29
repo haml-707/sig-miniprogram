@@ -1,7 +1,7 @@
 <!--pages/meeting/meeting.wxml-->
 <view class="container {{iphoneX?'container-x':''}}">
   <view class="input-wraper">
-      <input bindinput="searchInput" placeholder="搜索会议" class="keyword" bindinput="search">
+      <input placeholder="搜索会议" class="keyword" bindinput="search">
         <image src="./../../static/common/search-icon.svg" class="search-icon" />
       </input>
       
@@ -13,7 +13,7 @@
   <view class="list">
     <block wx:for="{{list}}" wx:key="index">
       
-      <van-swipe-cell right-width="{{ level ? 135 : 67.5 }}" async-close="{{true}}" bind:close="onClose">
+      <van-swipe-cell right-width="{{ (level==3)||(level==2&&item.user_id==userId) ? 135 : 67.5 }}" async-close="{{true}}" bind:close="onClose">
         <view class="item" bindtap="toDetail" data-id="{{item.id}}">
           <view class="name">
             {{item.topic}}

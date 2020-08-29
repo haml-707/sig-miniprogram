@@ -7,7 +7,7 @@ var _ = require('../utils/underscore-extend.js');
 var serviceConfig = {
 
 //  SERVICE_URL: "", // 正式环境
-	SERVICE_URL: "http://119.8.32.82", // 测试环境
+	SERVICE_URL: "https://api.openeuler.org/meetings", // 测试环境
 };
 
 // 存储配置

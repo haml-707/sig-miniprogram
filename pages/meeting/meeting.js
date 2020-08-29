@@ -161,6 +161,16 @@ Page(mixin({
       })
     });
   },
+  onPullDownRefresh: function () {
+    remoteMethods.getMettingWeekly(function (data) {
+      that.setData({
+        list: data,
+        filterList: data
+      })
+      localMethod.filterData();
+      wx.stopPullDownRefresh();
+    })
+  },
   filterSig: function () {
     this.setData({
       popShow: true
@@ -168,15 +178,6 @@ Page(mixin({
     this.getTabBar().setData({
       show: false
     })
-  },
-  searchInput: function (e) {
-
-  },
-  getAddr: function (e) {
-    console.log(e);
-  },
-  delMeeting: function (e) {
-    console.log(e);
   },
   popCancel: function () {
     this.getTabBar().setData({

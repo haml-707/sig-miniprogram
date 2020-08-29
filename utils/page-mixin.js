@@ -82,10 +82,8 @@ const lifeCycle = {
 					})
 				}			
 			}
-			console.log("onLoad before")
 		},
 		after() {
-			console.log("onLoad after")
 		}
 	},
 	
