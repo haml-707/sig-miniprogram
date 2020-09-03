@@ -1,2 +1,6 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+    <view class="picker">
+      当前选择: {{time}}
+    </view>
+  </picker>

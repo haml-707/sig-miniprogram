@@ -50,7 +50,7 @@ let localMethod = {
     }
     if(that.data.curFilterSigId === ''){
       that.data.filterList.forEach(function (item, index) {
-        if(item.topic.includes(that.data.curKeyword) || item.group_name.includes(that.data.curKeyword)){
+        if(item.topic.toLowerCase().includes(that.data.curKeyword.toLowerCase()) || item.group_name.toLowerCase().includes(that.data.curKeyword.toLowerCase())){
           listTemp.push(item);
         }
       })
@@ -71,7 +71,7 @@ let localMethod = {
       return;
     }
     that.data.filterList.forEach(function (item, index) {
-      if(item.group_name.includes(that.data.filterSigName) && item.topic.includes(that.data.curKeyword)){
+      if(item.group_name.includes(that.data.filterSigName) && item.topic.toLowerCase().includes(that.data.curKeyword.toLowerCase())){
         listTemp.push(item);
       }
     })

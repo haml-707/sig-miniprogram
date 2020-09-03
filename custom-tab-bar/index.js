@@ -24,7 +24,7 @@ Component({
     var self = this
     wx.getSystemInfo({
       success(res) {
-        if (res.model.indexOf('iPhone X') >= 0) {
+        if ((res.model.indexOf('iPhone X') >= 0) || (res.model.indexOf('iPhone 11') >= 0)) {
           self.setData({
             iPhoneX: true
           });

@@ -6,7 +6,7 @@
       <input value="{{topic}}" maxlength="{{20}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
     </view>
     <view class="form-item">
-      <text class="label">发起人<text class="require">*</text></text>
+      <text class="label">发起人</text>
       <input value="{{sponsor}}" disabled="{{true}}" placeholder-class="placeholder" placeholder="gitee ID"></input>
     </view>
     <view class="form-item" bindtap="selSig">
@@ -34,7 +34,8 @@
     </view>
     <view class="form-item">
       <text class="label">Etherpad链接</text>
-      <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input>
+      <text class="etherpad">{{etherpad}}</text>
+      <!-- <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input> -->
     </view>
     <view class="form-item meeting-desc">
       <text class="label">会议内容</text>

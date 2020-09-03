@@ -122,13 +122,13 @@
   justify-content: center;
   background-color: #f76260;
   border-radius: 8rpx;
-  box-shadow: 0px 5px 20px 0px rgba(0, 47, 167, 0.28);
+  box-shadow: 0px 5px 20px 0px rgba(229, 91, 89, 0.27);
 }
 
 .van-swipe-cell {
   border-radius: 8px;
   margin-bottom: 30rpx;
-  box-shadow: 0px 5px 20px 0px rgba(229, 91, 89, 0.27);
+  box-shadow: 0px 5px 20px 0px #e1e6ee;
   background-color: #fff;
 }
 

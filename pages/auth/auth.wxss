@@ -32,13 +32,12 @@ page {
 }
 .container .button view {
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .container .button text {
-  display: inline-block;
-  height: 90rpx;
-  line-height: 90rpx;
   vertical-align: middle;
-  margin-top: -5rpx;
 }
 .container .button .wechat-icon {
   vertical-align: middle;

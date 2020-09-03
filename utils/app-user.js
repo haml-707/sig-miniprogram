@@ -243,7 +243,6 @@ var appUser = {
 		let userInfo = wx.getStorageSync(constants.APP_USERINFO_SESSION);
 			if(userInfo && userInfo.userId){
 				appAjax.postJson({
-					autoShowWait: true,
 					type: 'GET',
 					service: "GET_USER_STATUS",
 					otherParams: {

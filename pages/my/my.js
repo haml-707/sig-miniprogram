@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    iphoneX: false
+    iphoneX: false,
+    time: '12:01',
+
   },
 
   /**
@@ -16,6 +18,9 @@ Page({
     this.setData({
       iphoneX: this.getTabBar().data.iPhoneX
     })
+  },
+  bindTimeChange: function (e) {
+    console.log(e.detail.value);
   },
 
   /**

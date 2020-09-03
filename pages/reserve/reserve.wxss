@@ -59,6 +59,12 @@ input {
 .container .form .form-item input {
   color: #6d7278;
 }
+.container .form .form-item .etherpad {
+  display: block;
+  color: #6d7278;
+  overflow-x: scroll;
+  flex: 1;
+}
 .container .form .form-item textarea {
   color: #6d7278;
 }
