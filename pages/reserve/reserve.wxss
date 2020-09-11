@@ -45,7 +45,7 @@ input {
 .container .form .form-item  .sel-time .time {
   color: #6d7278;
   margin: 0 20rpx;
-  border: 1rpx solid #c7cad0;
+  border: 1px solid #c7cad0;
   background-color: #f0f3f7;
   padding: 0 20rpx;
   border-radius: 8rpx;
@@ -123,7 +123,7 @@ input {
 .container .commit .meeting-reset {
   color: #002fa7;
   background-color: #fff;
-  border: 1rpx solid #002fa7;
+  border: 1px solid #002fa7;
 }
 .container .sig-pop-wrapper {
   padding: 0 30rpx;
@@ -146,7 +146,7 @@ input {
   height: 108rpx;
   display: flex;
   align-items: center;
-  border-bottom: 1rpx solid #f0f3f7;
+  border-bottom: 1px solid #f0f3f7;
 }
 .container .sig-pop-wrapper .item:last-child {
   border: none;
@@ -174,7 +174,7 @@ input {
   line-height: 90rpx;
   color: #002fa7;
   background-color: #fff;
-  border: 1rpx solid #002fa7;
+  border: 1px solid #002fa7;
 }
 .container .dialog-slot-content text {
   white-space: unset;

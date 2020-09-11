@@ -17,7 +17,6 @@ let remoteMethods = {
   },
   getSigList: function (_callback) {
     appAjax.postJson({
-      autoShowWait: true,
       type: 'GET',
 			service: "SIG_LIST",
 			success: function(ret) {
@@ -138,16 +137,6 @@ Page(mixin({
         })
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    that = this;
-    this.getTabBar().setData({
-      _tabbat: 1
-    })
     appUser.updateUserInfo(function () {
       that.setData({
         level: sessionUtil.getUserInfoByKey('level')
@@ -161,15 +150,31 @@ Page(mixin({
       })
     });
   },
-  onPullDownRefresh: function () {
-    remoteMethods.getMettingWeekly(function (data) {
-      that.setData({
-        list: data,
-        filterList: data
-      })
-      localMethod.filterData();
-      wx.stopPullDownRefresh();
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    that = this;
+    this.getTabBar().setData({
+      _tabbat: 1
     })
+  },
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
+    appUser.updateUserInfo(function () {
+      that.setData({
+        level: sessionUtil.getUserInfoByKey('level')
+      })
+      remoteMethods.getMettingWeekly(function (data) {
+        that.setData({
+          list: data,
+          filterList: data
+        })
+        localMethod.filterData();
+        
+      })
+    });
   },
   filterSig: function () {
     this.setData({

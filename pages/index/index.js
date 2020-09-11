@@ -96,6 +96,16 @@ Page(mixin({
       avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
       nickName: sessionUtil.getUserInfoByKey('nickName')
     })
+    appUser.updateUserInfo(function () {
+      that.setData({
+        level: sessionUtil.getUserInfoByKey('level')
+      })
+      remoteMethods.getMettingDaily(function (data) {
+        that.setData({
+          list: data
+        })
+      })
+    });
   },
   getAddr: function (e) {
     this.setData({
@@ -185,7 +195,9 @@ Page(mixin({
     this.getTabBar().setData({
       _tabbat: 0
     })
-    
+  },
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
     appUser.updateUserInfo(function () {
       that.setData({
         level: sessionUtil.getUserInfoByKey('level')
@@ -194,15 +206,8 @@ Page(mixin({
         that.setData({
           list: data
         })
+        
       })
     });
-  },
-  onPullDownRefresh: function () {
-    remoteMethods.getMettingDaily(function (data) {
-      that.setData({
-        list: data
-      })
-      wx.stopPullDownRefresh();
-    })
   }
 }))

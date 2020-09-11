@@ -6,7 +6,7 @@
   padding: 0;
 }
 .container .del-item {
-  border-bottom: 0.5rpx solid #c7cad0;
+  border-bottom: 1px solid #c7cad0;
   padding: 0 30rpx;
   height: 108rpx;
   line-height: 108rpx;
@@ -18,7 +18,7 @@
   height: 72rpx;
   border-radius: 8rpx;
   display: inline-block;
-  border: 0.5rpx solid #979797;
+  border: 1px solid #979797;
   margin: 0 20rpx 0 10rpx;
 }
 .container .del-item text {

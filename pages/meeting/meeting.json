@@ -2,5 +2,6 @@
   "usingComponents": {},
   "navigationBarTitleText": "会议列表",
   "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark"
+  "backgroundTextStyle": "dark",
+  "backgroundColor":"#fff"
 }

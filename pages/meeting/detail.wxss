@@ -42,7 +42,7 @@
 .container .detail-item .btn-wraper button {
   height: 78rpx;
   width: 220rpx;
-  border: 1rpx solid #002fa7;
+  border: 1px solid #002fa7;
   border-radius: 8rpx;
   color: #002fa7;
   text-align: center;

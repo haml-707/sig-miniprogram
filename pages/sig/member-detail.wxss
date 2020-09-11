@@ -13,7 +13,7 @@
   height: 135rpx;
   width: 135rpx;
   border-radius: 100%;
-  border: 1rpx solid #c7cad0;
+  border: 1px solid #c7cad0;
 }
 .container .user-info view {
   display: inline-block;

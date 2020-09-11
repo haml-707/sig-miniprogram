@@ -11,13 +11,15 @@
     "pages/sig/add-member",
     "pages/sig/del-member",
     "pages/meeting/detail",
-    "pages/meeting/meeting-success"
+    "pages/meeting/meeting-success",
+    "pages/my/privecy"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "openEuler会议管理",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor":"#fff"
   },
   "usingComponents": {
     "van-swipe-cell": "@vant/weapp/swipe-cell/index",

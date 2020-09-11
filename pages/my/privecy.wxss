@@ -1,0 +1,28 @@
+/* pages/my/privecy.wxss */
+page {
+  background-color: #fff;
+}
+.container .h1 {
+  text-align: center;
+  margin-top: 128rpx;
+  margin-bottom: 40rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #000;
+}
+.container .p {
+  margin-bottom: 50rpx;
+  font-size: 34rpx;
+  color: #6d7278;
+  line-height: 54rpx;
+  text-align: justify;
+}
+.container .h2 {
+  margin-bottom: 50rpx;
+  font-size: 34rpx;
+  color: #000;
+  line-height: 54rpx;
+}
+.container .mb0 {
+  margin-bottom: 0;
+}

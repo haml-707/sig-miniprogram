@@ -40,7 +40,7 @@ page,view,scroll-view,swiper,swiper-item,movable-area,movable-view,cover-view,co
 }
 .container .dialog-slot-content view {
   margin-top: 52rpx;
-  border-top: 1rpx solid #f0f3f7;
+  border-top: 1px solid #f0f3f7;
   height: 88rpx;
   display: flex;
   align-items: center;

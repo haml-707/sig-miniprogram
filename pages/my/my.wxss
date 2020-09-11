@@ -1,1 +1,62 @@
 /* pages/my/my.wxss */
+page {
+  background-color: #fff;
+}
+.container {
+  padding: 0;
+}
+.container .user-info {
+  padding: 24rpx 30rpx;
+  display: flex;
+  align-items: center;
+}
+.container .user-info image {
+  width: 135rpx;
+  height: 135rpx;
+  border-radius: 100%;
+  margin-right: 20rpx;
+}
+.container .user-info image text {
+  font-size: 36rpx;
+  color: #222;
+}
+.container .bg-gray {
+  height: 20rpx;
+  background-color: #f5f7fa;
+}
+.container .list .item {
+  height: 108rpx;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #f0f3f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .list .item view image {
+  width: 54rpx;
+  height: 54rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.container .list .item view {
+  display: flex;
+  align-items: center;
+  line-height: 54rpx;
+}
+.container .list .item view text {
+  color: #333;
+  font-size: 34rpx;
+  vertical-align: middle;
+}
+.container .list .item .arrow-right {
+  width: 30rpx;
+  height: 30rpx;
+}
+.container .building {
+  position: fixed;
+  top: calc(50% + 90rpx);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 408rpx;
+  width: 458rpx;
+}

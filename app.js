@@ -12,9 +12,11 @@ App({
     })
   },
   onShow () {
+    this.globalData.isFirstShow = true;
   },
   loginCallback: null,
   globalData: {
-    iphoneX: false
+    iphoneX: false,
+    isFirstShow: true
   }
 })
