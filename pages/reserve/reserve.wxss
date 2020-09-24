@@ -74,6 +74,8 @@ input {
 }
 
 .container .form .meeting-desc {
+  padding-top: 30rpx;
+  align-items: flex-start;
   height: 244rpx;
 }
 .container .form .meeting-desc textarea {

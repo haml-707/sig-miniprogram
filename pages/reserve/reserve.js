@@ -146,11 +146,13 @@ Page({
             url: '/pages/meeting/meeting-success?id=' + data.id,
           })
       }else{
-        wx.showToast({
-            title: data.massage,
+        setTimeout(function () {
+          wx.showToast({
+            title: data.message,
             icon : "none",
             duration: 2000
-        });
+          }, 100);
+        })
       }
     })
   },
