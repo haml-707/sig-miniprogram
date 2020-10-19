@@ -39,8 +39,8 @@
     </view>
     <view class="form-item meeting-desc">
       <text class="label">会议内容</text>
-      <textarea value="{{agenda}}" hidden="{{sigPopShow||datePopShow||timePopShow||endTimePopShow}}" maxlength="{{50}}" placeholder-class="placeholder" bindinput="agendaInput"  placeholder="请输入会议内容">
-        <text class="hint">{{agenda.length}}/50</text>
+      <textarea value="{{agenda}}" hidden="{{sigPopShow||datePopShow||timePopShow||endTimePopShow}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="agendaInput"  placeholder="请输入会议内容">
+        <text class="hint">{{agenda.length}}/100</text>
       </textarea>
     </view>
     <view class="form-item">
