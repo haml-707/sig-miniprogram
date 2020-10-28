@@ -36,6 +36,32 @@ let remoteMethods = {
 				_callback && _callback(ret);
 			}
 		});
+  },
+  collect: function (id,_callback) {
+    appAjax.postJson({
+      autoShowWait: true,
+      type: 'POST',
+			service: "COLLECT",
+			data: {
+        meeting: id
+      },
+			success: function(ret) {
+				_callback && _callback(ret);
+			}
+		});
+  },
+  uncollect: function (id,_callback) {
+    appAjax.postJson({
+      autoShowWait: true,
+      type: 'DELETE',
+			service: "UNCOLLECT",
+			otherParams: {
+        id: id
+      },
+			success: function(ret) {
+				_callback && _callback(ret);
+			}
+		});
   }
 }
 let localMethod = {
@@ -175,6 +201,33 @@ Page(mixin({
         
       })
     });
+  },
+  collect: function (e) {
+    if(e.currentTarget.dataset.collect){
+      remoteMethods.uncollect(e.currentTarget.dataset.collect, function (res) {
+        remoteMethods.getMettingWeekly(function (data) {
+          that.data.cellInstance.close();
+          that.setData({
+            list: data,
+            filterList: data
+          })
+          localMethod.filterData();
+        })
+      })
+    }else{
+      remoteMethods.collect(e.currentTarget.dataset.id, function (res) {
+        if(res.code == 201){
+          remoteMethods.getMettingWeekly(function (data) {
+            that.data.cellInstance.close();
+            that.setData({
+              list: data,
+              filterList: data
+            })
+            localMethod.filterData();
+          })
+        }
+      })
+    }
   },
   filterSig: function () {
     this.setData({

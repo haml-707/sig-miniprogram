@@ -1,15 +1,5 @@
-<!--pages/meeting/meeting.wxml-->
-<view class="container {{iphoneX?'container-x':''}}">
-  <view class="input-wraper">
-      <input placeholder="搜索会议" class="keyword" bindinput="search">
-        <image src="./../../static/common/search-icon.svg" class="search-icon" />
-      </input>
-      
-      <view class="filter-wraper" bindtap="filterSig">
-        <text>{{curFilterSigName}}</text>
-        <image src="./../../static/common/arrow-down.svg" />
-      </view>
-  </view>
+<!--pages/my/my-collection.wxml-->
+<view class="container">
   <view class="list">
     <block wx:for="{{list}}" wx:key="index">
       
@@ -30,39 +20,17 @@
 						<image src="./../../static/index/desc.svg"></image>
 						<text>{{item.agenda}}</text>
 					</view>
-                    <image wx:if="{{item.collection_id}}" class="collection" src="./../../static/common/collection-icon.svg"></image>
+                    <image class="collection" src="./../../static/common/collection-icon.svg"></image>
 				</view>
 				<view slot="right" class="slot" style="width: {{(level==3)||(level==2&&item.user_id==userId)?'202.5px':'135px'}}">
-                    <text bindtap="collect" class="get-addr {{item.collection_id?'collect':'uncollect'}}" data-id="{{item.id}}" data-collect="{{item.collection_id}}">{{item.collection_id?'取消收藏': '收藏会议'}}</text>
+                    <text bindtap="collect" class="get-addr collect" data-id="{{item.id}}" data-collect="{{item.collection_id}}">取消收藏</text>
 					<text bindtap="getAddr" class="get-addr" data-id="{{item.mid}}" data-addr="{{item.join_url}}">获取地址</text>
 					<text wx:if="{{(level==3)||(level==2&&item.user_id==userId)}}" bindtap="delMeeting" class="del-meeting" data-id="{{item.mid}}">删除</text>
 				</view>
 			</van-swipe-cell>
     </block>
   </view>
-  <view class="empty-status" wx:if="{{!list.length}}">
-    <view class="suc-wrapper">
-      <image src="./../../static/meeting/no-meeting.png"/>
-      <text>暂无会议!</text>
-      <text>当前暂无任何会议哦</text>
-    </view>
-  </view>
-    <van-popup
-    show="{{ popShow }}"
-    round
-    position="bottom"
-    bind:click-overlay="popCancel"
-  >
-    <view class="sig-pop-wrapper">
-      <van-picker columns="{{ columns }}" value-key="group_name" bind:change="pickerChange" />
-      <view class="btn-wrapper">
-        <button class="confirm" bindtap="popConfirm">确定</button>
-        <button class="cancel" bindtap="popCancel">取消</button>
-      </view>
-    </view>
-    
-  </van-popup>
-    <van-dialog
+  <van-dialog
     use-slot
     title="Zoom会议"
     show-confirm-button="{{false}}"
@@ -100,3 +68,4 @@
       </view>
   </van-dialog>
 </view>
+

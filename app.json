@@ -1,62 +1,65 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/meeting/meeting",
-    "pages/auth/auth",
-    "pages/my/my",
-    "pages/sig/sig-list",
-    "pages/reserve/reserve",
-    "pages/sig/add-sig-member",
-    "pages/sig/member-detail",
-    "pages/sig/add-member",
-    "pages/sig/del-member",
-    "pages/meeting/detail",
-    "pages/meeting/meeting-success",
-    "pages/my/privecy"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "openEuler会议管理",
-    "navigationBarTextStyle": "black",
-    "backgroundColor":"#fff"
-  },
-  "usingComponents": {
-    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
-    "van-dialog": "@vant/weapp/dialog/index",
-    "van-checkbox": "@vant/weapp/checkbox/index",
-    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
-    "van-popup": "@vant/weapp/popup/index",
-    "van-radio": "@vant/weapp/radio/index",
-    "van-radio-group": "@vant/weapp/radio-group/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-picker": "@vant/weapp/picker/index"
-  },
-  "sitemapLocation": "sitemap.json",
-  "tabBar": {
-    "custom": true,
-    "color": "#000000",
-    "selectedColor": "#002fa7",
-    "backgroundColor": "#fff",
-    "list": [
-      {
-        "iconPath": "static/tabbar/home.png",
-        "selectedIconPath": "static/tabbar/home-selected.png",
-        "pagePath": "pages/index/index",
-        "text": "首页"
-      },
-      {
-        "iconPath": "static/tabbar/meeting.png",
-        "selectedIconPath": "static/tabbar/meeting-selected.png",
-        "pagePath": "pages/meeting/meeting",
-        "text": "会议"
-      },
-      {
-        "iconPath": "static/tabbar/my.png",
-        "selectedIconPath": "static/tabbar/my-selected.png",
-        "pagePath": "pages/my/my",
-        "text": "我的"
-      }
-    ]
-  }
+	"pages": [
+		"pages/index/index",
+		"pages/meeting/meeting",
+		"pages/auth/auth",
+		"pages/my/my",
+		"pages/sig/sig-list",
+		"pages/reserve/reserve",
+		"pages/sig/add-sig-member",
+		"pages/sig/member-detail",
+		"pages/sig/add-member",
+		"pages/sig/del-member",
+		"pages/meeting/detail",
+		"pages/meeting/meeting-success",
+		"pages/my/privecy",
+		"pages/my/my-meetings",
+		"pages/my/my-collection",
+		"pages/my/help"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "openEuler会议管理",
+		"navigationBarTextStyle": "black",
+		"backgroundColor": "#fff"
+	},
+	"usingComponents": {
+		"van-swipe-cell": "@vant/weapp/swipe-cell/index",
+		"van-dialog": "@vant/weapp/dialog/index",
+		"van-checkbox": "@vant/weapp/checkbox/index",
+		"van-checkbox-group": "@vant/weapp/checkbox-group/index",
+		"van-popup": "@vant/weapp/popup/index",
+		"van-radio": "@vant/weapp/radio/index",
+		"van-radio-group": "@vant/weapp/radio-group/index",
+		"van-datetime-picker": "@vant/weapp/datetime-picker/index",
+		"van-picker": "@vant/weapp/picker/index"
+	},
+	"sitemapLocation": "sitemap.json",
+	"tabBar": {
+		"custom": true,
+		"color": "#000000",
+		"selectedColor": "#002fa7",
+		"backgroundColor": "#fff",
+		"list": [
+			{
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-selected.png",
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"iconPath": "static/tabbar/meeting.png",
+				"selectedIconPath": "static/tabbar/meeting-selected.png",
+				"pagePath": "pages/meeting/meeting",
+				"text": "会议"
+			},
+			{
+				"iconPath": "static/tabbar/my.png",
+				"selectedIconPath": "static/tabbar/my-selected.png",
+				"pagePath": "pages/my/my",
+				"text": "我的"
+			}
+		]
+	}
 }

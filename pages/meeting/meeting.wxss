@@ -57,6 +57,7 @@
   font-weight: 400;
 }
 .container .list .item {
+  background-color: #fff;
   padding: 30rpx;
 }
 .container .list .item .name {
@@ -129,7 +130,6 @@
   border-radius: 8px;
   margin-bottom: 30rpx;
   box-shadow: 0px 5px 20px 0px #e1e6ee;
-  background-color: #fff;
 }
 
 .container .sig-pop-wrapper {
@@ -207,4 +207,17 @@
 .container  .empty-status .suc-wrapper text:last-child {
   font-size: 28rpx;
   color: #6d7278;
+}
+.container .list .slot .collect {
+  background-color: #c7cad0;
+}
+.container .list .slot .uncollect {
+  background-color: #ffbe00;
+}
+.container .list .item .collection {
+  width: 114rpx;
+  height: 62rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
 }

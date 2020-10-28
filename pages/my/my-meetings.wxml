@@ -1,15 +1,5 @@
-<!--pages/meeting/meeting.wxml-->
-<view class="container {{iphoneX?'container-x':''}}">
-  <view class="input-wraper">
-      <input placeholder="搜索会议" class="keyword" bindinput="search">
-        <image src="./../../static/common/search-icon.svg" class="search-icon" />
-      </input>
-      
-      <view class="filter-wraper" bindtap="filterSig">
-        <text>{{curFilterSigName}}</text>
-        <image src="./../../static/common/arrow-down.svg" />
-      </view>
-  </view>
+<!--pages/my/my-meetings.wxml-->
+<view class="container">
   <view class="list">
     <block wx:for="{{list}}" wx:key="index">
       
@@ -40,29 +30,7 @@
 			</van-swipe-cell>
     </block>
   </view>
-  <view class="empty-status" wx:if="{{!list.length}}">
-    <view class="suc-wrapper">
-      <image src="./../../static/meeting/no-meeting.png"/>
-      <text>暂无会议!</text>
-      <text>当前暂无任何会议哦</text>
-    </view>
-  </view>
-    <van-popup
-    show="{{ popShow }}"
-    round
-    position="bottom"
-    bind:click-overlay="popCancel"
-  >
-    <view class="sig-pop-wrapper">
-      <van-picker columns="{{ columns }}" value-key="group_name" bind:change="pickerChange" />
-      <view class="btn-wrapper">
-        <button class="confirm" bindtap="popConfirm">确定</button>
-        <button class="cancel" bindtap="popCancel">取消</button>
-      </view>
-    </view>
-    
-  </van-popup>
-    <van-dialog
+  <van-dialog
     use-slot
     title="Zoom会议"
     show-confirm-button="{{false}}"

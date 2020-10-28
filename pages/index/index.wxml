@@ -1,110 +1,91 @@
 <!--index.wxml-->
 <view class="container {{iphoneX?'container-x':''}}">
-  <view class="userinfo">
-    <image src="{{avatarUrl}}"></image>
-    <text>{{text}}，{{nickName}}</text>
-  </view>
-  <swiper
-    indicator-dots="{{true}}"
-    autoplay="{{true}}"
-    interval="{{5000}}"
-    indicator-color="#e1e6ee"
-    indicator-active-color="#003fa7"
-  >
-    <block wx:for="{{imgUrls}}" wx:key="index">
-      <swiper-item>
-        <image src="{{item}}" class="slide-image" />
-      </swiper-item>
-    </block>
-  </swiper>
-  <view class="super-role" wx:if="{{level===3}}">
-    <view class="row1" bindtap="swithTabMeeting">
-      <image src="./../../static/index/see-meeting.svg"></image><text>查看会议</text>
-    </view>
-    <view class="row2">
-      <view bindtap="navigateTo" data-url="/pages/reserve/reserve">
-        <image src="./../../static/index/set-meeting.svg"></image><text>预定会议</text>
-      </view>
-      <view bindtap="navigateTo" data-url="/pages/sig/sig-list">
-        <image src="./../../static/index/sig-manage.svg"></image><text>SIG管理</text>
-      </view>
-    </view>
-  </view>
-  <view class="second-role" wx:if="{{level===2}}">
-      <view bindtap="swithTabMeeting">
-        <image src="./../../static/index/see-meeting.svg"></image><text>查看会议</text>
-      </view>
-      <view bindtap="navigateTo" data-url="/pages/reserve/reserve">
-        <image src="./../../static/index/set-meeting.svg"></image><text>预定会议</text>
-      </view>
-  </view>
-  <view class="nomal-role" wx:if="{{level===1}}" bindtap="swithTabMeeting">
-    <image src="./../../static/index/see-meeting.svg"></image><text>查看会议</text>
-  </view>
-  <view class="today-meeting">今天的会议({{list.length}})</view>
-  <view class="list">
-    <block wx:for="{{list}}" wx:key="index">
-      
-      <van-swipe-cell right-width="{{ (level==3)||(level==2&&item.user_id==userId) ? 135 : 67.5 }}" async-close="{{true}}" bind:close="onClose">
-        <view class="item" bindtap="toDetail" data-id="{{item.id}}">
-          <view class="name">
-            {{item.topic}}
-          </view>
-          <view class="date">
-            <image src="./../../static/index/date.svg"></image>
-            <text>{{item.date}} {{item.start}}-{{item.end}}</text>
-          </view>
-          <view class="sig-name">
-            <image src="./../../static/index/group.svg"></image>
-            <text>{{item.group_name}}</text>
-          </view>
-          <view class="desc">
-            <image src="./../../static/index/desc.svg"></image>
-            <text>{{item.agenda}}</text>
-          </view>
-        </view>
-        <view slot="right" class="slot" style="width: {{(level==3)||(level==2&&item.user_id==userId)?'135px':'67.5px'}}">
-          <text bindtap="getAddr" class="get-addr" data-id="{{item.mid}}" data-addr="{{item.join_url}}">获取地址</text>
-          <text wx:if="{{(level==3)||(level==2&&item.user_id==userId)}}" bindtap="delMeeting" class="del-meeting" data-id="{{item.mid}}">删除</text>
-        </view>
-      </van-swipe-cell>
-    </block>
-  </view>
-  <van-dialog
-    use-slot
-    title="Zoom会议"
-    show-confirm-button="{{false}}"
-    show-cancel-button="{{false}}"
-    show="{{ showDialog }}"
-    class-name="sig-dialog"
-    close-on-click-overlay="{{true}}"
-  >
-      <view class="dialog-slot-content">
-        <text>{{curMid}}</text>
-        <text>{{curJoinUrl}}</text>
-        <view>
-          <button bindtap="copyLink">复制链接</button>
-          <button bindtap="copyId">复制ID</button>
-          <button bindtap="closeDialog">关闭</button>
-        </view>
-        
-      </view>
-  </van-dialog>
-  <van-dialog
-    use-slot
-    title="提示"
-    show-confirm-button="{{false}}"
-    show-cancel-button="{{false}}"
-    show="{{ showDialogDel }}"
-    class-name="sig-dialog"
-  >
-      <view class="dialog-slot-content">
-        <text>请确认删除当前会议</text>
-        <view>
-          <button bindtap="del">删除</button>
-          <button bindtap="delCancel">取消</button>
-        </view>
-        
-      </view>
-  </van-dialog>
+	<view class="userinfo">
+		<image src="{{avatarUrl}}"></image>
+		<text>{{text}}，{{nickName}}</text>
+	</view>
+	<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" indicator-color="#e1e6ee" indicator-active-color="#003fa7">
+		<block wx:for="{{imgUrls}}" wx:key="index">
+			<swiper-item>
+				<image src="{{item}}" class="slide-image" />
+			</swiper-item>
+		</block>
+	</swiper>
+	<view class="super-role" wx:if="{{level===3}}">
+		<view class="row1" bindtap="swithTabMeeting">
+			<image src="./../../static/index/see-meeting.svg"></image><text>查看会议</text>
+		</view>
+		<view class="row2">
+			<view bindtap="navigateTo" data-url="/pages/reserve/reserve">
+				<image src="./../../static/index/set-meeting.svg"></image><text>预定会议</text>
+			</view>
+			<view bindtap="navigateTo" data-url="/pages/sig/sig-list">
+				<image src="./../../static/index/sig-manage.svg"></image><text>SIG管理</text>
+			</view>
+		</view>
+	</view>
+	<view class="second-role" wx:if="{{level===2}}">
+		<view bindtap="swithTabMeeting">
+			<image src="./../../static/index/see-meeting.svg"></image><text>查看会议</text>
+		</view>
+		<view bindtap="navigateTo" data-url="/pages/reserve/reserve">
+			<image src="./../../static/index/set-meeting.svg"></image><text>预定会议</text>
+		</view>
+	</view>
+	<view class="nomal-role" wx:if="{{level===1}}" bindtap="swithTabMeeting">
+		<image src="./../../static/index/see-meeting.svg"></image><text>查看会议</text>
+	</view>
+	<view class="today-meeting">今天的会议({{list.length}})</view>
+	<view class="list">
+		<block wx:for="{{list}}" wx:key="index">
+
+			<van-swipe-cell right-width="{{ (level==3)||(level==2&&item.user_id==userId) ? 202.5 : 135 }}" async-close="{{true}}" bind:close="onClose">
+				<view class="item" bindtap="toDetail" data-id="{{item.id}}">
+					<view class="name">
+						{{item.topic}}
+					</view>
+					<view class="date">
+						<image src="./../../static/index/date.svg"></image>
+						<text>{{item.date}} {{item.start}}-{{item.end}}</text>
+					</view>
+					<view class="sig-name">
+						<image src="./../../static/index/group.svg"></image>
+						<text>{{item.group_name}}</text>
+					</view>
+					<view class="desc">
+						<image src="./../../static/index/desc.svg"></image>
+						<text>{{item.agenda}}</text>
+					</view>
+                    <image wx:if="{{item.collection_id}}" class="collection" src="./../../static/common/collection-icon.svg"></image>
+				</view>
+				<view slot="right" class="slot" style="width: {{(level==3)||(level==2&&item.user_id==userId)?'202.5px':'135px'}}">
+                    <text bindtap="collect" class="get-addr {{item.collection_id?'collect':'uncollect'}}" data-id="{{item.id}}" data-collect="{{item.collection_id}}">{{item.collection_id?'取消收藏': '收藏会议'}}</text>
+					<text bindtap="getAddr" class="get-addr" data-id="{{item.mid}}" data-addr="{{item.join_url}}">获取地址</text>
+					<text wx:if="{{(level==3)||(level==2&&item.user_id==userId)}}" bindtap="delMeeting" class="del-meeting" data-id="{{item.mid}}">删除</text>
+				</view>
+			</van-swipe-cell>
+		</block>
+	</view>
+	<van-dialog use-slot title="Zoom会议" show-confirm-button="{{false}}" show-cancel-button="{{false}}" show="{{ showDialog }}" class-name="sig-dialog" close-on-click-overlay="{{true}}">
+		<view class="dialog-slot-content">
+			<text>{{curMid}}</text>
+			<text>{{curJoinUrl}}</text>
+			<view>
+				<button bindtap="copyLink">复制链接</button>
+				<button bindtap="copyId">复制ID</button>
+				<button bindtap="closeDialog">关闭</button>
+			</view>
+
+		</view>
+	</van-dialog>
+	<van-dialog use-slot title="提示" show-confirm-button="{{false}}" show-cancel-button="{{false}}" show="{{ showDialogDel }}" class-name="sig-dialog">
+		<view class="dialog-slot-content">
+			<text>请确认删除当前会议</text>
+			<view>
+				<button bindtap="del">删除</button>
+				<button bindtap="delCancel">取消</button>
+			</view>
+
+		</view>
+	</van-dialog>
 </view>

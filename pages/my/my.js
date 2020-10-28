@@ -8,7 +8,8 @@ Page({
   data: {
     iphoneX: false,
     avatarUrl: '',
-    nickName: ''
+    nickName: '',
+    level: 1
   },
 
   /**
@@ -18,7 +19,8 @@ Page({
     this.setData({
       iphoneX: this.getTabBar().data.iPhoneX,
       avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
-      nickName: sessionUtil.getUserInfoByKey('nickName')
+      nickName: sessionUtil.getUserInfoByKey('nickName'),
+      level: sessionUtil.getUserInfoByKey('level')
     })
   },
   /**

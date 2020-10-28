@@ -46,7 +46,19 @@ var commonServiceConfig = {
 	GET_USER_STATUS: "/userinfo/{id}/",
 
 	// 保存用户giteename
-	SAVE_MEMBER_DETAIL: '/user/{id}/'
+	SAVE_MEMBER_DETAIL: '/user/{id}/',
+
+	// 我创建的会议列表
+	MY_MEETINGS_LIST: '/mymeetings/{id}',
+
+	// 收藏会议
+	COLLECT: '/collect/',
+
+	// 取消收藏
+	UNCOLLECT: '/collect/{id}/',
+
+	// 收藏列表
+	MY_COLLECT_LIST: '/collections/'
 };
 
 

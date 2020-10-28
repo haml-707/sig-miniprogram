@@ -1,7 +1,7 @@
 /**
  * 页面通用方法
- * author cyixiang
- * since 2019-12-24
+ * author xzx
+ * since 2020-8-20
  */
 
 const _ = require("./underscore-extend");

@@ -54,5 +54,13 @@ Page({
         })
       }
     })
+  },
+  
+  onShareAppMessage: function () {
+    return {
+      title: "会议详情",
+      path:`/pages/meeting/detail?id=${this.data.id}` 
+    }
+ 
   }
 })

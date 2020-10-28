@@ -27,14 +27,13 @@ page {
 .container .list .item {
   height: 108rpx;
   padding: 0 30rpx;
-  border-bottom: 1px solid #f0f3f7;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .container .list .item view image {
-  width: 54rpx;
-  height: 54rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-right: 10rpx;
   vertical-align: middle;
 }
@@ -51,12 +50,4 @@ page {
 .container .list .item .arrow-right {
   width: 30rpx;
   height: 30rpx;
-}
-.container .building {
-  position: fixed;
-  top: calc(50% + 90rpx);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 408rpx;
-  width: 458rpx;
 }
