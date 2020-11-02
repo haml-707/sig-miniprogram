@@ -144,16 +144,22 @@ Page(mixin({
         })
       })
     }else{
-      remoteMethods.collect(e.currentTarget.dataset.id, function (res) {
-        if(res.code == 201){
-          remoteMethods.getMettingDaily(function (data) {
-            that.data.cellInstance.close();
-            that.setData({
-              list: data
-            })
+      wx.requestSubscribeMessage({
+        tmplIds: ['k1SE-Cy2nwCkRRD7BBYKFQInwDXNs1sZuMcqECJgBgg'],
+        success(res) {
+          remoteMethods.collect(e.currentTarget.dataset.id, function (res) {
+            if(res.code == 201){
+              remoteMethods.getMettingDaily(function (data) {
+                that.data.cellInstance.close();
+                that.setData({
+                  list: data
+                })
+              })
+            }
           })
         }
       })
+      
     }
   },
   getAddr: function (e) {
