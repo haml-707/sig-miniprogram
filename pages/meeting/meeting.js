@@ -216,7 +216,7 @@ Page(mixin({
       })
     }else{
       wx.requestSubscribeMessage({
-        tmplIds: ['k1SE-Cy2nwCkRRD7BBYKFQInwDXNs1sZuMcqECJgBgg'],
+        tmplIds: ['2xSske0tAcOVKNG9EpBjlb1I-cjPWSZrpwPDTgqAmWI','UpxRbZf8Z9QiEPlZeRCgp_MKvvqHlo6tcToY8fToK50'],
         success(res) {
           remoteMethods.collect(e.currentTarget.dataset.id, function (res) {
             if(res.code == 201){

@@ -1,6 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "openEuler会议管理",
+  "navigationBarTitleText": "openEuler 会议管理",
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
   "backgroundColor":"#fff"

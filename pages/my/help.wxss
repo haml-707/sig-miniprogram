@@ -1,4 +1,7 @@
 /* pages/my/help.wxss */
+page {
+	background-color: #fff;
+}
 .container .h1 {
 	text-align: center;
 	margin-top: 128rpx;

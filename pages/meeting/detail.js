@@ -8,7 +8,10 @@ let remoteMethods = {
 			service: "GET_MEETING_DETAIL",
 			otherParams: {
 				id : id
-			},
+      },
+      headers: {
+        "Authorization": ''
+      },
 			success: function(ret) {
 				_callback && _callback(ret);
 			}

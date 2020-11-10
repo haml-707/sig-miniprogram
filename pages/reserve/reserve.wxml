@@ -124,6 +124,7 @@
         bind:input="timeOnInput"
         min-hour="{{ minTime }}"
         max-hour="{{maxTime}}"
+        filter="{{ filter }}"
       />
       <view class="btn-wrapper">
         <button class="confirm" bindtap="timeConfirm">确定</button>
@@ -147,6 +148,7 @@
         bind:input="endTimeOnInput"
         min-hour="{{ minEndTime }}"
         max-hour="{{maxEndTime}}"
+        filter="{{ filter }}"
       />
       <view class="btn-wrapper">
         <button class="confirm" bindtap="endTimeConfirm">确定</button>

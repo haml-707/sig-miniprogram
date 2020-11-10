@@ -101,7 +101,14 @@ Page({
         currentEndTime: '08:00',
         minEndTime: 8,
         maxEndTime: 22,
-        showDialogWarn: false
+        showDialogWarn: false,
+        filter(type, options) {
+            if (type === 'minute') {
+              return options.filter((option) => option % 15 === 0);
+            }
+      
+            return options;
+        }
     },
 
     /**
@@ -131,7 +138,7 @@ Page({
         }
         let that = this;
         wx.requestSubscribeMessage({
-            tmplIds: ['k1SE-Cy2nwCkRRD7BBYKFQInwDXNs1sZuMcqECJgBgg'],
+            tmplIds: ['2xSske0tAcOVKNG9EpBjlb1I-cjPWSZrpwPDTgqAmWI'],
             success(res) {
                 remoteMethods.saveMeeting({
                     topic: that.data.topic,
