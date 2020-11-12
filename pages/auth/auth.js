@@ -1,6 +1,7 @@
 // pages/auth/auth.js
 const mixin = require("../../utils/page-mixin.js").$pageMixin;
 const appUser = require("../../utils/app-user.js");
+const app = getApp();
 Page(mixin({
 
   /**
@@ -23,7 +24,8 @@ Page(mixin({
         
         if (res.authSetting['scope.userInfo']) {
           appUser.wxLogin(function (result) {
-            wx.switchTab({
+            app.globalData.tourist = false;
+            wx.reLaunch({
               url: '/pages/index/index'
             })
           });

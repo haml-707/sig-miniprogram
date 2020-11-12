@@ -17,6 +17,7 @@ App({
   loginCallback: null,
   globalData: {
     iphoneX: false,
-    isFirstShow: true
+    isFirstShow: true,
+    tourist: false
   }
 })

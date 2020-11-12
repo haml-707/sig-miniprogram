@@ -77,10 +77,8 @@ const lifeCycle = {
 				// 	url: '/pages/meeting/meeting-success'
 				// })
 				if(!userInfo && !userInfo.access) {
-					wx.reLaunch({
-						url: '/pages/auth/auth'
-					})
-				}			
+					app.globalData.tourist = true;
+				}
 			}
 		},
 		after() {

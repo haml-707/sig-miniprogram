@@ -251,10 +251,12 @@ var appUser = {
 							id : userInfo.userId
 						},
 						success: function(ret) {
-							app.globalData.isFirstShow = false;
-							userInfo.gitee = ret.gitee_name;
-							userInfo.level = ret.level;
-							wx.setStorageSync(constants.APP_USERINFO_SESSION, userInfo);
+							if(ret){
+								app.globalData.isFirstShow = false;
+								userInfo.gitee = ret.gitee_name;
+								userInfo.level = ret.level;
+								wx.setStorageSync(constants.APP_USERINFO_SESSION, userInfo);	
+							}
 							callback && callback();
 						}
 					});	
@@ -262,6 +264,8 @@ var appUser = {
 					callback && callback();
 				}
 				
+			}else{
+				callback && callback();
 			}
 	}
 };

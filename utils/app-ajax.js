@@ -6,6 +6,7 @@ var appSession = require('./app-session.js');
 var underscore = require('./underscore-extend.js');
 const servicesConfig = require('../config/services-config.js');
 const CONSTANTS = require('../config/constants.js');
+const app = getApp();
 
 var isLoadingButton = false;
 var tempLoading = {};
@@ -91,7 +92,7 @@ var appAjax = {
 			autoCloseWait : true,  // 自动关闭菊花
 			headers : {
 				"base-params" : JSON.stringify(authClient),
-				"Authorization" : "Bearer " + appSession.getToken() || ""
+				"Authorization" : appSession.getToken()?("Bearer " + appSession.getToken()) : ""
 			}, 
 			isAsync : true
 		};
@@ -117,9 +118,12 @@ var appAjax = {
 	        data : ajaxParams.data,
 	        success: function( res ) {
 						if(res.statusCode === 401){
-							wx.reLaunch({
-								url: '/pages/auth/auth'
-							})
+							// wx.reLaunch({
+							// 	url: '/pages/auth/auth'
+							// })
+							app.globalData.tourist = true;
+							wx.removeStorageSync('_app_userinfo_session');
+							ajaxParams.success(0, res);
 							return;
 						}
 							if(res.statusCode.toString()[0] != 2){

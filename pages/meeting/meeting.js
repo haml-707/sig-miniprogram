@@ -3,6 +3,7 @@ const mixin = require("../../utils/page-mixin.js").$pageMixin;
 const sessionUtil = require("../../utils/app-session.js");
 const appUser = require("../../utils/app-user.js");
 var appAjax = require('./../../utils/app-ajax');
+const app = getApp();
 let that = null;
 let remoteMethods = {
   getMettingWeekly: function (_callback) {
@@ -203,6 +204,14 @@ Page(mixin({
     });
   },
   collect: function (e) {
+    if(app.globalData.tourist){
+      wx.showToast({
+          title: '请先登录后再收藏',
+          icon: "none",
+          duration: 2000
+      });
+      return;
+    }
     if(e.currentTarget.dataset.collect){
       remoteMethods.uncollect(e.currentTarget.dataset.collect, function (res) {
         remoteMethods.getMettingWeekly(function (data) {

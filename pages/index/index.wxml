@@ -1,6 +1,10 @@
 <!--index.wxml-->
 <view class="container {{iphoneX?'container-x':''}}">
-	<view class="userinfo">
+	<view class="userinfo" wx:if="{{tourist}}" bindtap="login">
+		<image src="./../../static/common/default-avatar.png"></image>
+		<text>登录</text>
+	</view>
+	<view class="userinfo" wx:if="{{!tourist}}">
 		<image src="{{avatarUrl}}"></image>
 		<text>{{text}}，{{nickName}}</text>
 	</view>
@@ -32,7 +36,7 @@
 			<image src="./../../static/index/set-meeting.svg"></image><text>预定会议</text>
 		</view>
 	</view>
-	<view class="nomal-role" wx:if="{{level===1}}" bindtap="swithTabMeeting">
+	<view class="nomal-role" wx:if="{{level===1||tourist}}" bindtap="swithTabMeeting">
 		<image src="./../../static/index/see-meeting.svg"></image><text>查看会议</text>
 	</view>
 	<view class="today-meeting">今天的会议({{list.length}})</view>

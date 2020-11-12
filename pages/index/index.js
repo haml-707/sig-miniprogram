@@ -3,6 +3,7 @@ const mixin = require("../../utils/page-mixin.js").$pageMixin;
 const sessionUtil = require("../../utils/app-session.js");
 const appUser = require("../../utils/app-user.js");
 var appAjax = require('./../../utils/app-ajax');
+const app = getApp();
 let that = null;
 let localMethods = {
   getCurText () {
@@ -111,20 +112,25 @@ Page(mixin({
     list: [],
     iphoneX: false,
     showDialog: false,
-    showDialogDel: false
+    showDialogDel: false,
+    tourist: false
+  },
+  login: function () {
+    wx.navigateTo({
+      url: '/pages/auth/auth'
+    })
   },
   onLoad: function () {
     that = this;
     localMethods.getCurText();
-    this.setData({
-      iphoneX: this.getTabBar().data.iPhoneX,
-      userId: sessionUtil.getUserInfoByKey('userId'),
-      avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
-      nickName: sessionUtil.getUserInfoByKey('nickName')
-    })
     appUser.updateUserInfo(function () {
       that.setData({
-        level: sessionUtil.getUserInfoByKey('level')
+        iphoneX: that.getTabBar().data.iPhoneX,
+        userId: sessionUtil.getUserInfoByKey('userId'),
+        avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
+        nickName: sessionUtil.getUserInfoByKey('nickName'),
+        level: sessionUtil.getUserInfoByKey('level'),
+        tourist: app.globalData.tourist
       })
       remoteMethods.getMettingDaily(function (data) {
         that.setData({
@@ -134,6 +140,14 @@ Page(mixin({
     });
   },
   collect: function (e) {
+    if(app.globalData.tourist){
+      wx.showToast({
+          title: '请先登录后再收藏',
+          icon: "none",
+          duration: 2000
+      });
+      return;
+    }
     if(e.currentTarget.dataset.collect){
       remoteMethods.uncollect(e.currentTarget.dataset.collect, function (res) {
         remoteMethods.getMettingDaily(function (data) {
@@ -247,6 +261,9 @@ Page(mixin({
     })
   },
   onShow: function () {
+    this.setData({
+      tourist: app.globalData.tourist
+    })
     this.getTabBar().setData({
       _tabbat: 0
     })
