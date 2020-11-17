@@ -59,3 +59,14 @@ button::after {
 button {
   background-color: unset;
 }
+.swiper-list {
+  position: relative;
+}
+.swiper-tips {
+  position: absolute;
+  width: 520rpx;
+  height: 186rpx;
+  top: 30rpx;
+  right: 50rpx;
+  z-index: 999;
+}

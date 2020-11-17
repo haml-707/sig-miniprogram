@@ -130,7 +130,14 @@ Page(mixin({
     columns: [],
     popShow: false,
     showDialog: false,
-    showDialogDel: false
+    showDialogDel: false,
+    isFirstLogin: false
+  },
+  closeSwiperTips: function () {
+    app.globalData.isFirstLogin = false;
+    this.setData({
+      isFirstLogin: false
+    })
   },
   pickerChange: function (e) {
     this.setData({
@@ -183,6 +190,9 @@ Page(mixin({
    */
   onShow: function () {
     that = this;
+    this.setData({
+      isFirstLogin: app.globalData.isFirstLogin
+    })
     this.getTabBar().setData({
       _tabbat: 1
     })

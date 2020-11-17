@@ -113,11 +113,18 @@ Page(mixin({
     iphoneX: false,
     showDialog: false,
     showDialogDel: false,
-    tourist: false
+    tourist: false,
+    isFirstLogin: false
   },
   login: function () {
     wx.navigateTo({
       url: '/pages/auth/auth'
+    })
+  },
+  closeSwiperTips: function () {
+    app.globalData.isFirstLogin = false;
+    this.setData({
+      isFirstLogin: false
     })
   },
   onLoad: function () {
@@ -262,7 +269,8 @@ Page(mixin({
   },
   onShow: function () {
     this.setData({
-      tourist: app.globalData.tourist
+      tourist: app.globalData.tourist,
+      isFirstLogin: app.globalData.isFirstLogin
     })
     this.getTabBar().setData({
       _tabbat: 0

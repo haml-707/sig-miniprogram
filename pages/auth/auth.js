@@ -24,6 +24,7 @@ Page(mixin({
         
         if (res.authSetting['scope.userInfo']) {
           appUser.wxLogin(function (result) {
+            app.globalData.isFirstLogin = true;
             app.globalData.tourist = false;
             wx.reLaunch({
               url: '/pages/index/index'

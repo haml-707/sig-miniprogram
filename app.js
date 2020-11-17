@@ -18,6 +18,7 @@ App({
   globalData: {
     iphoneX: false,
     isFirstShow: true,
-    tourist: false
+    tourist: false,
+    isFirstLogin: false
   }
 })
