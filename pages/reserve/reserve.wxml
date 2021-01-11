@@ -37,6 +37,13 @@
       <text class="etherpad">{{etherpad}}</text>
       <!-- <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input> -->
     </view>
+    <view class="form-item">
+      <text class="label">是否自动录制会议</text>
+      <view class="arrow record">
+        <van-checkbox value="{{ record }}" icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7" >
+          </van-checkbox>
+      </view>
+    </view>
     <view class="form-item meeting-desc">
       <text class="label">会议内容</text>
       <textarea value="{{agenda}}" hidden="{{sigPopShow||datePopShow||timePopShow||endTimePopShow}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="agendaInput"  placeholder="请输入会议内容">

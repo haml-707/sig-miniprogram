@@ -7,9 +7,6 @@ let remoteMethods = {
     appAjax.postJson({
       autoShowWait: true,
       type: 'GET',
-      otherParams: {
-        id: sessionUtil.getUserInfoByKey('userId')
-      },
 			service: "MY_MEETINGS_LIST",
 			success: function(ret) {
 				_callback && _callback(ret);

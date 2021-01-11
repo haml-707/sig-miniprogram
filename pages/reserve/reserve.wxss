@@ -32,6 +32,9 @@ input {
   justify-content: space-between;
   align-items: center;
 }
+.container .form .form-item .record{
+  justify-content: flex-end;
+}
 .container .form .form-item .arrow .sel-data {
   color:#6d7278 ;
 }

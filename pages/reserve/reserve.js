@@ -76,6 +76,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        record: false,
         topic: '',
         sponsor: '',
         groupName: '',
@@ -117,6 +118,11 @@ Page({
     onLoad: function (options) {
 
     },
+    recordoOnChange: function (event) {
+        this.setData({
+            record: event.detail
+          });
+    },
     reset: function () {
         this.setData({
             topic: '',
@@ -150,7 +156,8 @@ Page({
                     end: that.data.end,
                     etherpad: that.data.etherpad,
                     agenda: that.data.agenda,
-                    emaillist: that.data.emaillist
+                    emaillist: that.data.emaillist,
+                    record: that.data.record ? 'cloud' : ''
                 }, function (data) {
                     if (data.id) {
                         wx.redirectTo({

@@ -49,7 +49,7 @@ var commonServiceConfig = {
 	SAVE_MEMBER_DETAIL: '/user/{id}/',
 
 	// 我创建的会议列表
-	MY_MEETINGS_LIST: '/mymeetings/{id}',
+	MY_MEETINGS_LIST: '/mymeetings/',
 
 	// 收藏会议
 	COLLECT: '/collect/',
