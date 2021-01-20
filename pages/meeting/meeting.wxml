@@ -21,7 +21,8 @@
 					</view>
 					<view class="date">
 						<image src="./../../static/index/date.svg"></image>
-						<text>{{item.date}} {{item.start}}-{{item.end}}</text>
+						<text wx:if="{{item.video_url}}">{{item.date}} {{item.start}}-{{item.end}} (可回放)</text>
+						<text wx:else>{{item.date}} {{item.start}}-{{item.end}}</text>
 					</view>
 					<view class="sig-name">
 						<image src="./../../static/index/group.svg"></image>

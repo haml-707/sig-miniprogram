@@ -95,8 +95,8 @@ input {
 .container .info {
   font-size: 29rpx;
   color: #6d7278;
-  padding-left: 30rpx;
-  margin-bottom: 30rpx;
+  padding: 0 30rpx;
+  margin-bottom: 20rpx;
 }
 .container .info view {
   margin-bottom: 20rpx;
