@@ -105,9 +105,18 @@ Page(mixin({
     avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
     nickName: sessionUtil.getUserInfoByKey('nickName'),
     imgUrls: [
-      './../../static/index/swiper1.png',
-      './../../static/index/swiper2.png',
-      './../../static/index/swiper3.png'
+      {
+        type: 1,
+        url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A6%96%E9%A1%B5%E6%96%B0banner.png'
+      },
+      {
+        type: 2,
+        url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/openEuler%E8%B4%A1%E7%8C%AE%E8%80%85%E6%96%B0%E6%98%A5%E7%A4%BC%E7%89%A90204b.mp4'
+      },
+      {
+        type: 2,
+        url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/IMG_7242.MP4'
+      }
     ],
     list: [],
     iphoneX: false,
@@ -115,6 +124,14 @@ Page(mixin({
     showDialogDel: false,
     tourist: false,
     isFirstLogin: false
+  },
+  previewImage(e) {
+    const current = e.target.dataset.src  //获取当前点击的 图片 url
+    console.log(current)
+    wx.previewImage({
+      current,
+      urls: [current]
+    })
   },
   login: function () {
     wx.navigateTo({

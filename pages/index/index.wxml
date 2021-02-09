@@ -11,7 +11,8 @@
 	<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" indicator-color="#e1e6ee" indicator-active-color="#003fa7">
 		<block wx:for="{{imgUrls}}" wx:key="index">
 			<swiper-item>
-				<image src="{{item}}" class="slide-image" />
+				<image wx:if="{{item.type===1}}" bindtap='previewImage' data-src="{{item.url}}" src="{{item.url}}" class="slide-image" />
+				<video wx:else enable-progress-gesture="{{false}}" src="{{item.url}}" class="slide-image"></video>
 			</swiper-item>
 		</block>
 	</swiper>
