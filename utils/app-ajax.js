@@ -118,12 +118,12 @@ var appAjax = {
 	        data : ajaxParams.data,
 	        success: function( res ) {
 						if(res.statusCode === 401){
-							// wx.reLaunch({
-							// 	url: '/pages/auth/auth'
-							// })
 							app.globalData.tourist = true;
 							wx.removeStorageSync('_app_userinfo_session');
 							ajaxParams.success(0, res);
+							wx.navigateTo({
+								url: '/pages/auth/auth'
+							})
 							return;
 						}
 							if(res.statusCode.toString()[0] != 2){

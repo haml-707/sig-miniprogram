@@ -1,72 +1,122 @@
 /**app.wxss**/
-page{
-  height: 100vh;
-  background-color: #f5f7fa; 
-  font-family: PingFangSC-Regular,PingFangSC;
-  font-weight: 400;
+page {
+    height: 100vh;
+    background-color: #f5f7fa;
+    font-family: PingFangSC-Regular, PingFangSC;
+    font-weight: 400;
 }
+
 .container {
-  padding: 0 30rpx 129rpx 30rpx;
+    padding: 0 30rpx 129rpx 30rpx;
 }
+
 .container-x {
-  padding-bottom: 195rpx;
+    padding-bottom: 195rpx;
 }
-page,view,scroll-view,swiper,swiper-item,movable-area,movable-view,cover-view,cover-image,icon,text,rich-text,progress,button,checkbox-group,checkbox,form,input,label,picker,picker-view,radio-group,radio,slider,switch,textarea,navigator,functional-page-navigator,image,video,camera,live-player,live-pusher,map,canvas,open-data,web-view,ad{
-  box-sizing: border-box;
+
+page,
+view,
+scroll-view,
+swiper,
+swiper-item,
+movable-area,
+movable-view,
+cover-view,
+cover-image,
+icon,
+text,
+rich-text,
+progress,
+button,
+checkbox-group,
+checkbox,
+form,
+input,
+label,
+picker,
+picker-view,
+radio-group,
+radio,
+slider,
+switch,
+textarea,
+navigator,
+functional-page-navigator,
+image,
+video,
+camera,
+live-player,
+live-pusher,
+map,
+canvas,
+open-data,
+web-view,
+ad {
+    box-sizing: border-box;
 }
+
 .container .dialog-index--sig-dialog {
-  border-radius: 8rpx;
-  width: 550rpx;
+    border-radius: 8rpx;
+    width: 550rpx;
 }
+
 .container .van-dialog__header {
-  padding-top: 30rpx;
-  color: #222;
-  font-size: 36rpx;
-  line-height: 50rpx;
+    padding-top: 30rpx;
+    color: #222;
+    font-size: 36rpx;
+    line-height: 50rpx;
 }
+
 .container .dialog-slot-content {
-  color: #6d7278;
-  font-size: 32rpx;
+    color: #6d7278;
+    font-size: 32rpx;
 }
+
 .container .dialog-slot-content text {
-  display: block;
-  text-align: center;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  line-height: 45rpx;
-  margin-top: 19rpx;
-  padding: 0 30rpx;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 45rpx;
+    margin-top: 19rpx;
+    padding: 0 30rpx;
 }
+
 .container .dialog-slot-content view {
-  margin-top: 52rpx;
-  border-top: 1px solid #f0f3f7;
-  height: 88rpx;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+    margin-top: 52rpx;
+    border-top: 1px solid #f0f3f7;
+    height: 88rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
+
 .container .dialog-slot-content view button {
-  font-size: 28rpx;
-  line-height: 88rpx;
-  text-align: center;
-  background-color: #fff;
-  color: #002fa7;
+    font-size: 28rpx;
+    line-height: 88rpx;
+    text-align: center;
+    background-color: #fff;
+    color: #002fa7;
 }
+
 button::after {
-  content: unset;
+    content: unset;
 }
+
 button {
-  background-color: unset;
+    background-color: unset;
 }
+
 .swiper-list {
-  position: relative;
+    position: relative;
 }
+
 .swiper-tips {
-  position: absolute;
-  width: 520rpx;
-  height: 186rpx;
-  top: 30rpx;
-  right: 50rpx;
-  z-index: 999;
+    position: absolute;
+    width: 520rpx;
+    height: 186rpx;
+    top: 30rpx;
+    right: 50rpx;
+    z-index: 999;
 }

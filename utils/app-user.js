@@ -240,10 +240,8 @@ var appUser = {
 	},
 
 	updateUserInfo: function (callback) {
-		console.log(app.globalData.isFirstShow)
 		let userInfo = wx.getStorageSync(constants.APP_USERINFO_SESSION);
 			if(userInfo && userInfo.userId){
-				if(app.globalData.isFirstShow){
 					appAjax.postJson({
 						type: 'GET',
 						service: "GET_USER_STATUS",
@@ -252,7 +250,6 @@ var appUser = {
 						},
 						success: function(ret) {
 							if(ret){
-								app.globalData.isFirstShow = false;
 								userInfo.gitee = ret.gitee_name;
 								userInfo.level = ret.level;
 								wx.setStorageSync(constants.APP_USERINFO_SESSION, userInfo);	
@@ -260,9 +257,6 @@ var appUser = {
 							callback && callback();
 						}
 					});	
-				}else{
-					callback && callback();
-				}
 				
 			}else{
 				callback && callback();

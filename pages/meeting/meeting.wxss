@@ -1,223 +1,252 @@
 /* pages/meeting/meeting.wxss */
 .container .input-wraper {
-  box-sizing: border-box;
-  margin: 20rpx 0 30rpx;
-  height: 108rpx;
-  position: relative;
-  box-shadow: 0px 5px 15px 0px rgba(225, 230, 238, 1);
-  border-radius: 8rpx;
-  overflow: hidden;
-  background-color: #fff;
+    box-sizing: border-box;
+    margin: 20rpx 0 30rpx;
+    height: 108rpx;
+    position: relative;
+    box-shadow: 0px 5px 15px 0px rgba(225, 230, 238, 1);
+    border-radius: 8rpx;
+    overflow: hidden;
+    background-color: #fff;
 }
+
 .container .input-wraper .keyword {
-  padding-left: 94rpx;
-  border-left: 1px solid #f0f3f7;
-  height: 108rpx;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 70%;
-  font-size: 28rpx;
-  line-height: 40rpx;
+    padding-left: 94rpx;
+    border-left: 1px solid #f0f3f7;
+    height: 108rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 70%;
+    font-size: 28rpx;
+    line-height: 40rpx;
 }
+
 .container .input-wraper .keyword .search-icon {
-  height: 39rpx;
-  width: 39rpx;
-  display: inline-block;
-  position: absolute;
-  top: 34rpx;
-  left: 32rpx;
+    height: 39rpx;
+    width: 39rpx;
+    display: inline-block;
+    position: absolute;
+    top: 34rpx;
+    left: 32rpx;
 }
+
 .container .input-wraper .filter-wraper {
-  position: absolute;
-  height: 108rpx;
-  left: 0;
-  top: 0;
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    height: 108rpx;
+    left: 0;
+    top: 0;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .container .input-wraper .filter-wraper text {
-  width: 110rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 28rpx;
-  color: #6d7278;
+    width: 110rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 28rpx;
+    color: #6d7278;
 }
+
 .container .input-wraper .filter-wraper image {
-  margin-left: 17rpx;
-  width: 30rpx;
-  height: 30rpx;
+    margin-left: 17rpx;
+    width: 30rpx;
+    height: 30rpx;
 }
+
 .container .list {
-  color: #6d7278;
-  font-size: 28rpx;
-  font-weight: 400;
+    color: #6d7278;
+    font-size: 28rpx;
+    font-weight: 400;
 }
+
 .container .list .item {
-  background-color: #fff;
-  padding: 30rpx;
+    background-color: #fff;
+    padding: 30rpx;
 }
+
 .container .list .item .name {
-  font-size: 34rpx;
-  color: #333;
-  font-weight: 400;
-  line-height: 48rpx;
-  margin-top: 0;
+    font-size: 34rpx;
+    color: #333;
+    font-weight: 400;
+    line-height: 48rpx;
+    margin-top: 0;
 }
+
 .container .list .item view {
-  margin-top: 20rpx;
-  line-height: 40rpx;
+    margin-top: 20rpx;
+    line-height: 40rpx;
 }
+
 .container .list .item view image {
-  vertical-align: middle;
-  width: 28rpx;
-  height: 28rpx;
-  margin-right: 22rpx;
+    vertical-align: middle;
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 22rpx;
 }
+
 .container .list .item view text {
-  vertical-align: middle;
+    vertical-align: middle;
 }
+
 .container .list .item .desc {
-  white-space: nowrap; 
-  overflow: hidden;
-  text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 .container .list .slot {
-  display: flex;
-  justify-content: flex-end;
-  height: 100%;
-  width: 135px;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    width: 135px;
 }
+
 .container .list .slot .get-addr {
-  margin-left: 10px;
-  flex-shrink: 1;
-  width: 57.5px;
-  padding: 0 10px;
-  font-size: 17px;
-  color: #fff;
-  line-height: 24px;
-  text-align: center;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #002fa7;
-  border-radius: 8rpx;
-  box-shadow: 0px 5px 20px 0px rgba(0, 47, 167, 0.28);
+    margin-left: 10px;
+    flex-shrink: 1;
+    width: 57.5px;
+    padding: 0 10px;
+    font-size: 17px;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #002fa7;
+    border-radius: 8rpx;
+    box-shadow: 0px 5px 20px 0px rgba(0, 47, 167, 0.28);
 }
+
 .container .list .slot .del-meeting {
-  margin-left: 10px;
-  flex-shrink: 1;
-  width: 57.5px;
-  padding: 0 10px;
-  font-size: 17px;
-  color: #fff;
-  line-height: 24px;
-  text-align: center;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f76260;
-  border-radius: 8rpx;
-  box-shadow: 0px 5px 20px 0px rgba(229, 91, 89, 0.27);
+    margin-left: 10px;
+    flex-shrink: 1;
+    width: 57.5px;
+    padding: 0 10px;
+    font-size: 17px;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f76260;
+    border-radius: 8rpx;
+    box-shadow: 0px 5px 20px 0px rgba(229, 91, 89, 0.27);
 }
 
 .van-swipe-cell {
-  border-radius: 8px;
-  margin-bottom: 30rpx;
-  box-shadow: 0px 5px 20px 0px #e1e6ee;
+    border-radius: 8px;
+    margin-bottom: 30rpx;
+    box-shadow: 0px 5px 20px 0px #e1e6ee;
 }
 
 .container .sig-pop-wrapper {
-  padding: 0 30rpx;
+    padding: 0 30rpx;
 }
+
 .container .sig-pop-wrapper .title {
-  margin: 30rpx 0 40rpx 0;
-  color: #222;
-  font-size: 36rpx;
+    margin: 30rpx 0 40rpx 0;
+    color: #222;
+    font-size: 36rpx;
 }
+
 .container .sig-pop-wrapper .item .radio {
-  flex-direction: row-reverse;
-  justify-content: space-between;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
+
 .container .sig-pop-wrapper .item .name {
-  font-size: 34rpx;
-  color: #6d7278;
-  width: 600rpx;
+    font-size: 34rpx;
+    color: #6d7278;
+    width: 600rpx;
 }
+
 .container .sig-pop-wrapper .item {
-  height: 108rpx;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #f0f3f7;
+    height: 108rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f0f3f7;
 }
+
 .container .sig-pop-wrapper .item:last-child {
-  border: none;
+    border: none;
 }
+
 .container .sig-pop-wrapper .btn-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 90rpx;
-  font-size: 36rpx;
-  margin: 60rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90rpx;
+    font-size: 36rpx;
+    margin: 60rpx 0;
 }
+
 .container .sig-pop-wrapper .btn-wrapper .confirm {
-  height: 100%;
-  width: 320rpx;
-  text-align: center;
-  line-height: 90rpx;
-  color: #fff;
-  background-color: #002fa7;
+    height: 100%;
+    width: 320rpx;
+    text-align: center;
+    line-height: 90rpx;
+    color: #fff;
+    background-color: #002fa7;
 }
+
 .container .sig-pop-wrapper .btn-wrapper .cancel {
-  height: 100%;
-  width: 320rpx;
-  text-align: center;
-  line-height: 90rpx;
-  color: #002fa7;
-  background-color: #fff;
-  border: 1px solid #002fa7;
+    height: 100%;
+    width: 320rpx;
+    text-align: center;
+    line-height: 90rpx;
+    color: #002fa7;
+    background-color: #fff;
+    border: 1px solid #002fa7;
 }
 
 .container .empty-status .suc-wrapper {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  left: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-.container  .empty-status .suc-wrapper image {
-  width: 234rpx;
-  height: 218rpx;
+
+.container .empty-status .suc-wrapper image {
+    width: 234rpx;
+    height: 218rpx;
 }
-.container  .empty-status .suc-wrapper text {
-  text-align: center;
-  margin-top: 20rpx;
-  font-size: 34rpx;
-  color: #333;
+
+.container .empty-status .suc-wrapper text {
+    text-align: center;
+    margin-top: 20rpx;
+    font-size: 34rpx;
+    color: #333;
 }
-.container  .empty-status .suc-wrapper text:last-child {
-  font-size: 28rpx;
-  color: #6d7278;
+
+.container .empty-status .suc-wrapper text:last-child {
+    font-size: 28rpx;
+    color: #6d7278;
 }
+
 .container .list .slot .collect {
-  background-color: #c7cad0;
+    background-color: #c7cad0;
 }
+
 .container .list .slot .uncollect {
-  background-color: #ffbe00;
+    background-color: #ffbe00;
 }
+
 .container .list .item .collection {
-  width: 114rpx;
-  height: 62rpx;
-  position: absolute;
-  top: 0;
-  right: 0;
+    width: 114rpx;
+    height: 62rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

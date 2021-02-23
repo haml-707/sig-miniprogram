@@ -105,9 +105,9 @@ Page({
         showDialogWarn: false,
         filter(type, options) {
             if (type === 'minute') {
-              return options.filter((option) => option % 15 === 0);
+                return options.filter((option) => option % 15 === 0);
             }
-      
+
             return options;
         }
     },
@@ -121,7 +121,7 @@ Page({
     recordoOnChange: function (event) {
         this.setData({
             record: event.detail
-          });
+        });
     },
     reset: function () {
         this.setData({
