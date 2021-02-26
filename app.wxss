@@ -1,7 +1,7 @@
 /**app.wxss**/
 page {
     height: 100vh;
-    background-color: #f5f7fa;
+    background-color: #fff;
     font-family: PingFangSC-Regular, PingFangSC;
     font-weight: 400;
 }
@@ -55,24 +55,24 @@ ad {
     box-sizing: border-box;
 }
 
-.container .dialog-index--sig-dialog {
+.dialog-index--sig-dialog {
     border-radius: 8rpx;
     width: 550rpx;
 }
 
-.container .van-dialog__header {
+.van-dialog__header {
     padding-top: 30rpx;
     color: #222;
     font-size: 36rpx;
     line-height: 50rpx;
 }
 
-.container .dialog-slot-content {
+.dialog-slot-content {
     color: #6d7278;
     font-size: 32rpx;
 }
 
-.container .dialog-slot-content text {
+.dialog-slot-content text {
     display: block;
     text-align: center;
     white-space: nowrap;
@@ -83,7 +83,12 @@ ad {
     padding: 0 30rpx;
 }
 
-.container .dialog-slot-content view {
+.dialog-slot-content .blue {
+    color: #002fa7;
+    margin-top: 0;
+}
+
+.dialog-slot-content view {
     margin-top: 52rpx;
     border-top: 1px solid #f0f3f7;
     height: 88rpx;
@@ -92,7 +97,7 @@ ad {
     justify-content: space-around;
 }
 
-.container .dialog-slot-content view button {
+.dialog-slot-content view button {
     font-size: 28rpx;
     line-height: 88rpx;
     text-align: center;
@@ -100,23 +105,72 @@ ad {
     color: #002fa7;
 }
 
+
+.sig-pop-wrapper {
+    padding: 0 30rpx;
+}
+
+.sig-pop-wrapper .title {
+    margin: 30rpx 0 40rpx 0;
+    color: #222;
+    font-size: 36rpx;
+}
+
+.sig-pop-wrapper .item .radio {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.sig-pop-wrapper .item .name {
+    font-size: 34rpx;
+    color: #6d7278;
+    width: 600rpx;
+}
+
+.sig-pop-wrapper .item {
+    height: 108rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f0f3f7;
+}
+
+.sig-pop-wrapper .item:last-child {
+    border: none;
+}
+
+.sig-pop-wrapper .btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90rpx;
+    font-size: 36rpx;
+    margin: 60rpx 0;
+}
+
+.sig-pop-wrapper .btn-wrapper .confirm {
+    height: 100%;
+    width: 320rpx;
+    text-align: center;
+    line-height: 90rpx;
+    color: #fff;
+    background-color: #002fa7;
+}
+
+.sig-pop-wrapper .btn-wrapper .cancel {
+    height: 100%;
+    width: 320rpx;
+    text-align: center;
+    line-height: 90rpx;
+    color: #002fa7;
+    background-color: #fff;
+    border: 1px solid #002fa7;
+}
+
+
 button::after {
     content: unset;
 }
 
 button {
     background-color: unset;
-}
-
-.swiper-list {
-    position: relative;
-}
-
-.swiper-tips {
-    position: absolute;
-    width: 520rpx;
-    height: 186rpx;
-    top: 30rpx;
-    right: 50rpx;
-    z-index: 999;
 }

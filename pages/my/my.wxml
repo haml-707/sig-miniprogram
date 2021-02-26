@@ -1,16 +1,9 @@
 <!-- pages/my/my.wxml -->
 <view class="container {{iphoneX?'container-x':''}}" style="height: 100%">
-    <view class="user-info" wx:if="{{tourist}}" bindtap="login">
-        <image src="./../../static/common/default-avatar.png"></image>
-        <text>登录</text>
-    </view>
-    <view class="user-info" wx:if="{{!tourist}}">
-        <image src="{{avatarUrl}}"></image>
-        <text>{{nickName}}</text>
-    </view>
+    <user-info></user-info>
     <view class="list">
         <view class="bg-gray"></view>
-        <view class="item" bindtap="go" data-url="/pages/my/help">
+        <view class="item" bindtap="go" data-url="/package-my/my/help">
             <view>
                 <image src="./../../static/index/see-meeting.svg"></image>
                 <text>小程序使用攻略</text>
@@ -18,7 +11,7 @@
             <image class="arrow-right" src="./../../static/common/arrow-right.svg"></image>
         </view>
         <view class="bg-gray" wx:if="{{!tourist}}"></view>
-        <view wx:if="{{!tourist}}" class="item" bindtap="go" data-url="/pages/my/my-collection">
+        <view wx:if="{{!tourist}}" class="item" bindtap="go" data-url="/package-my/my/my-collection">
             <view>
                 <image src="./../../static/my/collection.png"></image>
                 <text>我收藏的会议</text>
@@ -26,7 +19,7 @@
             <image class="arrow-right" src="./../../static/common/arrow-right.svg"></image>
         </view>
         <view class="bg-gray" wx:if="{{(level!=1)&&(!tourist)}}"></view>
-        <view wx:if="{{(level!=1)&&(!tourist)}}" class="item" bindtap="go" data-url="/pages/my/my-meetings">
+        <view wx:if="{{(level!=1)&&(!tourist)}}" class="item" bindtap="go" data-url="/package-my/my/my-meetings">
             <view>
                 <image src="./../../static/my/create.png"></image>
                 <text>我创建的会议</text>
@@ -34,7 +27,7 @@
             <image class="arrow-right" src="./../../static/common/arrow-right.svg"></image>
         </view>
         <view class="bg-gray"></view>
-        <view class="item" bindtap="go" data-url="/pages/my/privecy">
+        <view class="item" bindtap="go" data-url="/package-my/my/privecy">
             <view>
                 <image src="./../../static/my/privecy.png"></image>
                 <text>社区隐私声明</text>

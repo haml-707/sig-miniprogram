@@ -1,26 +1,57 @@
 {
 	"pages": [
 		"pages/index/index",
-		"pages/meeting/meeting",
 		"pages/auth/auth",
-		"pages/my/my",
-		"pages/sig/sig-list",
-		"pages/reserve/reserve",
-		"pages/sig/add-sig-member",
-		"pages/sig/member-detail",
-		"pages/sig/add-member",
-		"pages/sig/del-member",
-		"pages/meeting/detail",
-		"pages/meeting/meeting-success",
-		"pages/my/privecy",
-		"pages/my/my-meetings",
-		"pages/my/my-collection",
-		"pages/my/help"
+		"components/user-info/user-info",
+		"pages/meeting/meeting",
+		"pages/events/events",
+		"pages/my/my"
 	],
+	"subpackages": [
+		{
+			"root": "package-meeting",
+			"pages": [
+				"sig/sig-list",
+				"reserve/reserve",
+				"sig/add-sig-member",
+				"sig/member-detail",
+				"sig/add-member",
+				"sig/del-member",
+				"meeting/detail",
+				"meeting/meeting-success",
+				"meeting/meeting-list"
+			]
+		},
+		{
+			"root": "package-events",
+			"pages": [
+				"events/test"
+			]
+		},
+		{
+			"root": "package-my",
+			"pages": [
+				"my/privecy",
+				"my/my-meetings",
+				"my/my-collection",
+				"my/help"
+			]
+		}
+	],
+	"preloadRule": {
+		"pages/index/index": {
+			"network": "all",
+			"packages": [
+				"package-meeting",
+				"package-events",
+				"package-my"
+			]
+		}
+	},
 	"window": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTitleText": "openEuler会议管理",
+		"navigationBarTitleText": "openEuler",
 		"navigationBarTextStyle": "black",
 		"backgroundColor": "#fff"
 	},
@@ -33,7 +64,8 @@
 		"van-radio": "@vant/weapp/radio/index",
 		"van-radio-group": "@vant/weapp/radio-group/index",
 		"van-datetime-picker": "@vant/weapp/datetime-picker/index",
-		"van-picker": "@vant/weapp/picker/index"
+        "van-picker": "@vant/weapp/picker/index",
+        "van-action-sheet": "@vant/weapp/action-sheet/index"
 	},
 	"sitemapLocation": "sitemap.json",
 	"tabBar": {
@@ -55,11 +87,22 @@
 				"text": "会议"
 			},
 			{
+				"iconPath": "static/tabbar/events.png",
+				"selectedIconPath": "static/tabbar/events-selected.png",
+				"pagePath": "pages/events/events",
+				"text": "活动"
+			},
+			{
 				"iconPath": "static/tabbar/my.png",
 				"selectedIconPath": "static/tabbar/my-selected.png",
 				"pagePath": "pages/my/my",
 				"text": "我的"
 			}
 		]
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "您的位置信息将用于确定活动地址"
+		}
 	}
 }

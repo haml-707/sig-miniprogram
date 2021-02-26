@@ -10,8 +10,7 @@ Page({
         iphoneX: false,
         avatarUrl: '',
         nickName: '',
-        level: 1,
-        tourist: false
+        level: 1
     },
 
     /**
@@ -29,11 +28,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.setData({
-            tourist: app.globalData.tourist
-        })
         this.getTabBar().setData({
-            _tabbat: 2
+            _tabbat: 3
         })
     },
     go(e) {

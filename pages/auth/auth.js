@@ -24,8 +24,6 @@ Page(mixin({
 
                 if (res.authSetting['scope.userInfo']) {
                     appUser.wxLogin(function (result) {
-                        app.globalData.isFirstLogin = true;
-                        app.globalData.tourist = false;
                         const pages = getCurrentPages(); // 当前页面
                         const beforePage = pages[pages.length - 2]; // 前一个页面
                         const url = beforePage.options.id ? '/' + beforePage.route + '?id=' + beforePage.options.id : '/' + beforePage.route

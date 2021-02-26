@@ -7,24 +7,6 @@ page {
     padding: 0;
 }
 
-.container .user-info {
-    padding: 24rpx 30rpx;
-    display: flex;
-    align-items: center;
-}
-
-.container .user-info image {
-    width: 135rpx;
-    height: 135rpx;
-    border-radius: 100%;
-    margin-right: 20rpx;
-}
-
-.container .user-info image text {
-    font-size: 36rpx;
-    color: #222;
-}
-
 .container .bg-gray {
     height: 20rpx;
     background-color: #f5f7fa;

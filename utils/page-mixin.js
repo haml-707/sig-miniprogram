@@ -74,10 +74,10 @@ const lifeCycle = {
 			
 			if(url != 'pages/auth/auth') {
 				// wx.navigateTo({
-				// 	url: '/pages/meeting/meeting-success'
+				// 	url: '/package-meeting/meeting/meeting-success'
 				// })
 				if(!userInfo && !userInfo.access) {
-					app.globalData.tourist = true;
+					// app.globalData.tourist = true;
 				}
 			}
 		},

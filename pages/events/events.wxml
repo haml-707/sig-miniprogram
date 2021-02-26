@@ -1,0 +1,4 @@
+<!--pages/events/events.wxml-->
+<view class="container {{iphoneX?'container-x':''}}">
+    <meeting-list id="meeting" page-type="{{2}}" api-url="GET_MEETING_WEEKLY" bind:action-status="actionStatus"></meeting-list>
+</view>

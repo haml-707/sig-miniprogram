@@ -118,7 +118,6 @@ var appAjax = {
 	        data : ajaxParams.data,
 	        success: function( res ) {
 						if(res.statusCode === 401){
-							app.globalData.tourist = true;
 							wx.removeStorageSync('_app_userinfo_session');
 							ajaxParams.success(0, res);
 							wx.navigateTo({

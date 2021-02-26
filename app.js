@@ -14,8 +14,6 @@ App({
     onShow() {},
     loginCallback: null,
     globalData: {
-        iphoneX: false,
-        tourist: false,
-        isFirstLogin: false
+        iphoneX: false
     }
 })
