@@ -1,6 +1,13 @@
 /* pages/reserve/reserve.wxss */
+page {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAAeCAYAAADuInrvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACdSURBVGhD7dbBDYAwDAPAbsTYjFnEDn5YyT34WinWpT3nea9v0T9Q9qKyf9wKV7gVP/maI5xwwglfpkDhCh9z9Y05yGSVybMpfNn2UrjCvdKTK7Qti3DCCW9TmZyHcMIJT4pqyyKccMLbVCbnIZxwwpOi2rIIJ5zwNpXJeQgnnPCkqLYswgknvE1lch7CCSc8Kaoti3DCCW9TGZznA1f9oK8GgBpHAAAAAElFTkSuQmCC) no-repeat;
+    background-size: 100% 108rpx;
+    background-color: #f5f7fa !important;
+    padding: 0 30rpx;
+}
+
 .container {
-    padding: 20rpx 0 129rpx 0;
+    padding: 30rpx 0 129rpx 0;
 }
 
 textarea {
@@ -21,7 +28,6 @@ input {
 }
 
 .container .form .form-item {
-    margin-bottom: 20rpx;
     padding: 0 30rpx;
     background-color: #fff;
     height: 108rpx;
@@ -30,6 +36,19 @@ input {
     display: flex;
     align-items: center;
     justify-content: start;
+    border-bottom: 2rpx solid #f0f3f7;
+}
+
+.container .form > .form-item {
+    box-shadow: 0rpx 5rpx 15rpx 0rpx rgba(0, 47, 167, 0.1);
+    border-radius: 8rpx;
+}
+
+.container .form .form-wrapper {
+    box-shadow: 0rpx 5rpx 15rpx 0rpx rgba(0, 47, 167, 0.1);
+    border-radius: 8rpx;
+    background-color: #fff;
+    overflow: hidden;
 }
 
 .container .form .form-item .arrow {
@@ -96,6 +115,7 @@ input {
     padding-top: 30rpx;
     align-items: flex-start;
     height: 244rpx;
+    margin-bottom: 20rpx;
 }
 
 .container .form .meeting-desc textarea {
@@ -114,12 +134,11 @@ input {
 .container .info {
     font-size: 29rpx;
     color: #6d7278;
-    padding: 0 30rpx;
     margin-bottom: 20rpx;
 }
 
 .container .info view {
-    margin-bottom: 20rpx;
+    margin: 30rpx 0;
 }
 
 .container .info view image {
@@ -130,7 +149,6 @@ input {
 }
 
 .container .commit {
-    padding: 0 30rpx;
     display: flex;
     justify-content: space-between;
     height: 90rpx;

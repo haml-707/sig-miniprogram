@@ -107,6 +107,15 @@ const localMethod = {
         that.setData({
             list: listTemp
         })
+    },
+    checkLogin() {
+        if (!sessionUtil.getUserInfoByKey('access')) {
+            wx.navigateTo({
+                url: '/pages/auth/auth'
+            })
+            return;
+        }
+        return true;
     }
 }
 Component({
@@ -258,6 +267,9 @@ Component({
             })
         },
         toDetail: function (e) {
+            if(!localMethod.checkLogin()){
+                return;
+            }
             wx.navigateTo({
                 url: '/package-meeting/meeting/detail?id=' + e.currentTarget.dataset.id
             })
@@ -270,6 +282,9 @@ Component({
             })
         },
         getMore(e) {
+            if(!localMethod.checkLogin()){
+                return;
+            }
             this.setData({
                 curMid: e.currentTarget.dataset.item.mid,
                 curJoinUrl: e.currentTarget.dataset.item.join_url,

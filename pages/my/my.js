@@ -1,6 +1,5 @@
 // pages/my/my.js
 const sessionUtil = require("../../utils/app-session.js");
-const app = getApp();
 Page({
 
     /**
@@ -36,10 +35,5 @@ Page({
         wx.navigateTo({
             url: e.currentTarget.dataset.url
         })
-    },
-    login: function () {
-        wx.navigateTo({
-            url: '/pages/auth/auth'
-        })
-    },
+    }
 })

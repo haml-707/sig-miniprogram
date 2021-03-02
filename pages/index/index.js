@@ -69,5 +69,13 @@ Page(mixin({
                 show: true
             })
         }
+    },
+    checkLogin() {
+        if (!sessionUtil.getUserInfoByKey('access')) {
+            wx.navigateTo({
+                url: '/pages/auth/auth'
+            })
+            return;
+        }
     }
 }))

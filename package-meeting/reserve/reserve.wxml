@@ -1,58 +1,60 @@
 <!-- pages/reserve/reserve.wxml -->
 <view class="container">
     <view class="form">
-        <view class="form-item">
-            <text class="label">
-                会议名称
-                <text class="require">*</text>
-            </text>
-            <input value="{{topic}}" maxlength="{{50}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
-        </view>
-        <view class="form-item">
-            <text class="label">发起人</text>
-            <input value="{{sponsor}}" disabled="{{true}}" placeholder-class="placeholder" placeholder="gitee ID"></input>
-        </view>
-        <view class="form-item" bindtap="selSig">
-            <text class="label">
-                选取所属SIG
-                <text class="require">*</text>
-            </text>
-            <view class="arrow">
-                <text class="sel-data">{{groupName}}</text>
-                <image src="./../../static/common/arrow-right.svg" />
+        <view class="form-wrapper">
+            <view class="form-item">
+                <text class="label">
+                    <text>会议名称</text>
+                    <text class="require">*</text>
+                </text>
+                <input value="{{topic}}" maxlength="{{50}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
             </view>
-        </view>
-        <view class="form-item" bindtap="selDate">
-            <text class="label">
-                日期
-                <text class="require">*</text>
-            </text>
-            <view class="arrow">
-                <text class="sel-data">{{date}}</text>
-                <image src="./../../static/common/arrow-right.svg" />
+            <view class="form-item">
+                <text class="label">发起人</text>
+                <input value="{{sponsor}}" disabled="{{true}}" placeholder-class="placeholder" placeholder="gitee ID"></input>
             </view>
-        </view>
-        <view class="form-item">
-            <text class="label">
-                时间
-                <text class="require">*</text>
-            </text>
-            <view class="sel-time">
-                <text class="time start-time" bindtap="selTime">{{start||'请选择'}}</text>
-                <text>至</text>
-                <text class="time end-time" bindtap="selEndTime">{{end||'请选择'}}</text>
+            <view class="form-item" bindtap="selSig">
+                <text class="label">
+                    <text>选取所属SIG</text>
+                    <text class="require">*</text>
+                </text>
+                <view class="arrow">
+                    <text class="sel-data">{{groupName}}</text>
+                    <image src="./../../static/common/arrow-right.svg" />
+                </view>
             </view>
-        </view>
-        <view class="form-item">
-            <text class="label">Etherpad链接</text>
-            <text class="etherpad">{{etherpad}}</text>
-            <!-- <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input> -->
-        </view>
-        <view class="form-item">
-            <text class="label">是否自动录制会议</text>
-            <view class="arrow record">
-                <van-checkbox value="{{ record }}" icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7"></van-checkbox>
+            <view class="form-item" bindtap="selDate">
+                <text class="label">
+                    <text>日期</text>
+                    <text class="require">*</text>
+                </text>
+                <view class="arrow">
+                    <text class="sel-data">{{date}}</text>
+                    <image src="./../../static/common/arrow-right.svg" />
+                </view>
             </view>
+            <view class="form-item">
+                <text class="label">
+                    <text>时间</text>
+                    <text class="require">*</text>
+                </text>
+                <view class="sel-time">
+                    <text class="time start-time" bindtap="selTime">{{start||'请选择'}}</text>
+                    <text>至</text>
+                    <text class="time end-time" bindtap="selEndTime">{{end||'请选择'}}</text>
+                </view>
+            </view>
+            <view class="form-item">
+                <text class="label">Etherpad链接</text>
+                <text class="etherpad">{{etherpad}}</text>
+                <!-- <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input> -->
+            </view>
+            <view class="form-item">
+                <text class="label">是否自动录制会议</text>
+                <view class="arrow record">
+                    <van-checkbox value="{{ record }}" icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7"></van-checkbox>
+                </view>
+            </view>    
         </view>
         <view class="info">
             <view>
@@ -80,13 +82,13 @@
             <image src="./../../static/reserve/info.svg" />
             <text>
                 <text class="require">*</text>
-                号为必填项
+                <text>号为必填项</text>
             </text>
         </view>
     </view>
     <view class="commit">
-        <button class="meeting-btn" bindtap="meeting">立即预定</button>
         <button class="meeting-reset" bindtap="reset">重置</button>
+        <button class="meeting-btn" bindtap="meeting">立即预定</button>
     </view>
     <van-popup show="{{ sigPopShow }}" round position="bottom" bind:click-overlay="sigCancel">
         <view class="sig-pop-wrapper">
