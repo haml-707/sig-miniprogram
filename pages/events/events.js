@@ -1,4 +1,7 @@
 // pages/events/events.js
+const sessionUtil = require("../../utils/app-session.js");
+const appUser = require("../../utils/app-user.js");
+let that = null;
 Page({
 
     /**
@@ -6,71 +9,23 @@ Page({
      */
     data: {
         iphoneX: false,
-        chooseAddress: '',
-        name: '',
-        latitude: '',
-        longitude: '',
-        meetingConponent: null
+        eventLevel: 1,
+        noAuthDialogShow: false
     },
-    actionStatus(e){
-        if(e.detail === 1){
-            this.getTabBar().setData({
-                show: false
-            })
-        }else{
-            this.getTabBar().setData({
-                show: true
-            })
-        }
-    },
-    onChangeAddress: function () {
-        var _page = this;
-        wx.chooseLocation({
-            success: function (res) {
-                console.log(res);
-                _page.setData({
-                    chooseAddress: res.name,
-                    name: res.address,
-                    latitude: res.latitude,
-                    longitude: res.longitude
-                });
-            },
-            fail: function (err) {
-                console.log(err)
-            }
-        });
-    },
-
-    openAddress: function () {
-        var _page = this;
-        console.log(_page.data.latitude);
-        wx.openLocation({ //​使用微信内置地图查看位置。
-            latitude: _page.data.latitude, //要去的纬度-地址
-            longitude: _page.data.longitude, //要去的经度-地址
-            name: _page.data.name,
-            address: _page.data.chooseAddress
-        })
-    },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        
+        that = this;
         this.setData({
-            meetingConponent: this.selectComponent('#meeting'),
             iphoneX: this.getTabBar().data.iPhoneX
         })
-
+        appUser.updateUserInfo(function () {
+            that.setData({
+                eventLevel: sessionUtil.getUserInfoByKey('eventLevel') || 1
+            })
+        });
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
     /**
      * 生命周期函数--监听页面显示
      */
@@ -79,39 +34,38 @@ Page({
             _tabbat: 2
         })
     },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
+    navigateTo(e) {
+        const url = e.currentTarget.dataset.url;
+        if ((this.data.eventLevel === 1) && url.includes('publish')) {
+            this.setData({
+                noAuthDialogShow: true
+            })
+            return;
+        }
+        wx.navigateTo({
+            url
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-        this.data.meetingConponent.initData();
+        wx.stopPullDownRefresh();
+        appUser.updateUserInfo(function () {
+            that.setData({
+                eventLevel: sessionUtil.getUserInfoByKey('eventLevel') || 1
+            })
+        });
     },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
+    copyWechat() {
+        wx.setClipboardData({
+            data: 'openeuler123',
+            success: () => {
+                this.setData({
+                    noAuthDialogShow: false
+                })
+            }
+        })
 
     }
 })

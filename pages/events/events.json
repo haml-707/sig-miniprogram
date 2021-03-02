@@ -1,6 +1,9 @@
 {
     "usingComponents": {
-        "meeting-list": "/components/meeting-list/meeting-list"
+        "user-info": "/components/user-info/user-info"
     },
-    "enablePullDownRefresh": true
+    "navigationBarTitleText": "openEuler活动",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#fff"
 }

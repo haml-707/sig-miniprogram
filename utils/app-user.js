@@ -55,7 +55,8 @@ var privateMethods = {
 										},
 										success: function(result) {
 											res.userInfo.access = result.access;
-											res.userInfo.level = result.level;
+                                            res.userInfo.level = result.level;
+                                            res.userInfo.eventLevel = result.activity_level;
 											res.userInfo.gitee = result.gitee_name;
 											res.userInfo.userId = result.user_id;
 											// // 缓存用户信息
@@ -251,7 +252,8 @@ var appUser = {
 						success: function(ret) {
 							if(ret){
 								userInfo.gitee = ret.gitee_name;
-								userInfo.level = ret.level;
+                                userInfo.level = ret.level;
+                                userInfo.eventLevel = ret.activity_level;
 								wx.setStorageSync(constants.APP_USERINFO_SESSION, userInfo);	
 							}
 							callback && callback();

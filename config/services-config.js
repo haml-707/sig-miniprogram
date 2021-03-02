@@ -58,7 +58,22 @@ var commonServiceConfig = {
 	UNCOLLECT: '/collect/{id}/',
 
 	// 收藏列表
-	MY_COLLECT_LIST: '/collections/'
+    MY_COLLECT_LIST: '/collections/',
+    
+    // 获取发起人列表
+    ENTERPRISE_MEMBER_LIST: '/sponsors',
+
+    // 获取未添加发起人名单
+    ENTERPRISE_EXCLUDE_MEMBER_LIST: '/nonsponsors',
+
+    // 添加发起人
+    ENTERPRISE_ADD_MEMBER_LIST: '/sponsor/action/new/',
+
+    // 编辑发起人信息
+    ENTERPRISE_SAVE_MEMBER_DETAIL: '/sponsorinfo/{id}/',
+
+    // 删除发起人
+    ENTERPRISE_DEL_MEMBER_LIST: '/sponsor/action/del/'
 };
 
 
