@@ -1,17 +1,13 @@
 'use strict';
 Object.defineProperty(exports, '__esModule', { value: true });
 var component_1 = require('../common/component');
+var utils_1 = require('../common/utils');
 component_1.VantComponent({
   props: {
     text: {
       type: String,
       value: '',
-      observer: function () {
-        var _this = this;
-        wx.nextTick(function () {
-          _this.init();
-        });
-      },
+      observer: 'init',
     },
     mode: {
       type: String,
@@ -32,12 +28,7 @@ component_1.VantComponent({
     speed: {
       type: Number,
       value: 50,
-      observer: function () {
-        var _this = this;
-        wx.nextTick(function () {
-          _this.init();
-        });
-      },
+      observer: 'init',
     },
     scrollable: {
       type: Boolean,
@@ -64,39 +55,44 @@ component_1.VantComponent({
   destroyed: function () {
     this.timer && clearTimeout(this.timer);
   },
+  mounted: function () {
+    this.init();
+  },
   methods: {
     init: function () {
       var _this = this;
-      Promise.all([
-        this.getRect('.van-notice-bar__content'),
-        this.getRect('.van-notice-bar__wrap'),
-      ]).then(function (rects) {
-        var contentRect = rects[0],
-          wrapRect = rects[1];
-        if (
-          contentRect == null ||
-          wrapRect == null ||
-          !contentRect.width ||
-          !wrapRect.width
-        ) {
-          return;
-        }
-        var _a = _this.data,
-          speed = _a.speed,
-          scrollable = _a.scrollable,
-          delay = _a.delay;
-        if (scrollable && wrapRect.width < contentRect.width) {
-          var duration = (contentRect.width / speed) * 1000;
-          _this.wrapWidth = wrapRect.width;
-          _this.contentWidth = contentRect.width;
-          _this.duration = duration;
-          _this.animation = wx.createAnimation({
-            duration: duration,
-            timingFunction: 'linear',
-            delay: delay,
-          });
-          _this.scroll();
-        }
+      utils_1.requestAnimationFrame(function () {
+        Promise.all([
+          utils_1.getRect(_this, '.van-notice-bar__content'),
+          utils_1.getRect(_this, '.van-notice-bar__wrap'),
+        ]).then(function (rects) {
+          var contentRect = rects[0],
+            wrapRect = rects[1];
+          if (
+            contentRect == null ||
+            wrapRect == null ||
+            !contentRect.width ||
+            !wrapRect.width
+          ) {
+            return;
+          }
+          var _a = _this.data,
+            speed = _a.speed,
+            scrollable = _a.scrollable,
+            delay = _a.delay;
+          if (scrollable || wrapRect.width < contentRect.width) {
+            var duration = (contentRect.width / speed) * 1000;
+            _this.wrapWidth = wrapRect.width;
+            _this.contentWidth = contentRect.width;
+            _this.duration = duration;
+            _this.animation = wx.createAnimation({
+              duration: duration,
+              timingFunction: 'linear',
+              delay: delay,
+            });
+            _this.scroll();
+          }
+        });
       });
     },
     scroll: function () {
@@ -109,14 +105,14 @@ component_1.VantComponent({
           .step()
           .export(),
       });
-      setTimeout(function () {
+      utils_1.requestAnimationFrame(function () {
         _this.setData({
           animationData: _this.animation
             .translateX(-_this.contentWidth)
             .step()
             .export(),
         });
-      }, 20);
+      });
       this.timer = setTimeout(function () {
         _this.scroll();
       }, this.duration);
