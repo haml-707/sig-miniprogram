@@ -30,13 +30,13 @@
                 <text class="count">6</text>
                 <text class="text">报名表单</text>
             </view>
-            <view class="item">
+            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=4">
                 <text class="count">3</text>
                 <text class="text">草稿箱</text>
             </view>
-            <view class="item">
+            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=1">
                 <text class="count">9</text>
-                <text class="text">待发布</text>
+                <text class="text">{{level===3?'待发布':'发布中'}}</text>
             </view>
             <view class="item">
                 <text class="count">12</text>

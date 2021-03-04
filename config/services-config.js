@@ -73,7 +73,10 @@ var commonServiceConfig = {
     ENTERPRISE_SAVE_MEMBER_DETAIL: '/sponsorinfo/{id}/',
 
     // 删除发起人
-    ENTERPRISE_DEL_MEMBER_LIST: '/sponsor/action/del/'
+    ENTERPRISE_DEL_MEMBER_LIST: '/sponsor/action/del/',
+
+    // 发布
+    PUBLISH_EVENT: '/activity/'
 };
 
 

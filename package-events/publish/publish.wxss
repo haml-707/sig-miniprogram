@@ -178,6 +178,7 @@ input {
     line-height: 90rpx;
     height: 100%;
     border-radius: 8rpx;
+    padding: 0;
 }
 
 .container .commit .meeting-btn {

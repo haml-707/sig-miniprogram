@@ -34,7 +34,8 @@
             </view>
             <view wx:if="{{type===2}}" class="form-item">
                 <text class="label">直播地址</text>
-                <input value="{{sponsor}}" placeholder-class="placeholder" placeholder="请输入您的直播地址"></input>
+                <text class="require">*</text>
+                <input value="{{liveAddress}}" bindinput="liveAddressInput" placeholder-class="placeholder" placeholder="请输入您的直播地址"></input>
             </view>
             <view wx:if="{{type===1}}" class="form-item" bindtap="selAddress">
                 <text class="label">
@@ -48,6 +49,7 @@
             </view>
             <view wx:if="{{type===1}}" class="form-item">
                 <text class="label">具体地址</text>
+                <text class="require">*</text>
                 <input value="{{addressName}}" bindinput="addressNameInput" placeholder-class="placeholder" placeholder="请输入详细活动地址"></input>
             </view>
         </view>
@@ -73,9 +75,9 @@
                     <text class="require">*</text>
                 </text>
                 <view class="sel-time">
-                    <text class="time start-time" data-index="{{index}}" bindtap="selTime">{{item.startTime||'请选择'}}</text>
+                    <text class="time start-time" data-index="{{index}}" bindtap="selTime">{{item.start||'请选择'}}</text>
                     <text>至</text>
-                    <text class="time end-time" data-index="{{index}}" bindtap="selEndTime">{{item.endTime||'请选择'}}</text>
+                    <text class="time end-time" data-index="{{index}}" bindtap="selEndTime">{{item.end||'请选择'}}</text>
                 </view>
             </view>
             <view class="form-item">
@@ -83,7 +85,7 @@
                     <text>议题</text>
                     <text class="require">*</text>
                 </text>
-                <input value="{{item.scheduleTitle}}" maxlength="{{50}}" data-index="{{index}}" bindinput="scheduleTitleInput" placeholder-class="placeholder" placeholder="请输入您的活动议题"></input>
+                <input value="{{item.topic}}" maxlength="{{50}}" data-index="{{index}}" bindinput="scheduleTitleInput" placeholder-class="placeholder" placeholder="请输入您的活动议题"></input>
             </view>
             <view class="form-item">
                 <text class="label">Speaker</text>
@@ -137,7 +139,7 @@
     <view class="commit">
         <button class="meeting-reset" bindtap="reset">预览海报</button>
         <button class="meeting-reset" bindtap="reset">保存草稿</button>
-        <button class="meeting-btn" bindtap="meeting">申请发布</button>
+        <button class="meeting-btn" bindtap="publish">申请发布</button>
     </view>
     <van-popup show="{{ sigPopShow }}" round position="bottom" bind:click-overlay="sigCancel">
         <view class="sig-pop-wrapper">

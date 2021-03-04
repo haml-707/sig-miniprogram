@@ -1,8 +1,108 @@
 // package-events/publish/publish.js
-
+const appAjax = require('./../../utils/app-ajax');
 const utils = require("./../../utils/utils.js");
 utils.formateDate();
 let that = null;
+let remoteMethods = {
+    addEvents: function (postData, _callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'POST',
+            service: "PUBLISH_EVENT",
+            data: postData,
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    },
+    saveMeeting: function (postData, _callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'POST',
+            service: "SAVE_MEETING",
+            data: postData,
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    }
+}
+let localMethods = {
+    validation: function (data) {
+        if(data.activity_type === 1){
+            if (!data.title) {
+                this.toast('请输入活动标题');
+                return;
+            }
+            if (!data.date) {
+                this.toast('请选择活动日期');
+                return;
+            }
+            if (!data.address) {
+                this.toast('请输入活动城市');
+                return;
+            }
+            if (!data.detail_address) {
+                this.toast('请输入具体地址');
+                return;
+            }
+            let flag = true;
+            data.schedules.forEach(item => {
+                if (!item.start) {
+                    flag = false;
+                }
+                if (!item.end) {
+                    flag = false;
+                }
+                if (!item.topic) {
+                    flag = false;
+                }
+            });
+            if (!flag) {
+                this.toast('请补充日程必填信息');
+                return;
+            }    
+        } else {
+            if (!data.title) {
+                this.toast('请输入活动标题');
+                return;
+            }
+            if (!data.date) {
+                this.toast('请选择活动日期');
+                return;
+            }
+            if (!data.live_address) {
+                this.toast('请输入直播地址');
+                return;
+            }
+            let flag = true;
+            data.schedules.forEach(item => {
+                if (!item.start) {
+                    flag = false;
+                }
+                if (!item.end) {
+                    flag = false;
+                }
+                if (!item.topic) {
+                    flag = false;
+                }
+            });
+            if (!flag) {
+                this.toast('请补充填写日程必填信息');
+                return;
+            }    
+        }
+        
+        return true;
+    },
+    toast: function (msg) {
+        wx.showToast({
+            title: msg,
+            icon: "none",
+            duration: 2000
+        });
+    }
+}
 Page({
 
     /**
@@ -16,9 +116,9 @@ Page({
         addressName: '',
         desc: '',
         schedule: [{
-            startTime: '',
-            endTime: '',
-            scheduleTitle: '',
+            start: '',
+            end: '',
+            topic: '',
             speaker: ''
         }],
         datePopShow: false,
@@ -44,7 +144,10 @@ Page({
         },
         endTimePopShow: false,
         currentEndTime: '08:00',
-        topicSelIndex: 1
+        topicSelIndex: 1,
+        longitude: '',
+        latitude: '',
+        liveAddress: ''
     },
 
     /**
@@ -95,7 +198,9 @@ Page({
             success: function (res) {
                 that.setData({
                     address: res.address,
-                    addressName: res.name
+                    addressName: res.name,
+                    longitude: res.longitude,
+                    latitude: res.latitude
                 })
             }
         })
@@ -111,7 +216,7 @@ Page({
         })
     },
     scheduleTitleInput(e) {
-        const key = `schedule[${e.currentTarget.dataset.index}].scheduleTitle`;
+        const key = `schedule[${e.currentTarget.dataset.index}].topic`;
         this.setData({
             [key]: e.detail.value
         })
@@ -125,16 +230,16 @@ Page({
     addSchedule() {
         let arrTemp = this.data.schedule;
         arrTemp.push({
-            startTime: '',
-            endTime: '',
-            scheduleTitle: '',
+            start: '',
+            end: '',
+            topic: '',
             speaker: ''
         })
         this.setData({
             schedule: arrTemp
         })
     },
-    delSchedule (e){
+    delSchedule(e) {
         let arrTemp = this.data.schedule;
         arrTemp.splice(e.currentTarget.dataset.index, 1);
         this.setData({
@@ -158,7 +263,7 @@ Page({
         })
     },
     timeConfirm: function (e) {
-        const key = `schedule[${this.data.startTimeIndex}].startTime`;
+        const key = `schedule[${this.data.startTimeIndex}].start`;
         this.setData({
             [key]: this.data.currentTime,
             timePopShow: false
@@ -186,7 +291,7 @@ Page({
         })
     },
     endTimeConfirm: function () {
-        const key = `schedule[${this.data.endTimeIndex}].endTime`;
+        const key = `schedule[${this.data.endTimeIndex}].end`;
         this.setData({
             [key]: this.data.currentEndTime,
             endTimePopShow: false
@@ -200,6 +305,58 @@ Page({
     selTop(e) {
         this.setData({
             topicSelIndex: e.currentTarget.dataset.index
+        })
+    },
+    liveAddressInput(e) {
+        this.setData({
+            liveAddress: e.detail.value
+        })
+    },
+    publish() {
+        let postData = null;
+        if (this.data.type === 1) {
+            postData = {
+                "title": this.data.title,
+                "date": this.data.date,
+                "activity_type": 1,
+                "synopsis": this.data.desc,
+                "address": this.data.address,
+                "detail_address": this.data.addressName,
+                "longitude": this.data.longitude,
+                "latitude": this.data.latitude,
+                "poster": this.data.topicSelIndex,
+                "schedules": this.data.schedule
+            }
+        } else {
+            postData = {
+                "title": this.data.title,
+                "date": this.data.date,
+                "activity_type": 2,
+                "synopsis": this.data.desc,
+                "live_address": this.data.liveAddress,
+                "longitude": this.data.longitude,
+                "latitude": this.data.latitude,
+                "poster": this.data.topicSelIndex,
+                "schedules": this.data.schedule
+            }
+        }
+        if (!localMethods.validation(postData)) {
+            return;
+        }
+        remoteMethods.addEvents(postData, (res) => {
+            if (res.code === 201) {
+                wx.redirectTo({
+                    url: '/package-events/publish/success?type=2'
+                })
+            } else {
+                setTimeout(function () {
+                    wx.showToast({
+                        title: res.message,
+                        icon: "none",
+                        duration: 2000
+                    }, 100);
+                })
+            }
         })
     }
 })

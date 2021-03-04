@@ -1,0 +1,33 @@
+<!--package-my/events/under-release.wxml-->
+<view class="container">
+    <view class="event-list-wrapper">
+        <view class="event-item">
+            <view class="header">
+                <text class="enterprise">xxx 发起人</text>
+                <image src="./../../static/common/more.svg" />
+            </view>
+            <view class="body">
+                <view class="left">
+                    <image src="./../../static/events/list-pic/1.png" />
+                </view>
+                <view class="right">
+                    <view class="title">openEuler Submit 2020</view>
+                    <view class="date">
+                        <image src="./../../static/index/date.svg"></image>
+                        <text>2020-01-01</text>
+                    </view>
+                    <view class="address">
+                        <image src="./../../static/index/date.svg"></image>
+                        <text>深圳市深圳市少年大受打击阿斯顿那是件大事</text>
+                    </view>
+                    <view class="button">
+                        <button>立即报名</button>
+                    </view>
+                </view>
+            </view>
+            <view class="mask">
+                <image class="mask-img" src="./../../static/my/under-release.png" />
+            </view>
+        </view>
+    </view>
+</view>

@@ -30,7 +30,8 @@
 				"manage/member-detail",
 				"manage/add-member",
 				"manage/del-member",
-				"publish/publish"
+				"publish/publish",
+				"publish/success"
 			]
 		},
 		{
@@ -40,7 +41,8 @@
 				"my/my-meetings",
 				"my/my-collection",
 				"my/help",
-				"my/qrcode"
+				"my/qrcode",
+				"events/my-list"
 			]
 		}
 	],
