@@ -16,6 +16,14 @@ page {
     background-color: #fff;
 }
 
+.container .event-list-wrapper .event-item .collection {
+    width: 40rpx;
+    height: 26rpx;
+    position: absolute;
+    top: 33rpx;
+    left: 0;
+}
+
 .container .event-list-wrapper .event-item .header {
     height: 90rpx;
     padding: 0 30rpx;
@@ -25,6 +33,10 @@ page {
     font-size: 28rpx;
     color: #333;
     border-bottom: 2rpx solid #f0f3f7;
+}
+
+.container .event-list-wrapper .event-item .isCollection {
+    padding-left: 60rpx;
 }
 
 .container .event-list-wrapper .event-item .header image {
@@ -114,6 +126,10 @@ page {
     display: inline-block;
 }
 
+.container .event-list-wrapper .event-item .body .right .button .register {
+    background-color: #6682ca;
+}
+
 .container .event-list-wrapper .event-item .mask {
     position: absolute;
     height: 100%;
@@ -132,4 +148,27 @@ page {
     top: 50%;
     margin-left: -90rpx;
     margin-top: -68rpx;
+}
+
+.empty-status .suc-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-status .suc-wrapper image {
+    width: 234rpx;
+    height: 218rpx;
+}
+
+.empty-status .suc-wrapper text {
+    text-align: center;
+    margin-top: 20rpx;
+    font-size: 34rpx;
+    color: #333;
 }

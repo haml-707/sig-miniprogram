@@ -22,7 +22,7 @@
     <view class="my-events common-list">
         <view class="header">我的活动</view>
         <view class="list">
-            <view class="item">
+            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=2">
                 <text class="count">6</text>
                 <text class="text">已发布</text>
             </view>
@@ -34,11 +34,11 @@
                 <text class="count">3</text>
                 <text class="text">草稿箱</text>
             </view>
-            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=1">
+            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type={{avtivityLevel===3?1:5}}">
                 <text class="count">9</text>
-                <text class="text">{{level===3?'待发布':'发布中'}}</text>
+                <text class="text">{{avtivityLevel===3?'待发布':'发布中'}}</text>
             </view>
-            <view class="item">
+            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=6">
                 <text class="count">12</text>
                 <text class="text">已收藏</text>
             </view>

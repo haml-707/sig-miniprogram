@@ -108,7 +108,8 @@ var appAjax = {
 		// 是否展示loading
 		if(ajaxParams.autoShowWait && wx.showLoading) {
 			wx.showLoading({
-				title : ajaxParams.loadingText
+                title : ajaxParams.loadingText,
+                mask: true
 			});
 		}
 	    wx.request({

@@ -5,22 +5,60 @@ utils.formateDate();
 let that = null;
 let remoteMethods = {
     addEvents: function (postData, _callback) {
+        let type = 'POST';
+        let service = "PUBLISH_EVENT";
+        if(that.data.detailType == 4){
+            type = 'PUT';
+            service = 'EDIT_DETAIL_PUBLISH'
+        }
         appAjax.postJson({
             autoShowWait: true,
-            type: 'POST',
-            service: "PUBLISH_EVENT",
+            type,
+            service,
             data: postData,
+            otherParams:{
+                id: that.data.id || ''
+            },
             success: function (ret) {
                 _callback && _callback(ret);
             }
         });
     },
-    saveMeeting: function (postData, _callback) {
+    saveDraft: function (postData, _callback) {
+        let type = 'POST';
+        let service = "SAVE_DRAFT";
+        if(that.data.detailType == 4){
+            type = 'PUT';
+            service = 'EDIT_DETAIL'
+        } else if(that.data.detailType == 5) {
+            type = 'PUT';
+            service = 'EDIT_SCHEDULE'
+        }
         appAjax.postJson({
             autoShowWait: true,
-            type: 'POST',
-            service: "SAVE_MEETING",
+            type,
+            service,
             data: postData,
+            otherParams:{
+                id: that.data.id || ''
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    },
+    getDraftDetail: function (_callback) {
+        let service = 'DRAFT_DETAIL';
+        if(that.data.detailType == 5) {
+            service = 'EVENT_DETAIL'
+        }
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'GET',
+            service,
+            otherParams: {
+                id: that.data.id
+            },
             success: function (ret) {
                 _callback && _callback(ret);
             }
@@ -29,7 +67,7 @@ let remoteMethods = {
 }
 let localMethods = {
     validation: function (data) {
-        if(data.activity_type === 1){
+        if (data.activity_type === 1) {
             if (!data.title) {
                 this.toast('请输入活动标题');
                 return;
@@ -61,7 +99,7 @@ let localMethods = {
             if (!flag) {
                 this.toast('请补充日程必填信息');
                 return;
-            }    
+            }
         } else {
             if (!data.title) {
                 this.toast('请输入活动标题');
@@ -90,9 +128,9 @@ let localMethods = {
             if (!flag) {
                 this.toast('请补充填写日程必填信息');
                 return;
-            }    
+            }
         }
-        
+
         return true;
     },
     toast: function (msg) {
@@ -109,6 +147,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        id: '',
+        detailType: 0,
         title: '',
         date: '',
         type: 1,
@@ -119,7 +159,8 @@ Page({
             start: '',
             end: '',
             topic: '',
-            speaker: ''
+            speaker: '',
+            desc: ''
         }],
         datePopShow: false,
         timePopShow: false,
@@ -155,6 +196,27 @@ Page({
      */
     onLoad: function (options) {
         that = this;
+        this.setData({
+            id: options.id,
+            detailType: options.type || 0
+        })
+        if ((this.data.id && (this.data.detailType == 5)) || (this.data.id && (this.data.detailType == 4))) {
+            remoteMethods.getDraftDetail(res => {
+                this.setData({
+                    title: res.title,
+                    date: res.date,
+                    type: res.activity_type,
+                    liveAddress: res.live_address || '',
+                    longitude: res.longitude || '',
+                    latitude: res.latitude || '',
+                    address: res.address || '',
+                    addressName: res.detail_address || '',
+                    desc: res.synopsis || '',
+                    topicSelIndex: res.poster,
+                    schedule: JSON.parse(res.schedules)
+                })
+            })
+        }
     },
     /**
      * 生命周期函数--监听页面显示
@@ -227,13 +289,20 @@ Page({
             [key]: e.detail.value
         })
     },
+    scheduleDescInput(e) {
+        const key = `schedule[${e.currentTarget.dataset.index}].desc`;
+        this.setData({
+            [key]: e.detail.value
+        })
+    },
     addSchedule() {
         let arrTemp = this.data.schedule;
         arrTemp.push({
             start: '',
             end: '',
             topic: '',
-            speaker: ''
+            speaker: '',
+            desc: ''
         })
         this.setData({
             schedule: arrTemp
@@ -344,19 +413,87 @@ Page({
             return;
         }
         remoteMethods.addEvents(postData, (res) => {
-            if (res.code === 201) {
-                wx.redirectTo({
-                    url: '/package-events/publish/success?type=2'
-                })
-            } else {
-                setTimeout(function () {
-                    wx.showToast({
-                        title: res.message,
-                        icon: "none",
-                        duration: 2000
-                    }, 100);
-                })
+            wx.redirectTo({
+                url: '/package-events/publish/success?type=2'
+            })
+        })
+    },
+    saveDraft() {
+        let postData = null;
+        if (this.data.type === 1) {
+            postData = {
+                "title": this.data.title,
+                "date": this.data.date,
+                "activity_type": 1,
+                "synopsis": this.data.desc,
+                "address": this.data.address,
+                "detail_address": this.data.addressName,
+                "longitude": this.data.longitude,
+                "latitude": this.data.latitude,
+                "poster": this.data.topicSelIndex,
+                "schedules": this.data.schedule
             }
+        } else {
+            postData = {
+                "title": this.data.title,
+                "date": this.data.date,
+                "activity_type": 2,
+                "synopsis": this.data.desc,
+                "live_address": this.data.liveAddress,
+                "longitude": this.data.longitude,
+                "latitude": this.data.latitude,
+                "poster": this.data.topicSelIndex,
+                "schedules": this.data.schedule
+            }
+        }
+        if (!localMethods.validation(postData)) {
+            return;
+        }
+        remoteMethods.saveDraft(postData, () => {
+            wx.redirectTo({
+                url: '/package-events/publish/success?type=1'
+            })
+        })
+    },
+    cancelEditSchedule() {
+        wx.navigateBack();
+    },
+    editScheduleConfirm() {
+        let postData = null;
+        if (this.data.type === 1) {
+            postData = {
+                "title": this.data.title,
+                "date": this.data.date,
+                "activity_type": 1,
+                "synopsis": this.data.desc,
+                "address": this.data.address,
+                "detail_address": this.data.addressName,
+                "longitude": this.data.longitude,
+                "latitude": this.data.latitude,
+                "poster": this.data.topicSelIndex,
+                "schedules": this.data.schedule
+            }
+        } else {
+            postData = {
+                "title": this.data.title,
+                "date": this.data.date,
+                "activity_type": 2,
+                "synopsis": this.data.desc,
+                "live_address": this.data.liveAddress,
+                "longitude": this.data.longitude,
+                "latitude": this.data.latitude,
+                "poster": this.data.topicSelIndex,
+                "schedules": this.data.schedule
+            }
+        }
+        if (!localMethods.validation(postData)) {
+            return;
+        }
+        postData.schedules = JSON.stringify(this.data.schedule);
+        remoteMethods.saveDraft(postData, () => {
+            wx.redirectTo({
+                url: '/package-events/publish/success?type=3'
+            })
         })
     }
 })

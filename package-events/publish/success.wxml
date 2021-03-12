@@ -5,5 +5,5 @@
         <text>{{typeCn}}成功!</text>
         <text>{{typeDesc}}</text>
     </view>
-    <button bindtap="toList">查看此活动</button>
+    <button bindtap="toList">返回活动首页</button>
 </view>

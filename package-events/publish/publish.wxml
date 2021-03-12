@@ -1,7 +1,7 @@
 <!-- package-events/publish/publish.wxml -->
 <view class="container">
     <view class="form">
-        <view class="form-wrapper">
+        <view class="form-wrapper relative">
             <view class="form-item">
                 <text class="label">
                     <text>活动标题</text>
@@ -52,12 +52,14 @@
                 <text class="require">*</text>
                 <input value="{{addressName}}" bindinput="addressNameInput" placeholder-class="placeholder" placeholder="请输入详细活动地址"></input>
             </view>
+            <cover-view class="mask" wx:if="{{detailType==5}}"></cover-view>
         </view>
-        <view class="form-item meeting-desc">
+        <view class="form-item meeting-desc relative">
             <text class="label">活动简介</text>
             <textarea value="{{desc}}" hidden="{{datePopShow||timePopShow||endTimePopShow}}" maxlength="{{50}}" placeholder-class="placeholder" bindinput="descInput" placeholder="请输入活动简介">
                 <text class="hint">{{desc.length}}/50</text>
             </textarea>
+            <cover-view class="mask" wx:if="{{detailType==5}}"></cover-view>
         </view>
         <view class="form-wrapper schedule" wx:for="{{schedule}}" wx:key="index">
             <view class="header">
@@ -91,11 +93,15 @@
                 <text class="label">Speaker</text>
                 <input value="{{item.speaker}}" data-index="{{index}}" bindinput="speakerInput" placeholder-class="placeholder" placeholder="请填写演讲嘉宾"></input>
             </view>
+            <view class="form-item">
+                <text class="label">Title</text>
+                <input value="{{item.desc}}" data-index="{{index}}" bindinput="scheduleDescInput" placeholder-class="placeholder" placeholder="请填写嘉宾简介"></input>
+            </view>
         </view>
         <view class="add-shedule" bindtap="addSchedule">
             <text>+ 继续添加</text>
         </view>
-        <view class="topic">
+        <view class="topic relative">
             <view class="header">海报主题</view>
             <view class="img-wrapper">
                 <view data-index="{{1}}" bindtap="selTop">
@@ -117,6 +123,7 @@
                     <image class="img" src="./../../static/events/4.png" />
                 </view>
             </view>
+            <cover-view class="mask" wx:if="{{detailType==5}}"></cover-view>
         </view>
     </view>
     <view class="info">
@@ -136,9 +143,13 @@
             <text>点击 <text class="blue">【申请发布】</text> 后，你的活动将进入发布阶段，正式发布后，您仅能修改活动日程</text>
         </view>
     </view>
-    <view class="commit">
+    <view class="commit type5" wx:if="{{detailType==5}}">
+        <button class="meeting-reset" bindtap="cancelEditSchedule">取消</button>
+        <button class="meeting-btn" bindtap="editScheduleConfirm">确定</button>
+    </view>
+    <view class="commit" wx:else>
         <button class="meeting-reset" bindtap="reset">预览海报</button>
-        <button class="meeting-reset" bindtap="reset">保存草稿</button>
+        <button class="meeting-reset" bindtap="saveDraft">保存草稿</button>
         <button class="meeting-btn" bindtap="publish">申请发布</button>
     </view>
     <van-popup show="{{ sigPopShow }}" round position="bottom" bind:click-overlay="sigCancel">

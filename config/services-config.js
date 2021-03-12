@@ -76,7 +76,71 @@ var commonServiceConfig = {
     ENTERPRISE_DEL_MEMBER_LIST: '/sponsor/action/del/',
 
     // 发布
-    PUBLISH_EVENT: '/activity/'
+    PUBLISH_EVENT: '/activity/',
+
+    // 保存草稿
+    SAVE_DRAFT: '/activitydraft/',
+
+    // 获取草稿箱活动列表
+    GET_DRAFT_LIST: '/activitiesdraft/',
+
+    // 获取全量待发布
+    DRAFTS: '/drafts/',
+
+    //草稿详情
+    DRAFT_DETAIL: '/sponsoractivitydraft/{id}/',
+
+    // 修改草稿
+    EDIT_DETAIL: '/draftupdate/{id}/',
+
+    // 修改草稿并发布
+
+    EDIT_DETAIL_PUBLISH: '/draftpublish/{id}/',
+
+    // 驳回活动发布
+    REJECT_PUBLISH: '/activityreject/{id}/',
+
+    // 活动审核通过
+    RESOLVE_PUBLISH: '/activitypublish/{id}/',
+
+    // 活动审核通过
+    PUBLISHER_EVENTS_LIST: '/sponsoractivitiespublishing/',
+
+    // 我发布的活动
+    MY_EVENTS_LIST: '/sponsoractivities/',
+    
+    // 我发布的活动
+    DEL_EVENT: '/activitydel/{id}/',
+
+    // 所有活动
+    ALL_EVENTS_LIST: '/activities/',
+
+    // 所有活动
+    EVENT_DETAIL: '/activity/{id}/',
+
+    // 修改日程
+    EDIT_SCHEDULE: '/activityupdate/{id}/',
+
+    // 修改日程
+    EXAMINE_DETAIL: '/draft/{id}/',
+
+    // 修改日程
+    EVENT_COLLECT: '/collectactivity/',
+
+    // 修改日程
+    EVENT_UNCOLLECT: '/collectactivitydel/{id}/',
+
+    // 活动收藏列表
+    EVENT_COLLECT_LIST: '/collectactivities/',
+
+    // 最新活动列表
+    LATEST_EVENTS: '/recentactivities/',
+
+    // 获取报名者信息
+    APPLICANT_INFO: '/applicantinfo/{id}/',
+    
+    // 报名
+    SAVE_SIGNUP_INFO: '/activityregister/'
 };
 
 

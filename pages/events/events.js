@@ -1,7 +1,74 @@
 // pages/events/events.js
+const appAjax = require('./../../utils/app-ajax');
 const sessionUtil = require("../../utils/app-session.js");
 const appUser = require("../../utils/app-user.js");
 let that = null;
+
+let remoteMethods = {
+    getList: function (_callback) {
+        ;
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'GET',
+            service: 'LATEST_EVENTS',
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    },
+    delDraft: function (_callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'DELETE',
+            service: 'DRAFT_DETAIL',
+            otherParams: {
+                id: that.data.curId
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    },
+    delEvent: function (_callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'PUT',
+            service: 'DEL_EVENT',
+            otherParams: {
+                id: that.data.curId
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    },
+    collect: function (_callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'POST',
+            service: 'EVENT_COLLECT',
+            data: {
+                activity: that.data.curId
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    },
+    unCollect: function (_callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'DELETE',
+            service: 'EVENT_UNCOLLECT',
+            otherParams: {
+                id: that.data.collectionId
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    }
+}
 Page({
 
     /**
@@ -9,8 +76,17 @@ Page({
      */
     data: {
         iphoneX: false,
-        eventLevel: 1,
-        noAuthDialogShow: false
+        level: 1,
+        noAuthDialogShow: false,
+        user: '',
+        list: [],
+        actionShow: false,
+        actions: [],
+        underDialogShow: false,
+        showDialogDel: false,
+        curId: '',
+        userId: '',
+        collectionId: ''
     },
     /**
      * 生命周期函数--监听页面加载
@@ -22,7 +98,14 @@ Page({
         })
         appUser.updateUserInfo(function () {
             that.setData({
-                eventLevel: sessionUtil.getUserInfoByKey('eventLevel') || 1
+                level: sessionUtil.getUserInfoByKey('eventLevel') || 1,
+                user: sessionUtil.getUserInfoByKey('userId')
+            })
+            remoteMethods.getList(res => {
+                that.setData({
+                    list: res
+                })
+
             })
         });
     },
@@ -36,7 +119,7 @@ Page({
     },
     navigateTo(e) {
         const url = e.currentTarget.dataset.url;
-        if ((this.data.eventLevel === 1) && url.includes('publish')) {
+        if ((this.data.level === 1) && url.includes('publish')) {
             this.setData({
                 noAuthDialogShow: true
             })
@@ -53,7 +136,7 @@ Page({
         wx.stopPullDownRefresh();
         appUser.updateUserInfo(function () {
             that.setData({
-                eventLevel: sessionUtil.getUserInfoByKey('eventLevel') || 1
+                level: sessionUtil.getUserInfoByKey('eventLevel') || 1
             })
         });
     },
@@ -62,10 +145,131 @@ Page({
             data: 'openeuler123',
             success: () => {
                 this.setData({
-                    noAuthDialogShow: false
+                    noAuthDialogShow: false,
+                    underDialogShow: false
                 })
             }
         })
 
-    }
+    },
+    onActionClose() {
+        this.setData({
+            actionShow: false
+        })
+        this.getTabBar().setData({
+            show: true
+        })
+
+    },
+    onActionSelect(e) {
+        if (this.data.level == 3) {
+            if (e.detail.operaType == 1) {
+                if (this.data.collectionId) {
+                    remoteMethods.unCollect(() => {
+                        this.onLoad();
+                    })
+                } else {
+                    remoteMethods.collect(() => {
+                        this.onLoad();
+                    })
+                }
+            } else {
+                this.setData({
+                    showDialogDel: true
+                })
+            }
+        } else {
+            if (e.detail.operaType == 1) {
+                if (this.data.collectionId) {
+                    remoteMethods.unCollect(() => {
+                        this.onLoad();
+                    })
+                } else {
+                    remoteMethods.collect(() => {
+                        this.onLoad();
+                    })
+                }
+            } else {
+                this.setData({
+                    underDialogShow: true
+                })
+            }
+        }
+    },
+    del() {
+        this.setData({
+            showDialogDel: false
+        })
+        remoteMethods.delEvent(() => {
+            remoteMethods.getList(res => {
+                this.setData({
+                    list: res
+                })
+
+            });
+        })
+    },
+    delCancel() {
+        this.setData({
+            showDialogDel: false
+        })
+    },
+    onMore(e) {
+        this.getTabBar().setData({
+            show: false
+        })
+        this.setData({
+            actionShow: true,
+            curId: e.currentTarget.dataset.item.id,
+            userId: e.currentTarget.dataset.item.user,
+            collectionId: e.currentTarget.dataset.item.collection_id || ''
+        })
+        const strTemp = this.data.collectionId ? '取消收藏' : '收藏活动';
+        if (this.data.level == 3) {
+            this.setData({
+                actions: [{
+                        name: strTemp,
+                        operaType: 1
+                    },
+                    {
+                        name: '下架活动',
+                        operaType: 2
+                    }
+                ]
+            })
+        } else {
+            if (this.data.user == this.data.userId) {
+                this.setData({
+                    actions: [{
+                            name: strTemp,
+                            operaType: 1
+                        },
+                        {
+                            name: '下架活动',
+                            operaType: 2
+                        }
+                    ]
+                })
+            } else {
+                this.setData({
+                    actions: [{
+                        name: strTemp,
+                        operaType: 1
+                    }]
+                })
+            }
+
+        }
+
+    },
+    toUpdateSchedule(e) {
+        console.log(e.currentTarget.dataset.id)
+        wx.navigateTo({
+            url: `/package-events/events/event-detail?id=${e.currentTarget.dataset.id}&type=5`
+        })
+    },
+    onPullDownRefresh: function () {
+        wx.stopPullDownRefresh();
+        this.onLoad();
+    },
 })

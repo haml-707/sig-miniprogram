@@ -9,7 +9,8 @@ Page({
         iphoneX: false,
         avatarUrl: '',
         nickName: '',
-        level: 1
+        level: 1,
+        avtivityLevel: 1
     },
 
     /**
@@ -20,7 +21,8 @@ Page({
             iphoneX: this.getTabBar().data.iPhoneX,
             avatarUrl: sessionUtil.getUserInfoByKey('avatarUrl'),
             nickName: sessionUtil.getUserInfoByKey('nickName'),
-            level: sessionUtil.getUserInfoByKey('level')
+            level: sessionUtil.getUserInfoByKey('level'),
+            avtivityLevel: sessionUtil.getUserInfoByKey('eventLevel')
         })
     },
     /**

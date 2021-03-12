@@ -75,9 +75,7 @@ ad {
 .dialog-slot-content text {
     display: block;
     text-align: center;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
     line-height: 45rpx;
     margin-top: 19rpx;
     padding: 0 30rpx;
