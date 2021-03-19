@@ -3,12 +3,12 @@
     <view class="event-list-wrapper">
         <block wx:for="{{list}}" wx:key="index">
             <view class="event-item">
-                <view bindtap="onMore" data-item="{{item}}" class="header {{(type != 5)&&(type != 1)&&(type != 4)&&item.collection_id?'isCollection':''}}">
+                <view wx:if="{{type!=3}}" bindtap="onMore" data-item="{{item}}" class="header {{(type != 5)&&(type != 1)&&(type != 4)&&item.collection_id?'isCollection':''}}">
                     <text class="enterprise">{{item.enterprise}}</text>
                     <image src="./../../static/common/more.svg" />
                 </view>
                 <view class="body">
-                    <view class="left">
+                    <view class="left {{type==3?'small':''}}">
                         <image src="./../../static/events/list-pic/{{item.poster}}.png" />
                     </view>
                     <view class="right">
@@ -33,7 +33,7 @@
                             </button>
                             <button bindtap="toUpdateSchedule" data-id="{{item.id}}" wx:if="{{item.status==5}}">精彩回顾</button>
                         </view>
-                        <view class="button" wx:if="{{type == 6}}">
+                        <view class="button" wx:if="{{(type == 6)||(type == 7)}}">
                             <block wx:if="{{item.status==5}}">
                                 <button bindtap="toUpdateSchedule" data-id="{{item.id}}">精彩回顾</button>
                             </block>
@@ -58,7 +58,11 @@
                         </view>
                     </view>
                 </view>
-                <image wx:if="{{(type != 5)&&(type != 1)&&(type != 4)&&item.collection_id}}" class="collection" src="./../../static/common/collection-icon.svg"></image>
+                <view wx:if="{{type==3}}" class="sendSignUpInfo">
+                    <text class="signUpNum">已报名 {{item.register_count}}人</text>
+                    <button class="sendBtn" data-id="{{item.id}}" bindtap="sendEmail">发送名单到邮箱</button>
+                </view>
+                <image wx:if="{{(type != 3)&&(type != 5)&&(type != 1)&&(type != 4)&&item.collection_id}}" class="collection" src="./../../static/common/collection-icon.svg"></image>
                 <view class="mask" wx:if="{{type==1}}" bindtap="toExamine" data-id="{{item.id}}">
                     <image class="mask-img" src="./../../static/my/under-release.png" />
                 </view>
@@ -69,7 +73,7 @@
         </block>
     </view>
     <van-action-sheet show="{{ actionShow }}" actions="{{ actions }}" bind:close="onActionClose" bind:cancel="onActionClose" bind:select="onActionSelect" cancel-text="取消" close-on-click-action close-on-click-overlay />
-    <view class="empty-status" wx:if="{{false}}">
+    <view class="empty-status" wx:if="{{!list.length}}">
         <view class="suc-wrapper">
             <image src="./../../static/events/empty-events.png" />
             <text>暂无活动!</text>

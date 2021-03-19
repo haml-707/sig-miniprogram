@@ -172,3 +172,35 @@ page {
     font-size: 34rpx;
     color: #333;
 }
+
+.container .event-list-wrapper .event-item .sendSignUpInfo {
+    height: 118rpx;
+    display: flex;
+    padding: 0 30rpx;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 2rpx solid #f0f3f7;
+}
+
+.container .event-list-wrapper .event-item .sendSignUpInfo .signUpNum {
+    font-size: 24rpx;
+    color: #002fa7;
+}
+
+.container .event-list-wrapper .event-item .sendSignUpInfo .sendBtn {
+    height: 68rpx;
+    width: 236rpx;
+    text-align: center;
+    line-height: 68rpx;
+    background-color: #002fa7;
+    color: #fff;
+    border-radius: 8rpx ;
+    margin: unset;
+    font-size: 28rpx;
+    padding: unset;
+}
+
+.container .event-list-wrapper .event-item .body .small image {
+    width: 180rpx;
+    height: 180rpx;
+}

@@ -21,6 +21,15 @@ let remoteMethods = {
 
         } else if (that.data.type == 6) {
             service = 'EVENT_COLLECT_LIST'
+        } else if (that.data.type == 7) {
+            service = 'MY_SIGNUP_EVENTS'
+        } else if (that.data.type == 3) {
+            if (that.data.level == 2) {
+                service = 'MY_EVENTS_LIST'
+            } else {
+                service = 'ALL_EVENTS_LIST'
+            }
+
         }
         appAjax.postJson({
             autoShowWait: true,
@@ -161,7 +170,7 @@ Page({
             remoteMethods.delDraft(() => {
                 this.onShow();
             })
-        } else if ((this.data.type == 2) || (this.data.type == 6)) {
+        } else if ((this.data.type == 2) || (this.data.type == 6) || (this.data.type == 7)) {
             if (this.data.level == 3) {
                 if (e.detail.operaType == 1) {
                     if (this.data.collectionId) {
@@ -213,7 +222,7 @@ Page({
                     operaType: 1
                 }]
             })
-        } else if ((this.data.type == 2) || (this.data.type == 6)) {
+        } else if ((this.data.type == 2) || (this.data.type == 6) || (this.data.type == 7)) {
             if (this.data.level == 3) {
                 this.setData({
                     actions: [{
@@ -290,5 +299,10 @@ Page({
             }
         })
 
+    },
+    sendEmail(e) {
+        wx.navigateTo({
+            url: `/package-my/events/send-email?id=${e.currentTarget.dataset.id}`
+        })
     }
 })

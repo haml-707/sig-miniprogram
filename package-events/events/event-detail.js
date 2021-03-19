@@ -5,11 +5,13 @@ const sessionUtil = require("../../utils/app-session.js");
 let that = null;
 let remoteMethods = {
     getDraftDetail: function (_callback) {
-        let service = 'DRAFT_DETAIL';
+        let service = 'EVENT_DETAIL';
         if (that.data.type == 5) {
             service = 'EVENT_DETAIL'
         } else if (that.data.type == 1) {
             service = 'EXAMINE_DETAIL'
+        } else if (that.data.type == 4) {
+            service = 'DRAFT_DETAIL'
         }
         appAjax.postJson({
             autoShowWait: true,
@@ -66,6 +68,32 @@ let remoteMethods = {
             }
         });
     },
+    collect: function (_callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'POST',
+            service: 'EVENT_COLLECT',
+            data: {
+                activity: that.data.id
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    },
+    unCollect: function (_callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'DELETE',
+            service: 'EVENT_UNCOLLECT',
+            otherParams: {
+                id: that.data.info.collection_id
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    }
 }
 Page({
 
@@ -77,9 +105,10 @@ Page({
         id: '',
         steps: [],
         tabIndex: 0,
-        type: 1,
+        type: 0,
         level: 1,
-        user: ''
+        user: '',
+        scene: ''
     },
 
     /**
@@ -88,10 +117,10 @@ Page({
     onLoad: function (options) {
         that = this;
         this.setData({
-            id: options.id,
+            id: options.id || decodeURIComponent(options.scene),
+            scene: decodeURIComponent(options.scene) || '',
             type: options.type,
-            level: sessionUtil.getUserInfoByKey('eventLevel') || 1,
-            user: sessionUtil.getUserInfoByKey('userId')
+            level: sessionUtil.getUserInfoByKey('eventLevel') || 1
         })
     },
 
@@ -99,6 +128,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        this.setData({
+            user: sessionUtil.getUserInfoByKey('userId')
+        })
         remoteMethods.getDraftDetail((res) => {
             this.setData({
                 info: res
@@ -186,5 +218,39 @@ Page({
             title: '活动详情',
             path: `/package-events/events/event-detail?id=${that.data.id}&type=5`
         }
+    },
+    toPoster(e) {
+        wx.navigateTo({
+            url: `/package-events/events/poster?isDraft=${e.currentTarget.dataset.flag || ''}&id=${this.data.info.id}`
+        })
+    },
+    redrictLogin() {
+        if(this.data.scene){
+            wx.navigateTo({
+                url: '/pages/auth/auth?id=' + that.data.id
+            })
+        } else {
+            wx.navigateTo({
+                url: '/pages/auth/auth'
+            })
+        }
+    },
+    onShareAppMessage: function (res) {
+        return {
+            title: '活动详情',
+            path: `/package-events/events/event-detail?id=${that.data.id}`
+        }
+    },
+    collect() {
+        if(!this.data.info.collection_id){
+            remoteMethods.collect(() => {
+                this.onShow();
+            })    
+        } else {
+            remoteMethods.unCollect(() => {
+                this.onShow();
+            })
+        }
+        
     }
 })

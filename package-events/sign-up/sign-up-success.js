@@ -23,13 +23,17 @@ Page({
         that = this;
         this.widget = this.selectComponent('.widget');
         this.setData({
-            poster: options.poster,
-            title: options.title,
-            name: options.name,
-            tel: options.tel
+            poster: decodeURIComponent(options.poster),
+            title: decodeURIComponent(options.title),
+            name: decodeURIComponent(options.name),
+            tel: decodeURIComponent(options.tel)
         })
     },
     saveToAlbum() {
+        wx.showLoading({
+            title : '保存中',
+            mask: true
+        });
         const p1 = this.widget.renderToCanvas({
             wxml: wxml({
                 title: that.data.title,
@@ -57,6 +61,7 @@ Page({
                                 console.log(err);
                             },
                             complete(res) {
+                                wx.hideLoading();
                                 console.log(res);
                             }
                         });

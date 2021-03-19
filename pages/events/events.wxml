@@ -73,7 +73,7 @@
         </block>
     </view>
     <van-action-sheet show="{{ actionShow }}" actions="{{ actions }}" bind:close="onActionClose" bind:cancel="onActionClose" bind:select="onActionSelect" cancel-text="取消" close-on-click-action close-on-click-overlay />
-    <view class="empty-status" wx:if="{{false}}">
+    <view class="empty-status" wx:if="{{!list.length}}">
         <view class="suc-wrapper">
             <image src="./../../static/events/empty-events.png" />
             <text>暂无活动!</text>

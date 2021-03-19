@@ -140,7 +140,22 @@ var commonServiceConfig = {
     APPLICANT_INFO: '/applicantinfo/{id}/',
     
     // 报名
-    SAVE_SIGNUP_INFO: '/activityregister/'
+    SAVE_SIGNUP_INFO: '/activityregister/',
+
+    // 我报名的活动
+    MY_SIGNUP_EVENTS: '/registeractivities/',
+
+    // 报名表单
+    SEND_SIGNUP_INFO: '/applicantsinfo/',
+
+    // 保存意见反馈
+    SAVE_FEEDBACK: '/feedback/',
+
+    // 获取已发布分类数量
+    GET_EVENTS_COUNT: '/countactivities/',
+
+    // 获取我的页面各类计数
+    GET_MY_COUNT: '/mycounts/'
 };
 
 

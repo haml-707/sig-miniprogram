@@ -20,6 +20,10 @@ let remoteMethods = {
                 id: that.data.id || ''
             },
             success: function (ret) {
+                if(ret.code == 400){
+                    localMethods.toast(ret.msg);
+                    return;
+                }
                 _callback && _callback(ret);
             }
         });
@@ -43,6 +47,10 @@ let remoteMethods = {
                 id: that.data.id || ''
             },
             success: function (ret) {
+                if(ret.code == 400){
+                    localMethods.toast(ret.msg);
+                    return;
+                }
                 _callback && _callback(ret);
             }
         });

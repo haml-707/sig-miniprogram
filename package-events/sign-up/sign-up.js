@@ -1,6 +1,7 @@
 // package-events/sign-up/sign-up.js
 const appAjax = require('./../../utils/app-ajax');
 const sessionUtil = require("../../utils/app-session.js");
+const validationConfig = require('./../../config/field-validate-rules');
 
 let that = null;
 
@@ -37,8 +38,8 @@ let localMethods = {
             this.toast('请输入您的姓名');
             return;
         }
-        if (!that.data.tel) {
-            this.toast('请输入您的手机号码');
+        if (!validationConfig.phone.regex.test(that.data.tel)) {
+            this.toast('请输入正确的手机号码');
             return;
         }
         if (!that.data.mail) {

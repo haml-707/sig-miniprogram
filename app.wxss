@@ -73,7 +73,7 @@ ad {
 }
 
 .dialog-slot-content text {
-    display: block;
+    display: inherit;
     text-align: center;
     overflow: hidden;
     line-height: 45rpx;

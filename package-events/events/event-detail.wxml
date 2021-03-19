@@ -67,7 +67,7 @@
         </view>
     </view>
     <view class="footer-wrapper" wx:if="{{type==4}}">
-        <button class="btn-ghost">预览海报</button>
+        <button class="btn-ghost" bindtap="toPoster" data-flag="1">预览海报</button>
         <button class="btn-ghost" bindtap="toEditDraft">编辑活动</button>
         <button class="btn-primary" bindtap="draftPublish">申请发布</button>
     </view>
@@ -75,16 +75,16 @@
         <button class="btn-ghost" bindtap="reject">驳回修改</button>
         <button class="btn-primary" bindtap="resolve">同意发布</button>
     </view>
-    <view class="footer-wrapper" wx:elif="{{type==5}}">
-        <view class="collect">
-            <image src="./../../static/events/uncollect.svg" />
+    <view class="footer-wrapper" wx:elif="{{(user&&!type) || (type==5)}}">
+        <view class="collect" bindtap="collect">
+            <image src="./../../static/events/{{info.collection_id?'collect':'uncollect'}}.svg" />
             <text>收藏</text>
         </view>
         <button open-type="share" class="share">
             <image src="./../../static/events/share.svg" />
             <text>分享</text>
         </button>
-        <button class="btn-ghost">下载海报</button>
+        <button class="btn-ghost" bindtap="toPoster">下载海报</button>
         <block wx:if="{{info.status==5}}">
             <button class="btn-primary" wx:if="{{info.status==5}}" bindtap="switchTab2">
                 精彩回顾
@@ -106,19 +106,22 @@
                 <button class="btn-primary" wx:if="{{(info.status==3) || (info.status==4)}}" bindtap="editSchedule">修改日程</button>
             </block>
         </block>
-        <!-- <button class="btn-primary" wx:if="{{info.status==5}}" bindtap="switchTab2">精彩回顾</button>
-        <button class="btn-primary" wx:else bindtap="editSchedule">修改日程</button> -->
     </view>
-    <!-- <view class="footer-wrapper" wx:else>
-        <view class="collect">
-            <image src="./../../static/events/uncollect.svg" />
+    <view class="footer-wrapper" wx:elif="{{!user&&!type}}">
+        <view class="collect" bindtap="redrictLogin">
+            <image src="./../../static/events/{{info.collection_id?'collect':'uncollect'}}.svg" />
             <text>收藏</text>
         </view>
-        <view class="share">
+        <button bindtap="redrictLogin" class="share">
             <image src="./../../static/events/share.svg" />
             <text>分享</text>
-        </view>
-        <button class="btn-ghost">下载海报</button>
-        <button class="btn-primary">立即报名</button>
-    </view> -->
+        </button>
+        <button class="btn-ghost" bindtap="redrictLogin">下载海报</button>
+        <block wx:if="{{info.status==5}}">
+            <button class="btn-primary" wx:if="{{info.status==5}}" bindtap="switchTab2">
+                精彩回顾
+            </button>
+        </block>
+        <button class="btn-primary" wx:else bindtap="redrictLogin">立即报名</button>
+    </view>
 </view>

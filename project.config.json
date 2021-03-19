@@ -50,23 +50,30 @@
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "condition": {
-        "search": {
-            "list": []
-        },
-        "conversation": {
+        "plugin": {
             "list": []
         },
         "game": {
-            "list": []
-        },
-        "plugin": {
             "list": []
         },
         "gamePlugin": {
             "list": []
         },
         "miniprogram": {
-            "list": []
+            "list": [
+                {
+                    "name": "package-events/events/event-detail",
+                    "pathName": "package-events/events/event-detail",
+                    "query": "scene:31",
+                    "scene": 1012
+                },
+                {
+                    "name": "package-events/events/event-detail",
+                    "pathName": "package-events/events/event-detail",
+                    "query": "scene=33",
+                    "scene": 1047
+                }
+            ]
         }
     }
 }

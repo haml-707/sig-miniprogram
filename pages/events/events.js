@@ -6,7 +6,6 @@ let that = null;
 
 let remoteMethods = {
     getList: function (_callback) {
-        ;
         appAjax.postJson({
             autoShowWait: true,
             type: 'GET',

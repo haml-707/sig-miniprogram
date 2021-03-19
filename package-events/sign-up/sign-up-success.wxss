@@ -60,20 +60,12 @@
 .container .name {
     margin-top: 128rpx;
     font-size: 34rpx;
-    color: #333;
-}
-
-.container .name text {
     color: #002fa7;
 }
 
 .container .tel {
     margin-top: 30rpx;
     font-size: 34rpx;
-    color: #333;
-}
-
-.container .tel text {
     color: #002fa7;
 }
 
