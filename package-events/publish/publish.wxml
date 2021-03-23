@@ -148,7 +148,7 @@
         <button class="meeting-btn" bindtap="editScheduleConfirm">确定</button>
     </view>
     <view class="commit" wx:else>
-        <button class="meeting-reset" bindtap="reset">预览海报</button>
+        <button class="meeting-reset" bindtap="toPoster">预览海报</button>
         <button class="meeting-reset" bindtap="saveDraft">保存草稿</button>
         <button class="meeting-btn" bindtap="publish">申请发布</button>
     </view>

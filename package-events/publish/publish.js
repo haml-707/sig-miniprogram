@@ -7,7 +7,7 @@ let remoteMethods = {
     addEvents: function (postData, _callback) {
         let type = 'POST';
         let service = "PUBLISH_EVENT";
-        if(that.data.detailType == 4){
+        if (that.data.detailType == 4) {
             type = 'PUT';
             service = 'EDIT_DETAIL_PUBLISH'
         }
@@ -16,11 +16,11 @@ let remoteMethods = {
             type,
             service,
             data: postData,
-            otherParams:{
+            otherParams: {
                 id: that.data.id || ''
             },
             success: function (ret) {
-                if(ret.code == 400){
+                if (ret.code == 400) {
                     localMethods.toast(ret.msg);
                     return;
                 }
@@ -31,10 +31,10 @@ let remoteMethods = {
     saveDraft: function (postData, _callback) {
         let type = 'POST';
         let service = "SAVE_DRAFT";
-        if(that.data.detailType == 4){
+        if (that.data.detailType == 4) {
             type = 'PUT';
             service = 'EDIT_DETAIL'
-        } else if(that.data.detailType == 5) {
+        } else if (that.data.detailType == 5) {
             type = 'PUT';
             service = 'EDIT_SCHEDULE'
         }
@@ -43,11 +43,11 @@ let remoteMethods = {
             type,
             service,
             data: postData,
-            otherParams:{
+            otherParams: {
                 id: that.data.id || ''
             },
             success: function (ret) {
-                if(ret.code == 400){
+                if (ret.code == 400) {
                     localMethods.toast(ret.msg);
                     return;
                 }
@@ -57,7 +57,7 @@ let remoteMethods = {
     },
     getDraftDetail: function (_callback) {
         let service = 'DRAFT_DETAIL';
-        if(that.data.detailType == 5) {
+        if (that.data.detailType == 5) {
             service = 'EVENT_DETAIL'
         }
         appAjax.postJson({
@@ -502,6 +502,13 @@ Page({
             wx.redirectTo({
                 url: '/package-events/publish/success?type=3'
             })
+        })
+    },
+    toPoster() {
+        const address = this.data.type == 1 ? this.data.addressName : '';
+        const liveAddress = this.data.type == 2 ? this.data.liveAddress : '';
+        wx.navigateTo({
+            url: `/package-events/events/poster?title=${this.data.title}&date=${this.data.date}&address=${address}&poster=${this.data.topicSelIndex}&liveAddress=${liveAddress}`
         })
     }
 })

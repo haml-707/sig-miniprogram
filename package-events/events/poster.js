@@ -43,14 +43,29 @@ Page({
         that = this;
         this.widget = this.selectComponent('.widget');
         this.setData({
-            id: options.id,
+            id: options.id || '',
             isDraft: options.isDraft
         })
-        remoteMethods.getDraftDetail(res => {
+        if (this.data.id) {
+            remoteMethods.getDraftDetail(res => {
+                this.setData({
+                    info: res
+                })
+            })    
+        } else {
             this.setData({
-                info: res
+                info: {
+                    title: options.title,
+                    date: options.date,
+                    detail_address: options.address || '',
+                    poster: options.poster,
+                    live_address: options.liveAddress || '',
+                    activity_type: options.address ? 1 : 2
+                },
+                isDraft: 1,
             })
-        })
+        }
+        
     },
     back() {
         wx.navigateBack();

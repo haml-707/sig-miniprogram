@@ -11,11 +11,13 @@ Page(mixin({
             },
             {
                 type: 2,
-                url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/openEuler%E8%B4%A1%E7%8C%AE%E8%80%85%E6%96%B0%E6%98%A5%E7%A4%BC%E7%89%A90204b.mp4'
+                url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/openEuler%E8%B4%A1%E7%8C%AE%E8%80%85%E6%96%B0%E6%98%A5%E7%A4%BC%E7%89%A90204b.mp4',
+                poster: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/video-poster/2.png'
             },
             {
                 type: 2,
-                url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/IMG_7242.MP4'
+                url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/IMG_7242.MP4',
+                poster: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/video-poster/1.png'
             }
         ],
         iphoneX: false,

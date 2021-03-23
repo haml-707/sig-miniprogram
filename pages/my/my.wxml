@@ -22,19 +22,19 @@
     <view class="my-events common-list">
         <view class="header">我的活动</view>
         <view class="list">
-            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=2">
+            <view class="item" wx:if="{{avtivityLevel!=1}}" bindtap="go" data-url="/package-my/events/my-list?type=2">
                 <text class="count">{{myCount.published_activities_count||0}}</text>
                 <text class="text">已发布</text>
             </view>
-            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=3">
+            <view class="item" wx:if="{{avtivityLevel!=1}}" bindtap="go" data-url="/package-my/events/my-list?type=3">
                 <text class="count">{{myCount.register_table_count||0}}</text>
                 <text class="text">报名表单</text>
             </view>
-            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type=4">
+            <view class="item" wx:if="{{avtivityLevel!=1}}" bindtap="go" data-url="/package-my/events/my-list?type=4">
                 <text class="count">{{myCount.drafts_count||0}}</text>
                 <text class="text">草稿箱</text>
             </view>
-            <view class="item" bindtap="go" data-url="/package-my/events/my-list?type={{avtivityLevel===3?1:5}}">
+            <view class="item" wx:if="{{avtivityLevel!=1}}" bindtap="go" data-url="/package-my/events/my-list?type={{avtivityLevel===3?1:5}}">
                 <text class="count">{{myCount.publishing_activities_count||0}}</text>
                 <text class="text">{{avtivityLevel===3?'待发布':'发布中'}}</text>
             </view>

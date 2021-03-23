@@ -73,6 +73,7 @@ ad {
 }
 
 .dialog-slot-content text {
+    word-break: break-all;
     display: inherit;
     text-align: center;
     overflow: hidden;
