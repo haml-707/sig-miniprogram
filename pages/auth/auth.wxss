@@ -1,6 +1,11 @@
 /* pages/auth/auth.wxss */
 page {
     background-color: #fff;
+    height: unset;
+}
+
+.container {
+    padding: 0 !important;
 }
 
 .container .img {

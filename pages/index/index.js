@@ -21,7 +21,8 @@ Page(mixin({
             }
         ],
         iphoneX: false,
-        meetingConponent: null
+        meetingConponent: null,
+        autoplay: true
     },
     swithTab(e) {
         if (!sessionUtil.getUserInfoByKey('access')) {
@@ -79,5 +80,20 @@ Page(mixin({
             })
             return;
         }
+    },
+    play() {
+        this.setData({
+            autoplay: false
+        })
+    },
+    pause() {
+        this.setData({
+            autoplay: true
+        })
+    },
+    ended() {
+        this.setData({
+            autoplay: true
+        })
     }
 }))

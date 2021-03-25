@@ -108,7 +108,8 @@ Page({
         type: 0,
         level: 1,
         user: '',
-        scene: ''
+        scene: '',
+        isIphoneX: false
     },
 
     /**
@@ -121,6 +122,17 @@ Page({
             scene: decodeURIComponent(options.scene) || '',
             type: options.type,
             level: sessionUtil.getUserInfoByKey('eventLevel') || 1
+        })
+        wx.getSystemInfo({
+            success(res) {
+                if ((res.model.indexOf('iPhone X') >= 0) || (res.model.indexOf('iPhone 11') >= 0)) {
+                    that.setData({
+                        isIphoneX: true
+                    });
+                    console.log(that.data.isIphoneX)
+                }
+                
+            }
         })
     },
 

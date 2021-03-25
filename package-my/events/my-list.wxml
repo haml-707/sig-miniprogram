@@ -7,14 +7,14 @@
                     <text class="enterprise">{{item.enterprise}}</text>
                     <image src="./../../static/common/more.svg" />
                 </view>
-                <view class="body">
+                <view class="body" bindtap="toUpdateSchedule" data-id="{{item.id}}" data-status="{{item.status}}">
                     <view class="left {{type==3?'small':''}}">
                         <image src="./../../static/events/list-pic/{{item.poster}}.png" />
                     </view>
                     <view class="right">
                         <view class="title">{{item.title}}</view>
                         <view class="date">
-                            <image src="./../../static/index/date.svg"></image>
+                            <image src="./../../static/index/date.png"></image>
                             <text>{{item.date}}</text>
                         </view>
                         <view class="address">

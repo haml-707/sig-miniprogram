@@ -19,7 +19,7 @@
             <view class="wrapper">
                 <view class="name">{{item.topic}}</view>
                 <view class="date">
-                    <image src="./../../static/index/date.svg"></image>
+                    <image src="./../../static/index/date.png"></image>
                     <text wx:if="{{item.video_url}}">
                         {{item.date}} {{item.start}}-{{item.end}} (可回放)
                     </text>

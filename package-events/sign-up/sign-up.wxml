@@ -54,7 +54,7 @@
         </view>
     </view>
     <view class="commit">
-        <button class="meeting-reset" bindtap="saveDraft">我再想想</button>
+        <button class="meeting-reset" bindtap="back">我再想想</button>
         <button class="meeting-btn" bindtap="signUp">立即报名</button>
     </view>
 </view>

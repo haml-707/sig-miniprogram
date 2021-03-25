@@ -3,6 +3,7 @@ page {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAAeCAYAAADuInrvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACdSURBVGhD7dbBDYAwDAPAbsTYjFnEDn5YyT34WinWpT3nea9v0T9Q9qKyf9wKV7gVP/maI5xwwglfpkDhCh9z9Y05yGSVybMpfNn2UrjCvdKTK7Qti3DCCW9TmZyHcMIJT4pqyyKccMLbVCbnIZxwwpOi2rIIJ5zwNpXJeQgnnPCkqLYswgknvE1lch7CCSc8Kaoti3DCCW9TGZznA1f9oK8GgBpHAAAAAElFTkSuQmCC) no-repeat;
     background-size: 100% 150rpx;
     background-color: #f5f7fa !important;
+    height: unset !important;
 }
 
 .container {

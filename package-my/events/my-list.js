@@ -285,9 +285,16 @@ Page({
         })
     },
     toUpdateSchedule(e) {
-        wx.navigateTo({
-            url: `/package-events/events/event-detail?id=${e.currentTarget.dataset.id}&type=5`
-        })
+        if (this.data.type == 4) {
+            this.editDraft(e);
+        } else if ((this.data.type == 2) || (this.data.type == 6) || (this.data.type == 7)) {
+            wx.navigateTo({
+                url: `/package-events/events/event-detail?id=${e.currentTarget.dataset.id}&type=5`
+            })
+        } else if (this.data.type == 3) {
+            this.sendEmail(e);
+        }
+
     },
     copyWechat() {
         wx.setClipboardData({

@@ -42,8 +42,8 @@ let localMethods = {
             this.toast('请输入正确的手机号码');
             return;
         }
-        if (!that.data.mail) {
-            this.toast('请输入您的邮箱地址');
+        if (!validationConfig.email.regex.test(that.data.mail)) {
+            this.toast('请输入正确的邮箱地址');
             return;
         }
         if (!that.data.enterprise) {
@@ -153,5 +153,8 @@ Page({
                 url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(this.data.name)}&title=${encodeURIComponent(this.data.eventTitle)}&tel=${encodeURIComponent(this.data.tel)}&poster=${encodeURIComponent(this.data.poster)}`
             })
         })
+    },
+    back() {
+        wx.navigateBack();
     }
 })

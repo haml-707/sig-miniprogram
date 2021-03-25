@@ -273,3 +273,8 @@ page {
 .container .footer-wrapper .register {
     background-color: #6682ca;
 }
+
+.container .footer-iphonex {
+    padding-bottom: 50rpx;
+    height: 180rpx;
+}

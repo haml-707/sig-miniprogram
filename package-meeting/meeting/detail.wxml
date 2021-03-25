@@ -3,7 +3,7 @@
     <view class="detail-item">
         <view class="name">{{info.topic}}</view>
         <view class="date">
-            <image src="./../../static/index/date.svg"></image>
+            <image src="./../../static/index/date.png"></image>
             <text>{{info.date}} {{info.start}}-{{info.end}}</text>
         </view>
         <view class="sponsor">
