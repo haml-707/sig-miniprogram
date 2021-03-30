@@ -155,7 +155,10 @@ var commonServiceConfig = {
     GET_EVENTS_COUNT: '/countactivities/',
 
     // 获取我的页面各类计数
-    GET_MY_COUNT: '/mycounts/'
+    GET_MY_COUNT: '/mycounts/',
+
+    // 获取我的活动报名信息
+    GET_SIGNUP_INFO: '/ticket/{id}/'
 };
 
 

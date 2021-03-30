@@ -1,79 +1,12 @@
 <!-- pages/my/help.wxml -->
 <view class="container">
-    <view class="h1">openEuler小程序使用攻略</view>
-    <view class="p">1. 打开小程序，点击“微信授权登录”（如图1）。并允许获取您的昵称、头像、地区及性别信息。</view>
-    <view class="img">
-        <image src="./../../static/my/help/help1.png"></image>
-        <text>图1</text>
+    <view class="tabs">
+        <view class="tab-item {{index==curIndex?'active':''}}" data-index="{{index}}" bindtap="switchTab" wx:for="{{list}}" wx:key="index">{{item.name}}</view>
     </view>
-    <view class="p">2.	进入小程序首页（如图2）</view>
-    <view class="img">
-        <image src="./../../static/my/help/help2.png"></image>
-        <text>图2</text>
-    </view>
-    <view class="p">3.	点击“预定会议”，跳转至预定会议功能模块，填写会议相关信息（如图3）</view>
-    <view class="img">
-        <image src="./../../static/my/help/help3.png"></image>
-        <text>图3</text>
-    </view>
-    <view class="p">4.	信息填写完毕之后，点击“立即预定”，出现预定成功的界面提示（如图4）</view>
-    <view class="img">
-        <image src="./../../static/my/help/help4.png"></image>
-        <text>图4</text>
-    </view>
-    <view class="p">5.	点击“查看此会议”，跳转至会议详情（如图5）注：复制Etherpad链接可进行会议纪要填写；复制ID与链接，可获得Zoom会议相关信息。</view>
-    <view class="img">
-        <image src="./../../static/my/help/help5.png"></image>
-        <text>图5</text>
-    </view>
-    <view class="p">6.	会议预订成功后，小程序首页会出现当天会议的提示（如图6）</view>
-    <view class="img">
-        <image src="./../../static/my/help/help6.png"></image>
-        <text>图6</text>
-    </view>
-    <view class="p">
-        7.	点击“查看会议”或者“会议”（如图7），跳转至会议列表，可进行SIG组与会议的搜索（如图8）注：会议列表只能显示当前日期前后一周的会议，且按时间倒叙排序
-    </view>
-    <view class="img">
-        <image src="./../../static/my/help/help7.png"></image>
-        <text>图7</text>
-        <image src="./../../static/my/help/help8.png"></image>
-        <text>图8</text>
-    </view>
-    <view class="p">
-        8.	在会议界面左滑卡片（如图9），出现获取会议地址、收藏会议（或取消收藏）与删除的功能（如图10） 
-目前没有修改会议的操作，当创建者发现有时间冲突或者想修改会议内容时，可以删除重新创建。注：会议删除功能只能由创建者删除使用（如图11）
-    </view>
-    <view class="img">
-        <image src="./../../static/my/help/help9.png"></image>
-        <text>图9</text>
-        <image src="./../../static/my/help/help10.png"></image>
-        <text>图10</text>
-        <image src="./../../static/my/help/help11.png"></image>
-        <text>图11</text>
-    </view>
-    <view class="p">9.	在小程序首页，对今天的会议所在卡片左滑，也会显示收藏会议，获取地址功能（如图12）
-注：同样只有会议发起人有删除功能的选项</view>
-    <view class="img">
-        <image src="./../../static/my/help/help12.png"></image>
-        <text>图12</text>
-    </view>
-    <view class="p">10.	点击“获取地址”，即可获得会议详细信息（如图13）</view>
-    <view class="img">
-        <image src="./../../static/my/help/help13.png"></image>
-        <text>图13</text>
-    </view>
-    <view class="p">11.	点击“收藏会议”，会议卡片右上角会出现收藏印记，（如图14）。
-再次左滑卡片，点击“取消收藏”，可取消收藏此会议（如图15）。</view>
-    <view class="img">
-        <image src="./../../static/my/help/help14.png"></image>
-        <text>图14</text>
-        <image src="./../../static/my/help/help15.png"></image>
-        <text>图15</text>
-    </view>
-    <view class="p">12.	在首页右下角，点击“我的”，查看openEuler小程序使用攻略、我收藏的会议、我创建的会议和社区隐私声明（如图16）</view>
-    <view class="img">
-        <image src="./../../static/my/help/help16.png"></image>
-        <text>图16</text>
-    </view>
+    <block wx:for="{{list}}" wx:key="index">
+        <view class="tab-content" wx:if="{{index==curIndex}}">
+            <image wx:for="{{item.contentImg}}" src="{{item}}" mode="widthFix" wx:key="index" />
+        </view>    
+    </block>
+    
 </view>

@@ -66,6 +66,19 @@ let remoteMethods = {
                 _callback && _callback(ret);
             }
         });
+    },
+    getSignUpInfo: function (id, _callback) {
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'GET',
+            service: 'GET_SIGNUP_INFO',
+            otherParams: {
+                id
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
     }
 }
 Page({
@@ -85,7 +98,8 @@ Page({
         showDialogDel: false,
         curId: '',
         userId: '',
-        collectionId: ''
+        collectionId: '',
+        registerId: ''
     },
     /**
      * 生命周期函数--监听页面加载
@@ -174,7 +188,7 @@ Page({
                 }
             } else {
                 this.setData({
-                    showDialogDel: true
+                    showDialoogDel: true
                 })
             }
         } else {
@@ -188,6 +202,12 @@ Page({
                         this.onLoad();
                     })
                 }
+            } else if(e.detail.operaType == 3) {
+                remoteMethods.getSignUpInfo(this.data.curId, (res) => {
+                    wx.navigateTo({
+                        url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(res.name)}&title=${encodeURIComponent(res.title)}&tel=${encodeURIComponent(res.telephone)}&poster=${encodeURIComponent(res.poster)}`
+                    })
+                })
             } else {
                 this.setData({
                     underDialogShow: true
@@ -221,7 +241,8 @@ Page({
             actionShow: true,
             curId: e.currentTarget.dataset.item.id,
             userId: e.currentTarget.dataset.item.user,
-            collectionId: e.currentTarget.dataset.item.collection_id || ''
+            collectionId: e.currentTarget.dataset.item.collection_id || '',
+            registerId: e.currentTarget.dataset.item.register_id || ''
         })
         const strTemp = this.data.collectionId ? '取消收藏' : '收藏活动';
         if (this.data.level == 3) {
@@ -255,6 +276,17 @@ Page({
                         name: strTemp,
                         operaType: 1
                     }]
+                })
+            }
+
+            if (this.data.registerId) {
+                let tempArr = this.data.actions;
+                tempArr.unshift({
+                    name: '查看门票',
+                    operaType: 3
+                })
+                this.setData({
+                    actions: tempArr
                 })
             }
 

@@ -1,32 +1,41 @@
 /* pages/my/help.wxss */
 page {
+    background-color: #f5f7fa;
+}
+
+.container {
+    padding: 0 !important;
+}
+
+.container .tabs {
+    height: 134rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20rpx;
     background-color: #fff;
 }
 
-.container .h1 {
-    text-align: center;
-    margin-top: 128rpx;
-    margin-bottom: 40rpx;
-    font-size: 36rpx;
-    color: #000;
-}
-
-.container .p {
-    margin-bottom: 50rpx;
+.container .tabs .tab-item {
+    color: #c7cad0;
     font-size: 34rpx;
-    color: #000;
-    line-height: 54rpx;
-    text-align: justify;
+    height: 100%;
+    line-height: 134rpx;
 }
 
-.container .img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50rpx;
+.container .tabs .active {
+    border-bottom: 10rpx solid #3265e8;
+    color: #333;
+    border-radius: 0 0 5px 5px;
 }
 
-.container .img image {
-    height: 885rpx;
-    width: 424rpx;
+.container .tab-content {
+    background-color: #fff;
+    padding: 40rpx 30rpx 0;
+}
+
+.container .tab-content image {
+    width: 690rpx;
+    height: 1100rpx;
+    margin-bottom: 40rpx;
 }
