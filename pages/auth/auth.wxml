@@ -8,4 +8,7 @@
             <text>微信授权登录</text>
         </view>
     </button>
+    <view class="privacy">
+        登录即表示同意<text bindtap="toPrivacy">隐私条款</text>
+    </view>
 </view>

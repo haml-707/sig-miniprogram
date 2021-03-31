@@ -56,3 +56,14 @@ page {
     width: 44rpx;
     height: 36rpx;
 }
+
+.container .privacy {
+    color: #6d7278;
+    font-size: 28prpx;
+    text-align: center;
+    margin-top: 30rpx;
+}
+
+.container .privacy text {
+    color: #002fa7;
+}

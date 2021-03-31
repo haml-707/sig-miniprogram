@@ -42,5 +42,10 @@ Page(mixin({
                 }
             }
         });
+    },
+    toPrivacy() {
+        wx.navigateTo({
+            url: '/package-my/my/privecy'
+        })
     }
 }))
