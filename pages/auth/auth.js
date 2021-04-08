@@ -2,18 +2,26 @@
 const mixin = require("../../utils/page-mixin.js").$pageMixin;
 const appUser = require("../../utils/app-user.js");
 const app = getApp();
+let that = null;
 Page(mixin({
 
     /**
      * 页面的初始数据
      */
     data: {
-        id: ''
+        id: '',
+        canIUseGetUserProfile: false
     },
     onLoad(options) {
+        that = this;
         if (options.id) {
             this.setData({
                 id: options.id
+            })
+        }
+        if (wx.getUserProfile) {
+            this.setData({
+                canIUseGetUserProfile: true
             })
         }
     },
@@ -24,7 +32,6 @@ Page(mixin({
      * 绑定获取用户信息
      */
     bindGetUserInfo: function (e) {
-        let that = this;
 
         wx.getSetting({
             success: function (res) {
@@ -42,6 +49,22 @@ Page(mixin({
                 }
             }
         });
+    },
+    bindGetUserProfile() {
+        wx.getUserProfile({
+            desc: '用于会议和活动所需信息',
+            success: (res) => {
+                appUser.wxGetUserProfileLogin(function (result) {
+                    const pages = getCurrentPages(); // 当前页面
+                    const beforePage = pages[pages.length - 2]; // 前一个页面
+                    const id = beforePage.options.id || that.data.id;
+                    const url = id ? '/' + beforePage.route + '?id=' + id : '/' + beforePage.route
+                    wx.reLaunch({
+                        url: url
+                    })
+                }, res.userInfo);
+            }
+        })
     },
     toPrivacy() {
         wx.navigateTo({

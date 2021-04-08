@@ -6,7 +6,7 @@
     "setting": {
         "urlCheck": false,
         "es6": true,
-        "enhance": false,
+        "enhance": true,
         "postcss": true,
         "preloadBackgroundData": false,
         "minified": true,
@@ -39,7 +39,7 @@
         "minifyWXSS": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.12.2",
+    "libVersion": "2.16.0",
     "appid": "wx6eaef4f2eacd9329",
     "projectname": "openeuler",
     "debugOptions": {
