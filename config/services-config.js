@@ -61,10 +61,10 @@ var commonServiceConfig = {
     MY_COLLECT_LIST: '/collections/',
     
     // 获取发起人列表
-    ENTERPRISE_MEMBER_LIST: '/sponsors',
+    ENTERPRISE_MEMBER_LIST: '/sponsors/',
 
     // 获取未添加发起人名单
-    ENTERPRISE_EXCLUDE_MEMBER_LIST: '/nonsponsors',
+    ENTERPRISE_EXCLUDE_MEMBER_LIST: '/nonsponsors/',
 
     // 添加发起人
     ENTERPRISE_ADD_MEMBER_LIST: '/sponsor/action/new/',
@@ -158,7 +158,10 @@ var commonServiceConfig = {
     GET_MY_COUNT: '/mycounts/',
 
     // 获取我的活动报名信息
-    GET_SIGNUP_INFO: '/ticket/{id}/'
+    GET_SIGNUP_INFO: '/ticket/{id}/',
+
+    // 最近的会议列表
+    RECENTLY_MEETINGS: '/meetings_recently/'
 };
 
 

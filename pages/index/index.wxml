@@ -21,5 +21,5 @@
             <image class="arrow" src="./../../static/common/arrow-right.svg"></image>
         </view>
     </view>
-    <meeting-list id="meeting" bind:action-status="actionStatus"></meeting-list>
+    <meeting-list id="meeting" is-home="true" bind:action-status="actionStatus" api-url="RECENTLY_MEETINGS"></meeting-list>
 </view>
