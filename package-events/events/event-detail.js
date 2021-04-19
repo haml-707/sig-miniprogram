@@ -247,12 +247,6 @@ Page({
             })
         }
     },
-    onShareAppMessage: function (res) {
-        return {
-            title: '活动详情',
-            path: `/package-events/events/event-detail?id=${that.data.id}`
-        }
-    },
     collect() {
         if(!this.data.info.collection_id){
             remoteMethods.collect(() => {

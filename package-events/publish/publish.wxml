@@ -56,8 +56,8 @@
         </view>
         <view class="form-item meeting-desc relative">
             <text class="label">活动简介</text>
-            <textarea value="{{desc}}" hidden="{{datePopShow||timePopShow||endTimePopShow}}" maxlength="{{50}}" placeholder-class="placeholder" bindinput="descInput" placeholder="请输入活动简介">
-                <text class="hint">{{desc.length}}/50</text>
+            <textarea value="{{desc}}" hidden="{{datePopShow||timePopShow||endTimePopShow}}" maxlength="{{500}}" placeholder-class="placeholder" bindinput="descInput" placeholder="请输入活动简介">
+                <text class="hint">{{desc.length}}/500</text>
             </textarea>
             <cover-view class="mask" wx:if="{{!endTimePopShow&&!timePopShow&&(detailType==5)}}"></cover-view>
         </view>

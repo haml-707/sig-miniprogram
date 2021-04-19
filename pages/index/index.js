@@ -5,7 +5,12 @@ const appUser = require("../../utils/app-user.js");
 let that = null;
 Page(mixin({
     data: {
-        imgUrls: [{
+        imgUrls: [
+            {
+                type: 1,
+                url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/miniprogrambanner01.png'
+            },
+            {
                 type: 1,
                 url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A6%96%E9%A1%B5%E6%96%B0banner.png'
             },
