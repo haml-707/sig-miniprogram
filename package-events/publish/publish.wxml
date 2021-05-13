@@ -61,13 +61,13 @@
             </textarea>
             <cover-view class="mask" wx:if="{{!endTimePopShow&&!timePopShow&&(detailType==5)}}"></cover-view>
         </view>
-        <view class="form-wrapper schedule" wx:for="{{schedule}}" wx:key="index">
+        <view class="form-wrapper schedule" wx:for="{{schedule}}" wx:for-item="item" wx:for-index="index" wx:key="index">
             <view class="header">
                 <view class="left">
                     <text class="icon">议题 {{index+1}}</text>
                     <text class="title">日程</text>
                 </view>
-                <view class="del-btn"wx:if="{{index}}" bindtap="delSchedule" data-index="{{index}}">
+                <view class="del-btn" wx:if="{{index}}" bindtap="delSchedule" data-index="{{index}}">
                     <image src="./../../static/events/schedule-del.svg" />
                 </view>
             </view>
@@ -89,17 +89,35 @@
                 </text>
                 <input value="{{item.topic}}" maxlength="{{50}}" data-index="{{index}}" bindinput="scheduleTitleInput" placeholder-class="placeholder" placeholder="请输入您的活动议题"></input>
             </view>
-            <view class="form-item">
-                <text class="label">Speaker</text>
-                <input value="{{item.speaker}}" data-index="{{index}}" bindinput="speakerInput" placeholder-class="placeholder" placeholder="请填写演讲嘉宾"></input>
+            <view class="speaker-wrapper" wx:for="{{item.speakerList}}" wx:for-item="item1" wx:for-index="index1" wx:key="index1">
+                <view class="form-item speaker-del-wrapper">
+                    <text class="label speaker-header">Speaker {{index1+1}}</text>
+                    <view class="del-btn" bindtap="delSpeaker" data-outindex="{{index}}" data-innerindex="{{index1}}">
+                        <image src="./../../static/events/speaker-del.svg" />
+                    </view>
+                </view>  
+                <view class="form-item">
+                    <text class="label">
+                        <text>Name</text>
+                        <text class="require">*</text>
+                    </text>
+                    <input value="{{item1.name}}" data-outindex="{{index}}" data-innerindex="{{index1}}" bindinput="nameInput" placeholder-class="placeholder" placeholder="请填写嘉宾名称"></input>
+                </view>
+                <view class="form-item">
+                    <text class="label">Title</text>
+                    <input value="{{item1.title}}" data-outindex="{{index}}" data-innerindex="{{index1}}" bindinput="speakerTitleInput" placeholder-class="placeholder" placeholder="请填写嘉宾的职位"></input>
+                </view>    
+                <view class="form-item">
+                    <text class="label">Mail</text>
+                    <input value="{{item1.mail}}" data-outindex="{{index}}" data-innerindex="{{index1}}" bindinput="mailInput" placeholder-class="placeholder" placeholder="请填写嘉宾邮箱"></input>
+                </view> 
             </view>
-            <view class="form-item">
-                <text class="label">Title</text>
-                <input value="{{item.desc}}" data-index="{{index}}" bindinput="scheduleDescInput" placeholder-class="placeholder" placeholder="请填写嘉宾简介"></input>
+            <view class="add-speaker" data-index="{{index}}" bindtap="addSpeaker">
+                <text>+ 继续添加Speaker</text>
             </view>
         </view>
         <view class="add-shedule" bindtap="addSchedule">
-            <text>+ 继续添加</text>
+            <text>+ 继续添加日程</text>
         </view>
         <view class="topic relative">
             <view class="header">海报主题</view>

@@ -79,7 +79,7 @@ Page({
             wxml: wxml({
                 title: that.data.info.title,
                 date: that.data.info.date,
-                address: that.data.info.address,
+                address: that.data.info.detail_address,
                 poster: that.data.info.poster,
                 qrcode: that.data.info.wx_code,
                 liveAddress: that.data.info.live_address

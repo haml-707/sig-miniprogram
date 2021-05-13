@@ -149,11 +149,23 @@ Page({
             })
             let arr = [];
             JSON.parse(res.schedules).forEach(item => {
-                arr.push({
-                    duration: item.start + '-' + item.end,
-                    title: item.topic,
-                    speaker: item.speaker ? (item.speaker + '-' + item.desc) : ''
-                })
+                if(item.speakerList){
+                    arr.push({
+                        duration: item.start + '-' + item.end,
+                        title: item.topic,
+                        speakerList: item.speakerList
+                    })
+                } else {
+                    arr.push({
+                        duration: item.start + '-' + item.end,
+                        title: item.topic,
+                        speakerList: [{
+                            name: item.speaker || '',
+                            title: item.desc || ''
+                        }]
+                    })
+                }
+                
             });
             this.setData({
                 steps: arr

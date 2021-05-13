@@ -258,10 +258,20 @@ input {
 
 .container .form .schedule {
     margin-top: 20rpx;
+    border: 2rpx dashed #3265e8;
 }
 
 .container .form .schedule .form-item {
     padding: 0 60rpx !important;
+}
+
+.container .form .schedule .speaker-del-wrapper {
+    justify-content: space-between;
+}
+
+.container .form .schedule .speaker-del-wrapper .del-btn image {
+    width: 30rpx;
+    height: 30rpx;
 }
 
 .container .form .schedule .form-item .label {
@@ -304,10 +314,10 @@ input {
     height: 108rpx;
     line-height: 108rpx;
     text-align: center;
-    border: 2rpx dashed #979797;
+    border: 2rpx dashed #3265e8;
     box-shadow: 0rpx 5rpx 15rpx 0rpx rgba(0, 47, 167, 0.1);
     border-radius: 8rpx;
-    color: #979797;
+    color: #6d7278;
     background-color: #fff;
     margin-top: 20rpx;
 }
@@ -370,4 +380,31 @@ input {
     background-color: #000;
     opacity: 0.2;
     z-index: 1000;
+}
+
+.container .speaker-wrapper {
+    border: 2rpx dashed #f9762d;
+    border-radius: 8rpx;
+    margin: 0 auto 20rpx;
+    width: 92%;
+}
+
+.container .speaker-wrapper .speaker-header {
+    font-size: 34rpx;
+}
+
+.container .form .speaker-wrapper .form-item {
+    padding: 0 30rpx !important;
+}
+
+.container .add-speaker {
+    border: 2rpx dashed #f9762d;
+    border-radius: 8rpx;
+    margin: 0 auto 30rpx;
+    width: 92%;
+    height: 65rpx;
+    text-align: center;
+    line-height: 65rpx;
+    color: #6d7278;
+    font-size: 28rpx;
 }

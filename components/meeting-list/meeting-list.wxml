@@ -19,15 +19,13 @@
             <view class="wrapper">
                 <view class="name">{{item.topic}}</view>
                 <view class="date">
-                    <image src="./../../static/index/date.png"></image>
-                    <text wx:if="{{item.video_url}}">
-                        {{item.date}} {{item.start}}-{{item.end}} (可回放)
-                    </text>
+                    <image src="./../../static/index/date.svg"></image>
+                    <text wx:if="{{item.video_url}}">{{item.date}} {{item.start}}-{{item.end}} (可回放)</text>
                     <text wx:else>{{item.date}} {{item.start}}-{{item.end}}</text>
                 </view>
                 <view class="desc">
                     <image src="./../../static/index/desc.svg"></image>
-                    <text>{{item.agenda}}</text>
+                    <text>{{item.agenda||'暂无描述'}}</text>
                 </view>
             </view>
             <image wx:if="{{item.collection_id}}" class="collection" src="./../../static/common/collection-icon.svg"></image>

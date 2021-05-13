@@ -12,7 +12,7 @@
             <view wx:elif="{{info.status==5}}" class="status over">已结束</view>
         </view>
         <view class="date">
-            <image src="./../../static/index/date.png"></image>
+            <image src="./../../static/index/date.svg"></image>
             <text>{{info.date}}</text>
         </view>
         <view class="address" bindtap="openLocation" data-item="{{info}}">
@@ -46,10 +46,13 @@
                             <view class="step-item">
                                 <view class="detail">
                                     <view class="duration">{{item.duration}}</view>
-                                    <view class="title">{{item.title}}</view>
-                                    <view wx:if="{{item.speaker}}" class="speaker">
-                                        {{item.speaker}}
-                                    </view>
+                                    <view wx:if="{{item.title}}" class="title">{{item.title}}</view>
+                                    <block wx:for="{{item.speakerList}}" wx:key="index">
+                                        <view class="speaker">
+                                            {{item.name}}-{{item.title||''}}
+                                        </view>
+                                    </block>
+                                    
                                 </view>
                                 <view class="circle"></view>
                                 <view class="line"></view>

@@ -103,6 +103,11 @@ let localMethods = {
                 if (!item.topic) {
                     flag = false;
                 }
+                item.speakerList.forEach(item => {
+                    if (!item.name) {
+                        flag = false;
+                    }
+                })
             });
             if (!flag) {
                 this.toast('请补充日程必填信息');
@@ -132,6 +137,11 @@ let localMethods = {
                 if (!item.topic) {
                     flag = false;
                 }
+                item.speakerList.forEach(item => {
+                    if (!item.name) {
+                        flag = false;
+                    }
+                })
             });
             if (!flag) {
                 this.toast('请补充填写日程必填信息');
@@ -167,8 +177,7 @@ Page({
             start: '',
             end: '',
             topic: '',
-            speaker: '',
-            desc: ''
+            speakerList: []
         }],
         datePopShow: false,
         timePopShow: false,
@@ -186,7 +195,7 @@ Page({
         maxEndTime: 22,
         filter(type, options) {
             if (type === 'minute') {
-                return options.filter((option) => option % 15 === 0);
+                return options.filter((option) => option % 5 === 0);
             }
 
             return options;
@@ -291,14 +300,20 @@ Page({
             [key]: e.detail.value
         })
     },
-    speakerInput(e) {
-        const key = `schedule[${e.currentTarget.dataset.index}].speaker`;
+    nameInput(e) {
+        const key = `schedule[${e.currentTarget.dataset.outindex}].speakerList[${e.currentTarget.dataset.innerindex}].name`;
         this.setData({
             [key]: e.detail.value
         })
     },
-    scheduleDescInput(e) {
-        const key = `schedule[${e.currentTarget.dataset.index}].desc`;
+    speakerTitleInput(e) {
+        const key = `schedule[${e.currentTarget.dataset.outindex}].speakerList[${e.currentTarget.dataset.innerindex}].title`;
+        this.setData({
+            [key]: e.detail.value
+        })
+    },
+    mailInput(e) {
+        const key = `schedule[${e.currentTarget.dataset.outindex}].speakerList[${e.currentTarget.dataset.innerindex}].mail`;
         this.setData({
             [key]: e.detail.value
         })
@@ -309,11 +324,21 @@ Page({
             start: '',
             end: '',
             topic: '',
-            speaker: '',
-            desc: ''
+            speakerList: []
         })
         this.setData({
             schedule: arrTemp
+        })
+    },
+    addSpeaker(e) {
+        const length =  this.data.schedule[e.currentTarget.dataset.index].speakerList.length;
+        const key = `schedule[${e.currentTarget.dataset.index}].speakerList[${length}]`;
+        this.setData({
+            [key]: {
+                name: '',
+                title: '',
+                mail: ''
+            }
         })
     },
     delSchedule(e) {
@@ -321,6 +346,14 @@ Page({
         arrTemp.splice(e.currentTarget.dataset.index, 1);
         this.setData({
             schedule: arrTemp
+        })
+    },
+    delSpeaker(e) {
+        let arrTemp = this.data.schedule[e.currentTarget.dataset.outindex].speakerList;
+        let key = `schedule[${e.currentTarget.dataset.outindex}].speakerList`;
+        arrTemp.splice(e.currentTarget.dataset.innerindex, 1);
+        this.setData({
+            [key]: arrTemp
         })
     },
     selTime: function (e) {

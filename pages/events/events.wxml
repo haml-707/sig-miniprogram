@@ -32,7 +32,7 @@
                     <view class="right">
                         <view class="title">{{item.title}}</view>
                         <view class="date">
-                            <image src="./../../static/index/date.png"></image>
+                            <image src="./../../static/index/date.svg"></image>
                             <text>{{item.date}}</text>
                         </view>
                         <view class="address">
