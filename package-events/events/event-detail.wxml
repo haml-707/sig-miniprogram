@@ -1,7 +1,11 @@
 <!-- package-events/events/event-detail.wxml -->
 <view class="container">
+    <video hidden="{{videoHidden}}" bindfullscreenchange="fullScreenChange" id="video" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/openEuler_MG%2BAnimate_1920x500_0128.mp4"></video>
     <view class="banner-title banner-type{{info.poster}}">
         <text>{{info.title}}</text>
+        <view class="mask" bindtap="clickVideo">
+            <image src="./../../static/events/play.png" />
+        </view>
     </view>
     <view class="detail-wrapper">
         <view class="title-wrapper">
@@ -18,7 +22,7 @@
         <view class="address" bindtap="openLocation" data-item="{{info}}">
             <view class="left">
                 <image src="./../../static/common/location.svg"></image>
-                <text>{{info.address||info.live_address}}</text>
+                <text>{{info.address||info.join_url}}</text>
             </view>
             <image hidden="{{info.activity_type==2}}" class="arrow-right" src="./../../static/common/arrow-right.svg" />
         </view>

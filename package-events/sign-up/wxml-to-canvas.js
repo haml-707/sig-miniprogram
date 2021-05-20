@@ -10,6 +10,7 @@ const wxml = (data) => {
             <text class="voucher">您的参会凭证</text>
             <text class="name">姓名: ${data.name}</text>
             <text class="tel">手机: ${data.tel}</text>
+            <image class="qrcode" src="${data.qrcode}" />
         </view>
     </view>
     `
@@ -83,6 +84,11 @@ const style = () => {
             height: 25,
             width: 350,
             textAlign: 'center'
+        },
+        qrcode: {
+            marginTop: 30,
+            height: 150,
+            width: 150
         },
         bgImg: {
             position: 'absolute',

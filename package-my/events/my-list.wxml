@@ -19,7 +19,7 @@
                         </view>
                         <view class="address">
                             <image src="./../../static/common/location.svg"></image>
-                            <text>{{item.address||item.live_address}}</text>
+                            <text>{{item.address||item.join_url}}</text>
                         </view>
                         <view class="button" wx:if="{{type == 4}}">
                             <button bindtap="editDraft" data-id="{{item.id}}">编辑活动</button>
@@ -28,6 +28,9 @@
                             <button>立即报名</button>
                         </view>
                         <view class="button" wx:if="{{type == 2}}">
+                            <button class="sign-btn" bindtap="toSign" data-id="{{item.id}}" wx:if="{{(item.status==3) || (item.status==4)}}">
+                                签到码
+                            </button>
                             <button bindtap="toUpdateSchedule" data-id="{{item.id}}" wx:if="{{(item.status==3) || (item.status==4)}}">
                                 修改日程
                             </button>

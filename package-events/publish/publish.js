@@ -122,8 +122,8 @@ let localMethods = {
                 this.toast('请选择活动日期');
                 return;
             }
-            if (!data.live_address) {
-                this.toast('请输入直播地址');
+            if (!data.start && !data.end) {
+                this.toast('请选择活动时间');
                 return;
             }
             let flag = true;
@@ -139,6 +139,9 @@ let localMethods = {
                 }
                 item.speakerList.forEach(item => {
                     if (!item.name) {
+                        flag = false;
+                    }
+                    if (!item.mail) {
                         flag = false;
                     }
                 })
@@ -177,7 +180,13 @@ Page({
             start: '',
             end: '',
             topic: '',
-            speakerList: []
+            speakerList: [
+                {
+                    name: '',
+                    title: '',
+                    mail: ''
+                }
+            ]
         }],
         datePopShow: false,
         timePopShow: false,
@@ -205,7 +214,9 @@ Page({
         topicSelIndex: 1,
         longitude: '',
         latitude: '',
-        liveAddress: ''
+        onlineStartTime: '',
+        onlineEndTime: '',
+        isOnline: 0
     },
 
     /**
@@ -223,14 +234,15 @@ Page({
                     title: res.title,
                     date: res.date,
                     type: res.activity_type,
-                    liveAddress: res.live_address || '',
                     longitude: res.longitude || '',
                     latitude: res.latitude || '',
                     address: res.address || '',
                     addressName: res.detail_address || '',
                     desc: res.synopsis || '',
                     topicSelIndex: res.poster,
-                    schedule: JSON.parse(res.schedules)
+                    schedule: JSON.parse(res.schedules),
+                    onlineStartTime: res.start || '',
+                    onlineEndTime: res.end || ''
                 })
             })
         }
@@ -362,9 +374,16 @@ Page({
             startTimeIndex: e.currentTarget.dataset.index
         })
     },
+    selOnlineStartTime() {
+        this.setData({
+            timePopShow: true,
+            isOnline: 1
+        })
+    },
     timeCancel: function () {
         this.setData({
-            timePopShow: false
+            timePopShow: false,
+            isOnline: 0
         })
     },
     timeOnInput: function (e) {
@@ -373,10 +392,19 @@ Page({
         })
     },
     timeConfirm: function (e) {
+        if(this.data.isOnline){
+            this.setData({
+                onlineStartTime: this.data.currentTime,
+                isOnline: 0,
+                timePopShow: false,
+            })
+            return;
+        }
         const key = `schedule[${this.data.startTimeIndex}].start`;
         this.setData({
             [key]: this.data.currentTime,
-            timePopShow: false
+            timePopShow: false,
+            isOnline: 0
         })
     },
     timeCancel: function () {
@@ -395,31 +423,42 @@ Page({
             endTimeIndex: e.currentTarget.dataset.index
         })
     },
+    selOnlineEndTime() {
+        this.setData({
+            endTimePopShow: true,
+            isOnline: 1
+        })
+    },
     endTimeOnInput: function (e) {
         this.setData({
             currentEndTime: e.detail
         })
     },
     endTimeConfirm: function () {
+        if(this.data.isOnline){
+            this.setData({
+                isOnline: 0,
+                onlineEndTime: this.data.currentEndTime,
+                endTimePopShow: false
+            })
+            return;
+        }
         const key = `schedule[${this.data.endTimeIndex}].end`;
         this.setData({
             [key]: this.data.currentEndTime,
-            endTimePopShow: false
+            endTimePopShow: false,
+            isOnline: 0
         })
     },
     endTimeCancel: function () {
         this.setData({
-            endTimePopShow: false
+            endTimePopShow: false,
+            isOnline: 0
         })
     },
     selTop(e) {
         this.setData({
             topicSelIndex: e.currentTarget.dataset.index
-        })
-    },
-    liveAddressInput(e) {
-        this.setData({
-            liveAddress: e.detail.value
         })
     },
     publish() {
@@ -443,11 +482,12 @@ Page({
                 "date": this.data.date,
                 "activity_type": 2,
                 "synopsis": this.data.desc,
-                "live_address": this.data.liveAddress,
                 "longitude": this.data.longitude,
                 "latitude": this.data.latitude,
                 "poster": this.data.topicSelIndex,
-                "schedules": this.data.schedule
+                "schedules": this.data.schedule,
+                "start": this.data.onlineStartTime,
+                "end": this.data.onlineEndTime
             }
         }
         if (!localMethods.validation(postData)) {
@@ -480,11 +520,12 @@ Page({
                 "date": this.data.date,
                 "activity_type": 2,
                 "synopsis": this.data.desc,
-                "live_address": this.data.liveAddress,
                 "longitude": this.data.longitude,
                 "latitude": this.data.latitude,
                 "poster": this.data.topicSelIndex,
-                "schedules": this.data.schedule
+                "schedules": this.data.schedule,
+                "start": this.data.onlineStartTime,
+                "end": this.data.onlineEndTime
             }
         }
         if (!localMethods.validation(postData)) {
@@ -520,11 +561,12 @@ Page({
                 "date": this.data.date,
                 "activity_type": 2,
                 "synopsis": this.data.desc,
-                "live_address": this.data.liveAddress,
                 "longitude": this.data.longitude,
                 "latitude": this.data.latitude,
                 "poster": this.data.topicSelIndex,
-                "schedules": this.data.schedule
+                "schedules": this.data.schedule,
+                "start": this.data.onlineStartTime,
+                "end": this.data.onlineEndTime
             }
         }
         if (!localMethods.validation(postData)) {
@@ -539,9 +581,8 @@ Page({
     },
     toPoster() {
         const address = this.data.type == 1 ? this.data.addressName : '';
-        const liveAddress = this.data.type == 2 ? this.data.liveAddress : '';
         wx.navigateTo({
-            url: `/package-events/events/poster?title=${this.data.title}&date=${this.data.date}&address=${address}&poster=${this.data.topicSelIndex}&liveAddress=${liveAddress}`
+            url: `/package-events/events/poster?title=${this.data.title}&date=${this.data.date}&address=${address}&poster=${this.data.topicSelIndex}`
         })
     }
 })

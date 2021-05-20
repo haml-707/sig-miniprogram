@@ -35,7 +35,9 @@
 				"events/event-detail",
 				"sign-up/sign-up",
 				"sign-up/sign-up-success",
-				"events/poster"
+				"events/poster",
+				"events/sign",
+				"events/sign-success"
 			]
 		},
 		{

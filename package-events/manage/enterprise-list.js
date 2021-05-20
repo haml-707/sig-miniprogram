@@ -40,7 +40,7 @@ Page({
     },
     toDetail: function (e) {
         wx.navigateTo({
-            url: '/package-events/manage/member-detail?id=' + e.currentTarget.dataset.id + '&avatar=' + e.currentTarget.dataset.avatar + '&name=' + e.currentTarget.dataset.name + '&nickname=' + e.currentTarget.dataset.nickname + '&enterprise=' + (e.currentTarget.dataset.enterprise || '')
+            url: '/package-events/manage/member-detail?id=' + e.currentTarget.dataset.id + '&avatar=' + e.currentTarget.dataset.avatar + '&name=' + e.currentTarget.dataset.name + '&nickname=' + e.currentTarget.dataset.nickname + '&enterprise=' + (e.currentTarget.dataset.enterprise || '') + '&telephone=' + (e.currentTarget.dataset.telephone || '') + '&email=' + (e.currentTarget.dataset.email || '')
         })
     },
     addMember: function () {

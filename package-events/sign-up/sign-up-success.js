@@ -1,9 +1,27 @@
 // package-events/sign-up/sign-up-success.js
+const appAjax = require('./../../utils/app-ajax');
 const {
     wxml,
     style
 } = require('./wxml-to-canvas.js');
 let that = null;
+
+let remoteMethods = {
+    getDetail: function (_callback) {
+        let service = 'EVENT_DETAIL';
+        appAjax.postJson({
+            autoShowWait: true,
+            type: 'GET',
+            service,
+            otherParams: {
+                id: that.data.id
+            },
+            success: function (ret) {
+                _callback && _callback(ret);
+            }
+        });
+    }
+}
 Page({
 
     /**
@@ -13,7 +31,9 @@ Page({
         poster: 1,
         title: '',
         name: '',
-        tel: ''
+        tel: '',
+        id: '',
+        qrcode: ''
     },
 
     /**
@@ -26,8 +46,15 @@ Page({
             poster: decodeURIComponent(options.poster),
             title: decodeURIComponent(options.title),
             name: decodeURIComponent(options.name),
-            tel: decodeURIComponent(options.tel)
+            tel: decodeURIComponent(options.tel),
+            id: decodeURIComponent(options.id)
         })
+        remoteMethods.getDetail((res) => {
+            this.setData({
+                qrcode: res.wx_code
+            })
+        })
+
     },
     saveToAlbum() {
         wx.showLoading({
@@ -39,7 +66,8 @@ Page({
                 title: that.data.title,
                 name: that.data.name,
                 tel: that.data.tel,
-                poster: that.data.poster
+                poster: that.data.poster,
+                qrcode: that.data.qrcode
             }),
             style: style()
         })

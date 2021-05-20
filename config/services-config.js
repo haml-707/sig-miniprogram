@@ -161,7 +161,10 @@ var commonServiceConfig = {
     GET_SIGNUP_INFO: '/ticket/{id}/',
 
     // 最近的会议列表
-    RECENTLY_MEETINGS: '/meetings_recently/'
+    RECENTLY_MEETINGS: '/meetings_recently/',
+
+    // 签到
+    SIGN: '/activitysign/'
 };
 
 

@@ -109,7 +109,9 @@ Page({
         level: 1,
         user: '',
         scene: '',
-        isIphoneX: false
+        isIphoneX: false,
+        videoInstance: null,
+        videoHidden: true
     },
 
     /**
@@ -133,6 +135,9 @@ Page({
                 }
                 
             }
+        })
+        this.setData({
+            videoInstance: wx.createVideoContext('video')
         })
     },
 
@@ -270,5 +275,16 @@ Page({
             })
         }
         
+    },
+    clickVideo() {
+        this.data.videoInstance.requestFullScreen({
+            direction: 90
+        });
+        this.data.videoInstance.play();
+    },
+    fullScreenChange() {
+        this.setData({
+            videoHidden: !this.data.videoHidden
+        })
     }
 })

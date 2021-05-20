@@ -32,10 +32,16 @@
                     </van-radio-group>
                 </view>
             </view>
-            <view wx:if="{{type===2}}" class="form-item">
-                <text class="label">直播地址</text>
-                <text class="require">*</text>
-                <input value="{{liveAddress}}" bindinput="liveAddressInput" placeholder-class="placeholder" placeholder="请输入您的直播地址"></input>
+            <view class="form-item" wx:if="{{type===2}}">
+                <text class="label">
+                    <text>活动时间</text>
+                    <text class="require">*</text>
+                </text>
+                <view class="sel-time">
+                    <text class="time start-time" bindtap="selOnlineStartTime">{{onlineStartTime||'请选择'}}</text>
+                    <text>至</text>
+                    <text class="time end-time" bindtap="selOnlineEndTime">{{onlineEndTime||'请选择'}}</text>
+                </view>
             </view>
             <view wx:if="{{type===1}}" class="form-item" bindtap="selAddress">
                 <text class="label">
@@ -53,6 +59,14 @@
                 <input value="{{addressName}}" bindinput="addressNameInput" placeholder-class="placeholder" placeholder="请输入详细活动地址"></input>
             </view>
             <cover-view class="mask" wx:if="{{!endTimePopShow&&!timePopShow&&(detailType==5)}}"></cover-view>
+        </view>
+        <view class="info info-online" wx:if="{{type===2}}">
+            <view>
+                <image src="./../../static/reserve/info.svg" />
+                <text>
+                    <text>我们会根据您的开始和结束时间为您分配网络研讨会资源</text>
+                </text>
+            </view>
         </view>
         <view class="form-item meeting-desc relative">
             <text class="label">活动简介</text>
@@ -108,7 +122,11 @@
                     <input value="{{item1.title}}" data-outindex="{{index}}" data-innerindex="{{index1}}" bindinput="speakerTitleInput" placeholder-class="placeholder" placeholder="请填写嘉宾的职位"></input>
                 </view>    
                 <view class="form-item">
-                    <text class="label">Mail</text>
+                    <text class="label" wx:if="{{type==2}}">
+                        <text>Mail</text>
+                        <text class="require">*</text>
+                    </text>
+                    <text class="label" wx:else>Mail</text>
                     <input value="{{item1.mail}}" data-outindex="{{index}}" data-innerindex="{{index1}}" bindinput="mailInput" placeholder-class="placeholder" placeholder="请填写嘉宾邮箱"></input>
                 </view> 
             </view>

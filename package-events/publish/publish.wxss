@@ -158,6 +158,10 @@ input {
     margin: 30rpx 0;
 }
 
+.container .info-online {
+    margin-bottom: 0;
+}
+
 .container .info view image {
     width: 28rpx;
     height: 28rpx;

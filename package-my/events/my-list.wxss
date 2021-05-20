@@ -126,6 +126,10 @@ page {
     display: inline-block;
 }
 
+.container .event-list-wrapper .event-item .body .right .button .sign-btn {
+    margin-right: 30rpx;
+}
+
 .container .event-list-wrapper .event-item .body .right .button .register {
     background-color: #6682ca;
 }

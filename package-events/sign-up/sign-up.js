@@ -86,7 +86,8 @@ Page({
         this.setData({
             id: options.id,
             eventTitle: options.title,
-            poster: options.poster
+            poster: options.poster,
+            isScan: options.isScan || 0
         })
     },
 
@@ -149,12 +150,24 @@ Page({
             activity: this.data.id
         }
         remoteMethods.signUp(postData, () => {
+            if (this.data.isScan) {
+                wx.redirectTo({
+                    url: `/package-events/events/sign-success?id=${this.data.id}`
+                })
+                return;
+            }
             wx.redirectTo({
-                url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(this.data.name)}&title=${encodeURIComponent(this.data.eventTitle)}&tel=${encodeURIComponent(this.data.tel)}&poster=${encodeURIComponent(this.data.poster)}`
+                url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(this.data.name)}&title=${encodeURIComponent(this.data.eventTitle)}&tel=${encodeURIComponent(this.data.tel)}&poster=${encodeURIComponent(this.data.poster)}&id=${encodeURIComponent(this.data.id)}`
             })
         })
     },
     back() {
+        if (this.data.isScan) {
+            wx.switchTab({
+                url: '/pages/events/events'
+            })
+            return;
+        }
         wx.navigateBack();
     }
 })

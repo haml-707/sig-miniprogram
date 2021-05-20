@@ -74,7 +74,7 @@ const lifeCycle = {
 			
 			if(url != 'pages/auth/auth') {
 				// wx.navigateTo({
-				// 	url: `/package-events/events/event-detail?id=20`
+				// 	url: `/package-events/events/sign-success?id=46`
 				// })
 				if(!userInfo && !userInfo.access) {
 					// app.globalData.tourist = true;

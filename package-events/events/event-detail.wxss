@@ -11,11 +11,32 @@ page {
     height: 378rpx;
     text-align: center;
     padding-top: 165rpx;
+    position: relative;
 }
 
 .container .banner-title text {
     font-size: 40rpx;
     color: #fff;
+}
+
+.container .banner-title .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.65;
+}
+
+.container .banner-title .mask image {
+    position: absolute;
+    width: 80rpx;
+    height: 62rpx;
+    left: 50%;
+    top: 50%;
+    margin-top: -31rpx;
+    margin-left: -40rpx;
 }
 
 .container .banner-type1 {
@@ -40,6 +61,7 @@ page {
     margin-top: -48rpx;
     margin-bottom: 20rpx;
     padding: 60rpx 0;
+    position: relative;
 }
 
 .container .detail-wrapper .title-wrapper {

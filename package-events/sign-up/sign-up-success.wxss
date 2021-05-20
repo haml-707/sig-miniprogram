@@ -70,7 +70,7 @@
 }
 
 .container button {
-    margin-top: 128rpx;
+    margin-top: 27rpx;
     width: 500rpx;
     height: 90rpx;
     line-height: 90rpx;
@@ -79,6 +79,13 @@
     text-align: center;
     color: #fff;
 }
+
+.container .qrcode {
+    width: 309rpx;
+    height: 309rpx;
+    margin-top: 60rpx;
+}
+
 .canvas {
     height: 0;
     overflow: hidden;

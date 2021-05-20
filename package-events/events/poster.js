@@ -59,7 +59,7 @@ Page({
                     date: options.date,
                     detail_address: options.address || '',
                     poster: options.poster,
-                    live_address: options.liveAddress || '',
+                    join_url: options.liveAddress || '',
                     activity_type: options.address ? 1 : 2
                 },
                 isDraft: 1,
@@ -82,7 +82,7 @@ Page({
                 address: that.data.info.detail_address,
                 poster: that.data.info.poster,
                 qrcode: that.data.info.wx_code,
-                liveAddress: that.data.info.live_address
+                liveAddress: that.data.info.join_url
             }),
             style: style()
         })

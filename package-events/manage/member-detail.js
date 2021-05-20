@@ -11,7 +11,9 @@ let remoteMethods = {
             },
             data: {
                 gitee_name: postData.name,
-                enterprise: postData.enterprise
+                enterprise: postData.enterprise,
+                telephone: postData.telephone,
+                email: postData.email
             },
             success: function (ret) {
                 _callback && _callback(ret);
@@ -29,7 +31,9 @@ Page({
         avatar: '',
         nickname: '',
         name: '',
-        enterprise: ''
+        enterprise: '',
+        telephone: '',
+        email: ''
     },
 
     /**
@@ -41,7 +45,9 @@ Page({
             avatar: options.avatar,
             nickname: options.nickname,
             name: options.name,
-            enterprise: options.enterprise || ''
+            enterprise: options.enterprise || '',
+            telephone: options.telephone || '',
+            email: options.email || ''
         })
     },
 
@@ -72,7 +78,9 @@ Page({
         remoteMethods.saveMemberGiteeName({
             id: that.data.id,
             name: that.data.name,
-            enterprise: that.data.enterprise
+            enterprise: that.data.enterprise,
+            telephone: that.data.telephone,
+            email: that.data.email
         }, function (data) {
             if (data.code == 400) {
                 wx.showToast({
@@ -100,6 +108,16 @@ Page({
     enterpriseOnInput(e) {
         this.setData({
             enterprise: e.detail.value
+        })
+    },
+    telephoneOnInput(e) {
+        this.setData({
+            telephone: e.detail.value
+        })
+    },
+    emailOnInput(e) {
+        this.setData({
+            email: e.detail.value
         })
     },
     reset: function () {

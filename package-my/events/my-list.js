@@ -169,6 +169,11 @@ Page({
 
         })
     },
+    toSign(e) {
+        wx.navigateTo({
+            url: `/package-events/events/sign?id=${e.currentTarget.dataset.id}`
+        })
+    },
     editDraft(e) {
         wx.navigateTo({
             url: `/package-events/events/event-detail?id=${e.currentTarget.dataset.id}&type=4`
@@ -215,7 +220,7 @@ Page({
                 } else if(e.detail.operaType == 3) {
                     remoteMethods.getSignUpInfo(this.data.curId, (res) => {
                         wx.navigateTo({
-                            url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(res.name)}&title=${encodeURIComponent(res.title)}&tel=${encodeURIComponent(res.telephone)}&poster=${encodeURIComponent(res.poster)}`
+                            url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(res.name)}&title=${encodeURIComponent(res.title)}&tel=${encodeURIComponent(res.telephone)}&poster=${encodeURIComponent(res.poster)}&id=${encodeURIComponent(this.data.curId)}`
                         })
                     })
                 } else {
