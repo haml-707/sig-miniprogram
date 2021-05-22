@@ -163,7 +163,6 @@ Component({
     },
     attached() {
         that = this;
-        console.log(this.properties.isHome)
         this.properties.pageType === 2 && remoteMethods.getSigList(function (data) {
             if (data && data.length) {
                 data.unshift({

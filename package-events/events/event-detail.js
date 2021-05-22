@@ -131,7 +131,6 @@ Page({
                     that.setData({
                         isIphoneX: true
                     });
-                    console.log(that.data.isIphoneX)
                 }
                 
             }
@@ -280,9 +279,13 @@ Page({
         this.data.videoInstance.requestFullScreen({
             direction: 90
         });
-        this.data.videoInstance.play();
     },
     fullScreenChange() {
+        // if (this.data.videoHidden) {
+        //     this.data.videoInstance.play();
+        // } else {
+        //     this.data.videoInstance.pause();
+        // }
         this.setData({
             videoHidden: !this.data.videoHidden
         })

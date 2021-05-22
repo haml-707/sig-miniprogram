@@ -203,7 +203,6 @@ Page({
         this.onLoad();
     },
     toUpdateSchedule(e) {
-        console.log(e.currentTarget.dataset.id)
         wx.navigateTo({
             url: `/package-events/events/event-detail?id=${e.currentTarget.dataset.id}&type=5`
         })

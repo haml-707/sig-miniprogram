@@ -15,19 +15,13 @@
                 {
                     "name": "package-events/events/event-detail",
                     "pathName": "package-events/events/event-detail",
-                    "query": "scene:31",
-                    "scene": 1012
-                },
-                {
-                    "name": "package-events/events/event-detail",
-                    "pathName": "package-events/events/event-detail",
                     "query": "scene=33",
                     "scene": 1047
                 },
                 {
                     "name": "package-events/events/sign-success",
                     "pathName": "package-events/events/sign-success",
-                    "query": "scene=48",
+                    "query": "scene=49",
                     "scene": 1011
                 }
             ]
