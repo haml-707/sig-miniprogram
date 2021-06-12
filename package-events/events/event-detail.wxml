@@ -1,9 +1,9 @@
 <!-- package-events/events/event-detail.wxml -->
 <view class="container">
-    <video hidden="{{videoHidden}}" bindfullscreenchange="fullScreenChange" id="video" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/openEuler_MG%2BAnimate_1920x500_0128.mp4"></video>
+    <video wx:if="{{info.replay_url}}" hidden="{{videoHidden}}" bindfullscreenchange="fullScreenChange" id="video" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/openEuler_MG%2BAnimate_1920x500_0128.mp4"></video>
     <view class="banner-title banner-type{{info.poster}}">
         <text>{{info.title}}</text>
-        <view class="mask" bindtap="clickVideo">
+        <view class="mask" wx:if="{{info.replay_url}}" bindtap="clickVideo">
             <image src="./../../static/events/play.png" />
         </view>
     </view>

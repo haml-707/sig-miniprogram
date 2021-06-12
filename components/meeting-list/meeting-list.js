@@ -2,6 +2,7 @@
 const appAjax = require('./../../utils/app-ajax');
 const sessionUtil = require("../../utils/app-session.js");
 let that = null;
+let apiUrl = null;
 const remoteMethods = {
     getSigList: function (_callback) {
         appAjax.postJson({
@@ -16,7 +17,7 @@ const remoteMethods = {
         appAjax.postJson({
             autoShowWait: true,
             type: 'GET',
-            service: that.properties.apiUrl,
+            service: apiUrl,
             success: function (ret) {
                 _callback && _callback(ret);
                 if (that.properties.pageType === 2) {
@@ -178,6 +179,7 @@ Component({
     pageLifetimes: {
         // 组件所在页面的生命周期函数
         show: function () {
+            apiUrl = this.properties.apiUrl;
             if((this.properties.pageType === 3) || (this.properties.pageType === 4)){
                 this.initData();    
             }
