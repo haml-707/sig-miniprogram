@@ -121,6 +121,12 @@ var appAjax = {
 						if(res.statusCode === 401){
 							wx.removeStorageSync('_app_userinfo_session');
 							ajaxParams.success(0, res);
+							var pages = getCurrentPages();
+							var currentPage = pages[pages.length-1];
+							var url = currentPage.route;
+							if (url === 'pages/auth/auth') {
+								return;
+							}
 							wx.navigateTo({
 								url: '/pages/auth/auth'
 							})
