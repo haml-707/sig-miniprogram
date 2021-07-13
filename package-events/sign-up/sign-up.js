@@ -149,7 +149,15 @@ Page({
             telephone: this.data.tel,
             activity: this.data.id
         }
-        remoteMethods.signUp(postData, () => {
+        remoteMethods.signUp(postData, (res) => {
+            if (res.code === 400) {
+                wx.showToast({
+                    title: res.msg,
+                    icon : "none",
+                    duration: 2000
+                });
+                return;
+            }
             if (this.data.isScan) {
                 wx.redirectTo({
                     url: `/package-events/events/sign-success?id=${this.data.id}`
