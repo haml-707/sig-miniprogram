@@ -75,7 +75,8 @@ Page({
         gitee: '',
         id: '',
         eventTitle: '',
-        poster: 1
+        poster: 1,
+        tips: 'Gitee ID为https://gitee.com/{{gitee_id}} 中的gitee_id'
     },
 
     /**

@@ -49,8 +49,12 @@
             <image src="./../../static/reserve/info.svg" />
             <text>
                 <text class="require">*</text>
-                <text>号为必填项</text>
+                <text>号为必填项；</text>
             </text>
+        </view>
+        <view>
+            <image src="./../../static/reserve/info.svg" />
+            <text>{{tips}}</text>
         </view>
     </view>
     <view class="commit">
