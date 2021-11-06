@@ -46,7 +46,7 @@ let localMethods = {
             this.toast('请输入正确的邮箱地址');
             return;
         }
-        if (!that.data.enterprise) {
+        if (!that.data.enterprise && that.data.poster !== "4") {
             this.toast('请输入您的工作单位名称');
             return;
         }
@@ -84,6 +84,7 @@ Page({
      */
     onLoad: function (options) {
         that = this;
+        let poster = options.options-0;
         this.setData({
             id: options.id,
             eventTitle: options.title,
@@ -137,7 +138,8 @@ Page({
             gitee: e.detail.value
         })
     },
-    signUp() {
+    signUp(e) {
+        console.log();
         if (!localMethods.validation()) {
             return;
         }
@@ -165,13 +167,20 @@ Page({
                 })
                 return;
             }
-            wx.redirectTo({
-                url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(this.data.name)}&title=${encodeURIComponent(this.data.eventTitle)}&tel=${encodeURIComponent(this.data.tel)}&poster=${encodeURIComponent(this.data.poster)}&id=${encodeURIComponent(this.data.id)}`
-            })
+            if (e.currentTarget.dataset.summit) {
+                wx.navigateTo({
+                  url: `/package-events/events/poster?poster=4&id=${encodeURIComponent(this.data.id)}`,
+                })
+            } else {
+                wx.redirectTo({
+                    url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(this.data.name)}&title=${encodeURIComponent(this.data.eventTitle)}&tel=${encodeURIComponent(this.data.tel)}&poster=${encodeURIComponent(this.data.poster)}&id=${encodeURIComponent(this.data.id)}`
+                })
+            }
+           
         })
     },
     back() {
-        if (this.data.isScan) {
+        if (this.data.isScan ) {
             wx.switchTab({
                 url: '/pages/events/events'
             })
