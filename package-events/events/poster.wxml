@@ -30,7 +30,6 @@
           <button class="save" bindtap="saveToAlbum">保存到相册</button>
       </view>
     </block>
-   
 </view>
 <view class="canvas">
     <wxml-to-canvas class="widget" width="325" height="656"></wxml-to-canvas>
