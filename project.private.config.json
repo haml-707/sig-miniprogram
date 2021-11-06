@@ -23,6 +23,30 @@
                     "pathName": "package-events/events/sign-success",
                     "query": "scene=49",
                     "scene": 1011
+                },
+                {
+                    "name": "package-events/publish/publish",
+                    "pathName": "package-events/publish/publish",
+                    "query": "",
+                    "scene": null
+                },
+                {
+                    "name": "package-events/events/event-detail",
+                    "pathName": "package-events/events/event-detail",
+                    "query": "id=49&type=5",
+                    "scene": null
+                },
+                {
+                    "name": "package-events/sign-up/sign-up",
+                    "pathName": "package-events/sign-up/sign-up",
+                    "query": "id=49&title=openEuler%20summit%20test&poster=4",
+                    "scene": null
+                },
+                {
+                    "name": "pages/events/events",
+                    "pathName": "pages/events/events",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

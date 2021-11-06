@@ -2,7 +2,9 @@
 const appAjax = require('./../../utils/app-ajax');
 const {
     wxml,
-    style
+    style,
+    summitstyle,
+    summitwxml
 } = require('./wxml-to-canvas.js');
 
 let that = null;
@@ -33,7 +35,9 @@ Page({
     data: {
         id: '',
         isDraft: '',
-        info: {}
+        info: {},
+        avatarUrl:'',
+        nickName:''
     },
 
     /**
@@ -44,7 +48,9 @@ Page({
         this.widget = this.selectComponent('.widget');
         this.setData({
             id: options.id || '',
-            isDraft: options.isDraft
+            isDraft: options.isDraft,
+            nickName:wx.getStorageSync('_app_userinfo_session').nickName,
+            avatarUrl:wx.getStorageSync('_app_userinfo_session').avatarUrl
         })
         if (this.data.id) {
             remoteMethods.getDraftDetail(res => {
@@ -58,7 +64,7 @@ Page({
                     title: options.title,
                     date: options.date,
                     detail_address: options.address || '',
-                    poster: options.poster,
+                    poster: options.poster-0,
                     join_url: options.liveAddress || '',
                     activity_type: options.address ? 1 : 2
                 },
@@ -66,6 +72,9 @@ Page({
             })
         }
         
+    },
+    onShow : function () {
+      
     },
     back() {
         wx.navigateBack();
@@ -75,18 +84,24 @@ Page({
             title: '保存中',
             mask: true
         });
+        let renderhtml = null;
+        let renderstyle = null;
+        this.data.info.poster=== 4 ? renderhtml = summitwxml : renderhtml = wxml;
+        this.data.info.poster=== 4 ? renderstyle = summitstyle : renderstyle = style;
         const p1 = this.widget.renderToCanvas({
-            wxml: wxml({
+            wxml: renderhtml({
                 title: that.data.info.title,
                 date: that.data.info.date,
                 address: that.data.info.detail_address,
                 poster: that.data.info.poster,
                 qrcode: that.data.info.wx_code,
-                liveAddress: that.data.info.join_url
+                liveAddress: that.data.info.join_url,
+                avatarUrl: that.data.avatarUrl,
+                nickName:that.data.nickName
             }),
-            style: style()
+            style: renderstyle()
         })
-        p1.then(() => {
+        p1.then((res) => {
             const p2 = this.widget.canvasToTempFilePath();
             p2.then(res => {
                 wx.getSetting({
@@ -99,6 +114,17 @@ Page({
                                     icon: "success",
                                     duration: 2000
                                 });
+                                let pages = getCurrentPages(); //页面对象
+                                let prevpage = pages[pages.length - 2]; //上一个页面对象
+                                setTimeout(
+                                    function () {
+                                        if (prevpage.route == "package-events/sign-up/sign-up") {
+                                            wx.switchTab({
+                                              url: '../../pages/events/events',
+                                            })
+                                        }
+                                    },2000
+                                )
                             },
                             fail: function (err) {
                                 console.log(err);
@@ -112,6 +138,13 @@ Page({
                 });
             })
         })
+        .catch(err=>{
+            console.log(err);
+            wx.showToast({
+              title: '出了点问题~',
+            })
+        }) 
+        
 
     },
     setAndGetSysImage(data) {

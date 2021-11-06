@@ -8,6 +8,7 @@ page {
 }
 
 .container .post-wrapper {
+    position: relative;
     width: 650rpx;
     height: 1312rpx;
     background-size: 100% 100% !important;
@@ -17,6 +18,20 @@ page {
     overflow: hidden;
 }
 
+.container .summit-poster .boxF {
+    position: absolute;
+    top: 648rpx;
+    width: 135rpx;
+    height: 135rpx;
+    border-radius: 50%;
+}
+.container .summit-poster .nickName {
+    position: absolute;
+    top: 880rpx;
+    color: #fff;
+    font-weight: 400;
+    font-size: 36rpx;
+}
 .bg1 {
     background: url(https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/poster/bg1.png) no-repeat;
 }
@@ -30,7 +45,7 @@ page {
 }
 
 .bg4 {
-    background: url(https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/poster/bg4.png) no-repeat;
+    background: url(https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/poster/bg5.png) no-repeat;
 }
 
 .container .post-wrapper .title {
@@ -119,7 +134,15 @@ page {
     color: #fff;
 }
 
+.container .btn-wrapper .summit-btn {
+    width: 100%;
+    color: #fff;
+    font-size: 36rpx;
+    background-color: #000000;
+}
+
 .canvas {
     height: 0;
     overflow: hidden;
 }
+

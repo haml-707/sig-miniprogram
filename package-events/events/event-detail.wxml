@@ -2,7 +2,7 @@
 <view class="container">
     <video wx:if="{{info.replay_url}}" hidden="{{videoHidden}}" bindfullscreenchange="fullScreenChange" id="video" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/openEuler_MG%2BAnimate_1920x500_0128.mp4"></video>
     <view class="banner-title banner-type{{info.poster}}">
-        <text>{{info.title}}</text>
+        <text wx:if="{{info.poster != 4}}">{{info.title}}</text>
         <view class="mask" wx:if="{{info.replay_url}}" bindtap="clickVideo">
             <image src="./../../static/events/play.png" />
         </view>
@@ -88,7 +88,8 @@
             <image src="./../../static/events/share.svg" />
             <text>分享</text>
         </button>
-        <button class="btn-ghost" bindtap="toPoster">下载海报</button>
+        <button class="btn-ghost" bindtap="toPoster" wx:if="{{ info.poster !== 4}}">下载海报</button>
+        <button class="btn-ghost" bindtap="toPoster" wx:if="{{ info.poster === 4 && (info.register_id ||info.user==user || info.status==5)}}">查看邀请函</button>
         <block wx:if="{{info.status==5}}">
             <button class="btn-primary" wx:if="{{info.status==5}}" bindtap="switchTab2">
                 精彩回顾
@@ -99,11 +100,13 @@
                 <button class="btn-primary {{info.register_id?'register':''}}" wx:if="{{info.register_id}}">
                     已报名
                 </button>
+                <button class="btn-primary invitation" wx:elif="{{info.poster === 4}}" bindtap="toSignUp">生成邀请函</button>
                 <button class="btn-primary" wx:else bindtap="toSignUp">立即报名</button>
             </block>
             <block wx:elif="{{level==2}}">
                 <button class="btn-primary" wx:if="{{info.user==user}}" bindtap="editSchedule">修改日程</button>
                 <button class="btn-primary register" wx:elif="{{info.register_id}}">已报名</button>
+                <button class="btn-primary invitation" wx:elif="{{info.poster === 4}}" bindtap="toSignUp">生成邀请函</button>
                 <button class="btn-primary" wx:else bindtap="toSignUp">立即报名</button>
             </block>
             <block wx:else>

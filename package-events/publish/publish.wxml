@@ -32,7 +32,16 @@
                     </van-radio-group>
                 </view>
             </view>
-            <view class="form-item" wx:if="{{type===2}}">
+            <view class="form-item">
+                <view class="arrow record">
+                    <van-radio-group value="{{type}}" bind:change="radioOnChange" direction="horizontal">
+                        <van-radio label-class="radio-class" class="summit-radio" name="{{3}}" icon-size="40rpx" checked-color="#002fa7">
+                            Summit
+                        </van-radio>
+                    </van-radio-group>
+                </view>
+            </view>
+            <view class="form-item " wx:if="{{type===2}}">
                 <text class="label">
                     <text>活动时间</text>
                     <text class="require">*</text>
@@ -43,7 +52,7 @@
                     <text class="time end-time" bindtap="selOnlineEndTime">{{onlineEndTime||'请选择'}}</text>
                 </view>
             </view>
-            <view wx:if="{{type===1}}" class="form-item" bindtap="selAddress">
+            <view wx:if="{{ type===1 ||type ===3}}" class="form-item" bindtap="selAddress">
                 <text class="label">
                     <text>活动城市</text>
                     <text class="require">*</text>
@@ -53,7 +62,7 @@
                     <image src="./../../static/common/arrow-right.svg" />
                 </view>
             </view>
-            <view wx:if="{{type===1}}" class="form-item">
+            <view wx:if="{{type===1 ||type ===3}}" class="form-item">
                 <text class="label">具体地址</text>
                 <text class="require">*</text>
                 <input value="{{addressName}}" bindinput="addressNameInput" placeholder-class="placeholder" placeholder="请输入详细活动地址"></input>
