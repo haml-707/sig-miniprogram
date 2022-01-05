@@ -1,0 +1,6 @@
+<view class="new-year">
+    <image mode="widthFix" src=" https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/1.png"></image>
+    <image mode="widthFix" src=" https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/2.png"></image>
+    <image mode="widthFix" src=" https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/3.png"></image>
+    <image mode="widthFix" src=" https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/4.png"></image>
+</view>
