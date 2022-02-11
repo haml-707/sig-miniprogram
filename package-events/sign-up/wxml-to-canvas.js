@@ -3,7 +3,7 @@ const wxml = (data) => {
     <view class="container">
         <image class="bgImg" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/sign-up/bg${data.poster}.png" />
         <view class="absolute">
-            <image class="avatar" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/poster/wechat-logo.png" />
+            <image class="avatar" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/default-avatar.png" />
             <text class="openEuler">openEuler</text>
             <text class="successText">报名成功!</text>
             <text class="title">${data.title}</text>

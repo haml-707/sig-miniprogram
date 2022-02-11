@@ -461,10 +461,9 @@ Page({
             topicSelIndex: e.currentTarget.dataset.index
         })
     },
-	//生命周期函数--监听页面加载
     publish() {
         let postData = null;
-        if (this.data.type === 1 || this.data.type === 3) {
+        if (this.data.type === 1) {
             postData = {
                 "title": this.data.title,
                 "date": this.data.date,
@@ -502,7 +501,7 @@ Page({
     },
     saveDraft() {
         let postData = null;
-        if (this.data.type === 1 || this.data.type === 3) {
+        if (this.data.type === 1) {
             postData = {
                 "title": this.data.title,
                 "date": this.data.date,
@@ -543,7 +542,7 @@ Page({
     },
     editScheduleConfirm() {
         let postData = null;
-        if (this.data.type === 1 || this.data.type === 3) {
+        if (this.data.type === 1) {
             postData = {
                 "title": this.data.title,
                 "date": this.data.date,
@@ -581,7 +580,7 @@ Page({
         })
     },
     toPoster() {
-        const address = this.data.type == 1 || this.data.type == 3 ? this.data.addressName : '';
+        const address = this.data.type == 1 ? this.data.addressName : '';
         wx.navigateTo({
             url: `/package-events/events/poster?title=${this.data.title}&date=${this.data.date}&address=${address}&poster=${this.data.topicSelIndex}`
         })
