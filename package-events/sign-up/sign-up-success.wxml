@@ -1,6 +1,6 @@
 <!--package-events/sign-up/sign-up-success.wxml-->
 <view class="container bg{{poster}}">
-    <image class="avatar" src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/poster/wechat-logo.png" />
+    <image class="avatar" src="./../../static/common/default-avatar.png" />
     <text class="open-euler">openEuler</text>
     <text class="success-text">报名成功!</text>
     <text class="title">{{title}}</text>

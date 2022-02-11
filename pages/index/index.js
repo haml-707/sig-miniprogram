@@ -7,10 +7,6 @@ Page(mixin({
     data: {
         imgUrls: [
             {
-                type: 3,
-                url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/summit-banner.png'
-            },
-            {
                 type: 1,
                 url: 'https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A6%96%E9%A1%B5%E6%96%B0banner.png'
             },
@@ -41,19 +37,11 @@ Page(mixin({
         })
     },
     previewImage(e) {
-        const type = e.target.dataset.type;
-        if (type === 1) {
-            const current = e.target.dataset.src //获取当前点击的 图片 url
-            wx.previewImage({
-                current,
-                urls: [current]
-            })
-        } else if (type===3) {
-            wx.switchTab({
-              url: '../events/events',
-            })
-        }
-      
+        const current = e.target.dataset.src //获取当前点击的 图片 url
+        wx.previewImage({
+            current,
+            urls: [current]
+        })
     },
     onLoad: function () {
         that = this;

@@ -52,7 +52,7 @@ page {
 }
 
 .container .banner-type4 {
-    background: url(https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/detail-banner/5.png) no-repeat;
+    background: url(https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/detail-banner/4.png) no-repeat;
 }
 
 .container .detail-wrapper {
@@ -291,9 +291,7 @@ page {
     color: #fff;
     font-size: 36rpx;
 }
-.container .footer-wrapper .invitation {
-    width: 530rpx;
-}
+
 .container .footer-wrapper .register {
     background-color: #6682ca;
 }
