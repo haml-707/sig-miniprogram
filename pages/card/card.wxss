@@ -1,0 +1,15 @@
+.new-year {
+    display: flex;
+    padding: 0 40rpx 40rpx;
+    flex-direction: column;
+    justify-content: center;
+}
+.new-year image {
+    padding-bottom: 40rpx;
+    width: 100%;
+}
+.title {
+    padding: 60rpx 30rpx;
+    text-align: center;
+    font-size: 20px;
+}

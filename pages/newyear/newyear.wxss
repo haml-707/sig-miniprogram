@@ -1,0 +1,9 @@
+.new-year {
+    display: flex;
+    padding: 0 10px;
+    flex-direction: column;
+    justify-content: center;
+}
+.new-year image {
+    width: 100%;
+}

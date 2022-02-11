@@ -294,6 +294,12 @@ Page({
 
     },
     toUpdateSchedule(e) {
+        if (!sessionUtil.getUserInfoByKey('access')) {
+            wx.navigateTo({
+                url: '/pages/auth/auth'
+            })
+            return;
+        }
         wx.navigateTo({
             url: `/package-events/events/event-detail?id=${e.currentTarget.dataset.id}&type=5`
         })

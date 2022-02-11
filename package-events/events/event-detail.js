@@ -54,7 +54,6 @@ let remoteMethods = {
         });
     },
     draftPublish: function (postData, _callback) {
-
         appAjax.postJson({
             autoShowWait: true,
             type: 'PUT',
@@ -132,7 +131,6 @@ Page({
                         isIphoneX: true
                     });
                 }
-                
             }
         })
         this.setData({
@@ -237,6 +235,12 @@ Page({
         })
     },
     toSignUp() {
+        if (!sessionUtil.getUserInfoByKey('access')) {
+            wx.navigateTo({
+                url: '/pages/auth/auth'
+            })
+            return;
+        }
         wx.navigateTo({
             url: `/package-events/sign-up/sign-up?id=${this.data.info.id}&title=${this.data.info.title}&poster=${this.data.info.poster}`
         })
