@@ -251,6 +251,17 @@ Page({
             path: `/package-events/events/event-detail?id=${that.data.id}&type=5`
         }
     },
+    copyLink: function () {
+        wx.setClipboardData({
+            data: this.data.info.join_url,
+            success: function (res) {
+                that.setData({
+                    showDialog: false
+                })
+            }
+        })
+
+    },
     toPoster(e) {
         wx.navigateTo({
             url: `/package-events/events/poster?isDraft=${e.currentTarget.dataset.flag || ''}&id=${this.data.info.id}`

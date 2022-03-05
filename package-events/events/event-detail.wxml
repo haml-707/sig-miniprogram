@@ -20,9 +20,13 @@
             <text>{{info.date}}</text>
         </view>
         <view class="address" bindtap="openLocation" data-item="{{info}}">
-            <view class="left">
+            <view class="left" wx:if="{{info.activity_type==1}}">
                 <image src="./../../static/common/location.svg"></image>
-                <text>{{info.address||info.join_url}}</text>
+                <text >{{info.address}}</text>
+            </view>
+            <view class="left" wx:else>
+                <image src="./../../static/index/link.svg"></image>
+                <text bindtap="copyLink" >{{info.join_url}}</text>
             </view>
             <image hidden="{{info.activity_type==2}}" class="arrow-right" src="./../../static/common/arrow-right.svg" />
         </view>
