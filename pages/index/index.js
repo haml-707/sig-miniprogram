@@ -7,11 +7,6 @@ Page(mixin({
     data: {
         imgUrls: [
             {
-                type: 1,
-                url: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/%E6%AC%A7%E6%8B%89%E6%96%B0%E5%B9%B4%E8%A7%86%E9%A2%910.3.mp4',
-                poster: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/video-poster.png'
-            },
-            {
                 type: 2,
                 url: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/mini-banner.png',
                 src:'../newyear/newyear'

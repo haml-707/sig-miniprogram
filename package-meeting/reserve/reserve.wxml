@@ -7,7 +7,7 @@
                     <text>会议名称</text>
                     <text class="require">*</text>
                 </text>
-                <input value="{{topic}}" maxlength="{{50}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
+                <input value="{{topic}}" maxlength="{{100}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
             </view>
             <view class="form-item">
                 <text class="label">发起人</text>

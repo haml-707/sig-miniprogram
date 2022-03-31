@@ -54,4 +54,9 @@
             <button bindtap="copy" data-copy="{{info.video_url}}">复制</button>
         </view>
     </view>
+    <view  class="collect-item">
+        <button wx:if="{{collection_id==null}}" class="meeting-btn" bindtap="collect">收藏会议</button>
+        <button wx:else class="meeting-btn" bindtap="collect">取消收藏会议</button>
+        <view class="tips">一键收藏此会议，即可收到会议提醒通知哦！</view>
+    </view>
 </view>
