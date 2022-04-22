@@ -9,6 +9,16 @@
                 </text>
                 <input value="{{topic}}" maxlength="{{100}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
             </view>
+            <view class="form-item" bindtap="onTypeShow">
+                <text class="label">
+                    <text>会议平台</text>
+                    <text class="require">*</text>
+                </text>
+                <view class="arrow">
+                    <text class="sel-data">{{typeList[meetingType]}}</text>
+                    <image src="./../../static/common/arrow-right.svg" />
+                </view>
+            </view>
             <view class="form-item">
                 <text class="label">发起人</text>
                 <input value="{{sponsor}}" disabled="{{true}}" placeholder-class="placeholder" placeholder="gitee ID"></input>
@@ -49,15 +59,15 @@
                 <text class="etherpad">{{etherpad}}</text>
                 <!-- <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input> -->
             </view>
-            <view class="form-item">
+            <view class="form-item" wx:if="{{meetingType==='Zoom'}}">
                 <text class="label">是否自动录制会议</text>
                 <view class="arrow record">
-                    <van-checkbox value="{{ record }}" icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7"></van-checkbox>
+                    <van-checkbox value="{{ record }}"   icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7"></van-checkbox>
                 </view>
             </view>    
         </view>
-        <view class="info">
-            <view>
+        <view class="info" >
+            <view wx:if="{{meetingType==='Zoom'}}">
                 <image src="./../../static/reserve/info.svg" />
                 <text>勾选此项进入会议自动开启录屏，录制服务由Zoom提供，会后自动上传至B站openEuler的账号下</text>
             </view>
@@ -147,4 +157,22 @@
             </view>
         </view>
     </van-dialog>
+    <van-popup show="{{ typeShow }}" round position="bottom" bind:click-overlay="typeCancel">
+        <view class="sig-pop-wrapper">
+            <view class="title">选择会议平台</view>
+            <van-radio-group value="{{ meetingType }}" bind:change="typeRadioOnChange">
+                <block wx:for="{{typeList}}" wx:key="index">
+                    <view class="item" >
+                        <van-radio icon-size="46rpx"  custom-class="radio" checked-color="#002fa7" name="{{index}}">
+                            <view class="name">{{item}}</view>
+                        </van-radio>
+                    </view>
+                </block>
+            </van-radio-group>
+            <view class="btn-wrapper">
+                <button class="confirm" bindtap="typeConfirm">确定</button>
+                <button class="cancel" bindtap="typeCancel">取消</button>
+            </view>
+        </view>
+    </van-popup>
 </view>

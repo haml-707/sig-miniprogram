@@ -77,6 +77,8 @@ Page({
      */
     data: {
         record: false,
+        meetingType:0,
+        typeList:['Zoom','WeLink（蓝版）'],
         topic: '',
         sponsor: '',
         groupName: '',
@@ -154,6 +156,7 @@ Page({
                     date: that.data.date,
                     start: that.data.start,
                     end: that.data.end,
+                    platform:that.data.meetingType,
                     etherpad: that.data.etherpad,
                     agenda: that.data.agenda,
                     emaillist: that.data.emaillist,
@@ -228,6 +231,28 @@ Page({
             endTimePopShow: false
         })
     },
+    onTypeShow: function () {
+        this.setData({
+          typeShow: true,
+        })
+      },
+    typeCancel: function () {
+        this.setData({
+          typeShow: false,
+        });
+      },
+      typeConfirm: function () {
+        this.setData({
+          typeShow: false,
+          meetingType: e.detail,
+        });
+      },
+      typeRadioOnChange: function (e) {
+          console.log(e);
+        //   this.date.meetingType = e.detail
+        // this.setData({
+        // });
+      },
     /**
      * 生命周期函数--监听页面显示
      */
@@ -246,6 +271,7 @@ Page({
         })
     },
     sigRadioOnChange: function (e) {
+        console.log(e);
         this.setData({
             sigResult: e.detail
         })
