@@ -16,7 +16,6 @@
                 "sig/sig-list",
                 "reserve/reserve",
                 "sig/add-sig-member",
-                "sig/member-detail",
                 "sig/add-member",
                 "sig/del-member",
                 "meeting/detail",
@@ -29,7 +28,6 @@
             "pages": [
                 "events/event-list",
                 "manage/enterprise-list",
-                "manage/member-detail",
                 "manage/add-member",
                 "manage/del-member",
                 "publish/publish",

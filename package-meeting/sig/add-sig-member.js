@@ -49,9 +49,7 @@ Page({
         });
     },
     toDetail: function (e) {
-        wx.navigateTo({
-            url: '/package-meeting/sig/member-detail?id=' + e.currentTarget.dataset.id + '&avatar=' + e.currentTarget.dataset.avatar + '&name=' + e.currentTarget.dataset.name + '&nickname=' + e.currentTarget.dataset.nickname
-        })
+       
     },
     addMember: function () {
         wx.navigateTo({

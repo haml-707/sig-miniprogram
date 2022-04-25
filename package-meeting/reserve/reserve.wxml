@@ -15,7 +15,7 @@
                     <text class="require">*</text>
                 </text>
                 <view class="arrow">
-                    <text class="sel-data">{{typeList[meetingType]}}</text>
+                    <text class="sel-data">{{meetingType}}</text>
                     <image src="./../../static/common/arrow-right.svg" />
                 </view>
             </view>
@@ -163,7 +163,7 @@
             <van-radio-group value="{{ meetingType }}" bind:change="typeRadioOnChange">
                 <block wx:for="{{typeList}}" wx:key="index">
                     <view class="item" >
-                        <van-radio icon-size="46rpx"  custom-class="radio" checked-color="#002fa7" name="{{index}}">
+                        <van-radio icon-size="46rpx"  custom-class="radio" checked-color="#002fa7" name="{{item}}">
                             <view class="name">{{item}}</view>
                         </van-radio>
                     </view>

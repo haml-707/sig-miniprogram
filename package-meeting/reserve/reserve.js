@@ -77,7 +77,7 @@ Page({
      */
     data: {
         record: false,
-        meetingType:0,
+        meetingType:'Zoom',
         typeList:['Zoom','WeLink（蓝版）'],
         topic: '',
         sponsor: '',
@@ -148,6 +148,8 @@ Page({
         wx.requestSubscribeMessage({
             tmplIds: ['2xSske0tAcOVKNG9EpBjlb1I-cjPWSZrpwPDTgqAmWI'],
             success(res) {
+                let platform = '';
+                that.data.meetingType.includes('WeLink') ? platform = that.data.meetingType.slice(0,6):platform = that.data.meetingType
                 remoteMethods.saveMeeting({
                     topic: that.data.topic,
                     sponsor: that.data.sponsor,
@@ -156,7 +158,7 @@ Page({
                     date: that.data.date,
                     start: that.data.start,
                     end: that.data.end,
-                    platform:that.data.meetingType,
+                    platform:platform,
                     etherpad: that.data.etherpad,
                     agenda: that.data.agenda,
                     emaillist: that.data.emaillist,
@@ -244,14 +246,12 @@ Page({
       typeConfirm: function () {
         this.setData({
           typeShow: false,
-          meetingType: e.detail,
         });
       },
       typeRadioOnChange: function (e) {
-          console.log(e);
-        //   this.date.meetingType = e.detail
-        // this.setData({
-        // });
+          this.setData({
+            meetingType:e.detail
+        });
       },
     /**
      * 生命周期函数--监听页面显示
@@ -271,7 +271,6 @@ Page({
         })
     },
     sigRadioOnChange: function (e) {
-        console.log(e);
         this.setData({
             sigResult: e.detail
         })
