@@ -413,5 +413,4 @@ Component({
             this.initData();
         }
     }
-
 })

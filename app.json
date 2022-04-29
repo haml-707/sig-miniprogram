@@ -5,9 +5,7 @@
         "components/user-info/user-info",
         "pages/meeting/meeting",
         "pages/events/events",
-        "pages/my/my",
-        "pages/newyear/newyear",
-        "pages/card/card"
+        "pages/my/my"
     ],
     "subpackages": [
         {

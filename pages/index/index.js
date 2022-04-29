@@ -5,23 +5,15 @@ const appUser = require("../../utils/app-user.js");
 let that = null;
 Page(mixin({
     data: {
-        imgUrls: [
-            {
-                type: 2,
-                url: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/mini-banner.png',
-                src:'../newyear/newyear'
-            },
-            {
-                type: 3,
-                url: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%B7%A5%E5%8D%A1%E5%A5%97banner.png',
-                src:'../card/card'
-            },
-        ],
+        imgUrls: [{
+            type: 2,
+            url: 'https://openeuler-website-beijing.obs.cn-north-4.myhuaweicloud.com/detail-banner/mooc-banner.png',
+        }, ],
         iphoneX: false,
         meetingConponent: null,
-        autoplay: true
+        autoplay: false
     },
-    handleContact (e) {
+    handleContact(e) {
         if (!sessionUtil.getUserInfoByKey('access')) {
             wx.navigateTo({
                 url: '/pages/auth/auth'
@@ -44,7 +36,7 @@ Page(mixin({
         })
     },
     previewImage(e) {
-        
+
         const current = e.target.dataset.src //获取当前点击的 图片 url
         wx.previewImage({
             current,
@@ -55,7 +47,7 @@ Page(mixin({
         wx.showShareMenu({
             withShareTicket: true,
             menus: ['shareAppMessage', 'shareTimeline']
-          })
+        })
         that = this;
         appUser.updateUserInfo(function () {
             that.setData({

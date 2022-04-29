@@ -59,7 +59,7 @@
                 <text class="etherpad">{{etherpad}}</text>
                 <!-- <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input> -->
             </view>
-            <view class="form-item" wx:if="{{meetingType==='Zoom'}}">
+            <view class="form-item">
                 <text class="label">是否自动录制会议</text>
                 <view class="arrow record">
                     <van-checkbox value="{{ record }}"   icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7"></van-checkbox>
@@ -67,9 +67,9 @@
             </view>    
         </view>
         <view class="info" >
-            <view wx:if="{{meetingType==='Zoom'}}">
+            <view >
                 <image src="./../../static/reserve/info.svg" />
-                <text>勾选此项进入会议自动开启录屏，录制服务由Zoom提供，会后自动上传至B站openEuler的账号下</text>
+                <text>勾选此项进入会议自动开启录屏，录制服务由{{meetingType}}提供，会后自动上传至B站openEuler的账号下</text>
             </view>
         </view>
         <view class="form-item meeting-desc">
