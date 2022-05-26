@@ -60,7 +60,7 @@
                 <!-- <input value="{{etherpad}}" maxlength="{{100}}"  disabled="{{true}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input> -->
             </view>
             <view class="form-item">
-                <text class="label">是否自动录制会议</text>
+                <text class="label">自动录制会议</text>
                 <view class="arrow record">
                     <van-checkbox value="{{ record }}"   icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7"></van-checkbox>
                 </view>
@@ -78,10 +78,18 @@
                 <text class="hint">{{agenda.length}}/100</text>
             </textarea>
         </view>
-        <view class="form-item">
-            <text class="label">邮件地址</text>
-            <input value="{{emaillist}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="emailInput" placeholder="请输入电子邮件地址"></input>
-        </view>
+       <view class="email-box">
+            <view class="form-item">
+                <text class="label">邮件地址</text>
+                <input value="{{emaillist}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="emailInput"     placeholder="请输入电子邮件地址"></input>
+            </view>
+            <view class="form-item">
+                <text class="label">发送给dev@openeuler.org</text>
+                <view class="arrow record">
+                    <van-checkbox value="{{ sendDev }}"   icon-size="46rpx" bind:change="devOnChange" checked-color="#002fa7"></van-checkbox>
+                </view>
+            </view>   
+            </view> 
     </view>
     <view class="info">
         <view>

@@ -77,6 +77,7 @@ Page({
      */
     data: {
         record: false,
+        sendDev:false,
         meetingType:'Zoom',
         typeList:['Zoom','WeLink（蓝版）'],
         topic: '',
@@ -125,6 +126,11 @@ Page({
             record: event.detail
         });
     },
+    devOnChange: function (event) {
+        this.setData({
+            sendDev: event.detail,
+        });
+    },
     reset: function () {
         this.setData({
             topic: '',
@@ -150,6 +156,16 @@ Page({
             success(res) {
                 let platform = '';
                 that.data.meetingType.includes('WeLink') ? platform = that.data.meetingType.slice(0,6):platform = that.data.meetingType
+                let email = null;
+                if(that.data.sendDev) {
+                    if (that.data.emaillist.charAt(that.data.emaillist.length-1) == ';' || that.data.emaillist.charAt(that.data.emaillist.length-1) =='；'|| that.data.emaillist.charAt(that.data.emaillist.length-1) =='') {
+                        email = `${that.data.emaillist}dev@openeuler.org;`;
+                    } else {
+                        email = `${that.data.emaillist};dev@openeuler.org;`;
+                    }
+                } else {
+                    email = that.data.emaillist
+                }
                 remoteMethods.saveMeeting({
                     topic: that.data.topic,
                     sponsor: that.data.sponsor,
@@ -161,7 +177,7 @@ Page({
                     platform:platform,
                     etherpad: that.data.etherpad,
                     agenda: that.data.agenda,
-                    emaillist: that.data.emaillist,
+                    emaillist: email,
                     record: that.data.record ? 'cloud' : ''
                 }, function (data) {
                     if (data.id) {
@@ -173,7 +189,7 @@ Page({
                             wx.showToast({
                                 title: data.message,
                                 icon: "none",
-                                duration: 2000
+                                duration: 4000
                             }, 100);
                         })
                     }

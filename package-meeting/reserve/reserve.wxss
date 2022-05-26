@@ -43,7 +43,11 @@ input {
     box-shadow: 0rpx 5rpx 15rpx 0rpx rgba(0, 47, 167, 0.1);
     border-radius: 8rpx;
 }
-
+.form .email-box {
+    overflow: hidden;
+    box-shadow: 0rpx 5rpx 15rpx 0rpx rgba(0, 47, 167, 0.1);
+    border-radius: 8rpx;
+}
 .container .form .form-wrapper {
     box-shadow: 0rpx 5rpx 15rpx 0rpx rgba(0, 47, 167, 0.1);
     border-radius: 8rpx;
