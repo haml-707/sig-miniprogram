@@ -81,7 +81,7 @@
        <view class="email-box">
             <view class="form-item">
                 <text class="label">邮件地址</text>
-                <input value="{{emaillist}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="emailInput"     placeholder="请输入电子邮件地址"></input>
+                <input value="{{ emaillist }}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="emailInput"     placeholder="请输入电子邮件地址"></input>
             </view>
             <view class="form-item">
                 <text class="label">发送给dev@openeuler.org</text>
@@ -89,6 +89,10 @@
                     <van-checkbox value="{{ sendDev }}"   icon-size="46rpx" bind:change="devOnChange" checked-color="#002fa7"></van-checkbox>
                 </view>
             </view>   
+            <!-- <view class="form-item" wx:if="{{ sigEmail!=='dev@openeuler.org' }}">
+                <text class="label">SIG邮箱</text>
+                <text class="etherpad">{{ sigEmail }}</text>
+            </view>    -->
             </view> 
     </view>
     <view class="info">

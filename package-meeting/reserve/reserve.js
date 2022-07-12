@@ -77,9 +77,9 @@ Page({
      */
     data: {
         record: false,
-        sendDev:false,
-        meetingType:'Zoom',
-        typeList:['Zoom','WeLink（蓝版）'],
+        sendDev: false,
+        meetingType: 'Zoom',
+        typeList: ['Zoom', 'WeLink（蓝版）'],
         topic: '',
         sponsor: '',
         groupName: '',
@@ -88,6 +88,7 @@ Page({
         start: '',
         end: '',
         etherpad: '',
+        sigEmail: '',
         agenda: '',
         emaillist: '',
         sigPopShow: false,
@@ -155,10 +156,10 @@ Page({
             tmplIds: ['2xSske0tAcOVKNG9EpBjlb1I-cjPWSZrpwPDTgqAmWI'],
             success(res) {
                 let platform = '';
-                that.data.meetingType.includes('WeLink') ? platform = that.data.meetingType.slice(0,6):platform = that.data.meetingType
+                that.data.meetingType.includes('WeLink') ? platform = that.data.meetingType.slice(0, 6) : platform = that.data.meetingType
                 let email = null;
-                if(that.data.sendDev) {
-                    if (that.data.emaillist.charAt(that.data.emaillist.length-1) == ';' || that.data.emaillist.charAt(that.data.emaillist.length-1) =='；'|| that.data.emaillist.charAt(that.data.emaillist.length-1) =='') {
+                if (that.data.sendDev) {
+                    if (that.data.emaillist.charAt(that.data.emaillist.length - 1) == ';' || that.data.emaillist.charAt(that.data.emaillist.length - 1) == '；' || that.data.emaillist.charAt(that.data.emaillist.length - 1) == '') {
                         email = `${that.data.emaillist}dev@openeuler.org;`;
                     } else {
                         email = `${that.data.emaillist};dev@openeuler.org;`;
@@ -174,7 +175,7 @@ Page({
                     date: that.data.date,
                     start: that.data.start,
                     end: that.data.end,
-                    platform:platform,
+                    platform: platform,
                     etherpad: that.data.etherpad,
                     agenda: that.data.agenda,
                     emaillist: email,
@@ -224,10 +225,12 @@ Page({
             return item.group === that.data.sigResult;
         });
         sigObj = sigObj.length ? sigObj[0] : {}
+        sigObj.maillist === 'dev@openeuler.org' ? sigObj.maillist = '' : sigObj.maillist = `${sigObj.maillist};`;
         this.setData({
             groupName: sigObj.group_name || '',
             groupId: sigObj.group || '',
             etherpad: sigObj.etherpad || '',
+            emaillist: `${sigObj.maillist}` || '',
             sigPopShow: false
         })
     },
@@ -251,24 +254,24 @@ Page({
     },
     onTypeShow: function () {
         this.setData({
-          typeShow: true,
+            typeShow: true,
         })
-      },
+    },
     typeCancel: function () {
         this.setData({
-          typeShow: false,
+            typeShow: false,
         });
-      },
-      typeConfirm: function () {
+    },
+    typeConfirm: function () {
         this.setData({
-          typeShow: false,
+            typeShow: false,
         });
-      },
-      typeRadioOnChange: function (e) {
-          this.setData({
-            meetingType:e.detail
+    },
+    typeRadioOnChange: function (e) {
+        this.setData({
+            meetingType: e.detail
         });
-      },
+    },
     /**
      * 生命周期函数--监听页面显示
      */
