@@ -347,17 +347,18 @@ Page({
     },
     dateOnInput: function (e) {
         this.setData({
-            currentDate: e.detail
+            currentDate: e.detail.value
         })
     },
     timeOnInput: function (e) {
+        console.log(e);
         this.setData({
-            currentTime: e.detail
+            currentTime: e.detail.value
         })
     },
     endTimeOnInput: function (e) {
         this.setData({
-            currentEndTime: e.detail
+            currentEndTime: e.detail.value
         })
     },
 })

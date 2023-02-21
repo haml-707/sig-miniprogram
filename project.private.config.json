@@ -23,6 +23,12 @@
                     "pathName": "package-events/events/sign-success",
                     "query": "scene=49",
                     "scene": 1011
+                },
+                {
+                    "name": "package-meeting/reserve/reserve",
+                    "pathName": "package-meeting/reserve/reserve",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

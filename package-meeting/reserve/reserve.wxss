@@ -217,6 +217,7 @@ input {
     height: 90rpx;
     font-size: 36rpx;
     margin: 60rpx 0;
+    overflow: hidden;
 }
 
 .container .sig-pop-wrapper .btn-wrapper .confirm {
