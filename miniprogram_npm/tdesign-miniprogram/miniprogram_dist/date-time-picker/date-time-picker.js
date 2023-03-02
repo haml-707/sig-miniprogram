@@ -136,10 +136,19 @@ let DateTimePicker = class DateTimePicker extends SuperComponent {
                 const maxEdge = this.getOptionEdge('max', type);
                 for (let i = minEdge; i <= maxEdge; i += 1) {
                     const label = type === 'month' ? i + 1 : i;
-                    options.push({
-                        value: `${i}`,
-                        label: `${label + locale[type]}`,
-                    });
+                    if (type === 'minute') {
+                        if (i % 15 === 0) {
+                            options.push({
+                                value: `${i}`,
+                                label: `${label + locale[type]}`,
+                            });
+                        }
+                    } else {
+                        options.push({
+                            value: `${i}`,
+                            label: `${label + locale[type]}`,
+                        });
+                    }
                 }
                 return options;
             },

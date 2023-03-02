@@ -47,6 +47,5 @@
   color: var(--td-picker-item-color, var(--td-font-gray-2, rgba(0, 0, 0, 0.6)));
 }
 .t-picker-item__item--active {
-  color: var(--td-picker-item-active-color, var(--td-font-gray-1, rgba(0, 0, 0, 0.9)));
-  font-weight: 600;
+  color: var(--td-picker-item-active-color, var(--td-font-gray-1, rgba(0, 0, 0, 1)));
 }

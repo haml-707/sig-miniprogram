@@ -103,7 +103,7 @@ let PickerItem = class PickerItem extends SuperComponent {
             },
             update() {
                 var _a, _b;
-                let {
+                const {
                     options,
                     value
                 } = this.data;

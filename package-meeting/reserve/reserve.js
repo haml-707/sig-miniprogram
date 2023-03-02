@@ -351,7 +351,6 @@ Page({
         })
     },
     timeOnInput: function (e) {
-        console.log(e);
         this.setData({
             currentTime: e.detail.value
         })
