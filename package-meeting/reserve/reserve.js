@@ -60,6 +60,10 @@ let localMethods = {
             this.toast('开始时间必须小于结束时间');
             return;
         }
+        if (!that.data.privacyState) {
+            this.toast('请勾选同意隐式声明');
+            return;
+        }
         return true;
     },
     toast: function (msg) {
@@ -76,6 +80,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        privacyState: false,
         record: false,
         sendDev: false,
         meetingType: 'Zoom',
@@ -130,6 +135,16 @@ Page({
     devOnChange: function (event) {
         this.setData({
             sendDev: event.detail,
+        });
+    },
+    toPrivacy() {
+        wx.navigateTo({
+            url: '/package-my/my/privecy'
+        })
+    },
+    privacyStateOnChange: function (event) {
+        this.setData({
+            privacyState: event.detail
         });
     },
     reset: function () {

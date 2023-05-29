@@ -10,6 +10,7 @@ Page(mixin({
      */
     data: {
         id: '',
+        record:false,
         canIUseGetUserProfile: false
     },
     onLoad(options) {
@@ -32,7 +33,9 @@ Page(mixin({
      * 绑定获取用户信息
      */
     bindGetUserInfo: function (e) {
-
+        if (!this.data.record) {
+            return false
+        }
         wx.getSetting({
             success: function (res) {
 
@@ -51,6 +54,14 @@ Page(mixin({
         });
     },
     bindGetUserProfile() {
+        if (!this.data.record) {
+            wx.showToast({
+                title: '请勾选同意隐式声明',
+                icon: "none",
+                duration: 2000
+            }, 100);
+            return false
+        }
         wx.getUserProfile({
             desc: '用于会议和活动所需信息',
             success: (res) => {
@@ -70,5 +81,10 @@ Page(mixin({
         wx.navigateTo({
             url: '/package-my/my/privecy'
         })
-    }
+    },
+    recordoOnChange: function (event) {
+        this.setData({
+            record: event.detail
+        });
+    },
 }))

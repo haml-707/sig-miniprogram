@@ -56,6 +56,10 @@
             <image src="./../../static/reserve/info.svg" />
             <text>{{tips}}</text>
         </view>
+        <view class="privacy">
+        <van-checkbox value="{{ record }}" shape="square" icon-size="36rpx" bind:change="recordoOnChange" checked-color="#002fa7">
+        </van-checkbox>已阅读并同意<text bindtap="toPrivacy">隐私声明</text>
+    </view>
     </view>
     <view class="commit">
         <button class="meeting-reset" bindtap="back">我再想想</button>

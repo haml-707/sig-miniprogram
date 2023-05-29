@@ -58,12 +58,18 @@ page {
 }
 
 .container .privacy {
+    display: flex;
+    justify-content: center;
     color: #6d7278;
-    font-size: 28prpx;
+    font-size: 28rpx;
     text-align: center;
     margin-top: 30rpx;
 }
 
 .container .privacy text {
     color: #002fa7;
+}
+
+.container .privacy .van-checkbox {
+    margin-right: 16rpx;
 }

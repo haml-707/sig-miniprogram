@@ -114,6 +114,10 @@
             </text>
         </view>
     </view>
+    <view class="privacy">
+        <van-checkbox value="{{ privacyState }}" shape="square" icon-size="36rpx" bind:change="privacyStateOnChange" checked-color="#002fa7">
+        </van-checkbox>已阅读并同意<text bindtap="toPrivacy">隐私声明</text>
+    </view>
     <view class="commit">
         <button class="meeting-reset" bindtap="reset">重置</button>
         <button class="meeting-btn" bindtap="meeting">立即预定</button>
@@ -149,7 +153,6 @@
     </view>
 
     <view class="sig-pop-wrapper">
-        <view class="title">选择会议开始时间</view>
         <t-date-time-picker title="选择会议开始时间" visible="{{timePopShow}}" mode="{{['null', 'minute']}}" value="{{start}}"
             format="HH:mm" start="{{minTime}}" bindpick="timeOnInput">
             <view slot="footer" name="footer">

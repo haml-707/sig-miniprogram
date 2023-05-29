@@ -50,6 +50,10 @@ let localMethods = {
             this.toast('请输入您的工作单位名称');
             return;
         }
+        if (!that.data.record) {
+            this.toast('请勾选同意隐式声明');
+            return;
+        }
         return true;
     },
     toast(msg) {
@@ -76,6 +80,7 @@ Page({
         id: '',
         eventTitle: '',
         poster: 1,
+        record:false,
         tips: 'Gitee ID为https://gitee.com/{{gitee_id}} 中的gitee_id'
     },
 
@@ -137,6 +142,11 @@ Page({
             gitee: e.detail.value
         })
     },
+    recordoOnChange: function (event) {
+        this.setData({
+            record: event.detail
+        });
+    },
     signUp() {
         if (!localMethods.validation()) {
             return;
@@ -168,6 +178,11 @@ Page({
             wx.redirectTo({
                 url: `/package-events/sign-up/sign-up-success?name=${encodeURIComponent(this.data.name)}&title=${encodeURIComponent(this.data.eventTitle)}&tel=${encodeURIComponent(this.data.tel)}&poster=${encodeURIComponent(this.data.poster)}&id=${encodeURIComponent(this.data.id)}`
             })
+        })
+    },
+    toPrivacy() {
+        wx.navigateTo({
+            url: '/package-my/my/privecy'
         })
     },
     back() {

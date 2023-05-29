@@ -15,6 +15,7 @@
         </view>
     </button>
     <view class="privacy">
-        登录即表示同意<text bindtap="toPrivacy">隐私条款</text>
+        <van-checkbox value="{{ record }}" shape="square" icon-size="36rpx" bind:change="recordoOnChange" checked-color="#002fa7">
+        </van-checkbox>已阅读并同意<text bindtap="toPrivacy">隐私声明</text>
     </view>
 </view>
