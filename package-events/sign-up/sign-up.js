@@ -51,7 +51,7 @@ let localMethods = {
             return;
         }
         if (!that.data.record) {
-            this.toast('请勾选同意隐式声明');
+            this.toast('请先阅读并同意隐私声明');
             return;
         }
         return true;

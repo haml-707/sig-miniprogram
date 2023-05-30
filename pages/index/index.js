@@ -25,12 +25,12 @@ Page(mixin({
         })
     },
     swithTab(e) {
-        if (!sessionUtil.getUserInfoByKey('access')) {
-            wx.navigateTo({
-                url: '/pages/auth/auth'
-            })
-            return;
-        }
+        // if (!sessionUtil.getUserInfoByKey('access')) {
+        //     wx.navigateTo({
+        //         url: '/pages/auth/auth'
+        //     })
+        //     return;
+        // }
         wx.switchTab({
             url: e.currentTarget.dataset.url
         })

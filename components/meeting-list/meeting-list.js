@@ -271,9 +271,9 @@ Component({
             })
         },
         toDetail: function (e) {
-            if(!localMethod.checkLogin()){
-                return;
-            }
+            // if(!localMethod.checkLogin()){
+            //     return;
+            // }
             wx.navigateTo({
                 url: '/package-meeting/meeting/detail?id=' + e.currentTarget.dataset.id
             })

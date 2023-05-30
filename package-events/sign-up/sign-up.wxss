@@ -101,6 +101,7 @@ input {
 
 .container .privacy {
     display: flex;
+    align-items: center;
     justify-content: center;
     color: #6d7278;
     font-size: 28rpx;
@@ -112,7 +113,7 @@ input {
     color: #002fa7;
 }
 
-.container .privacy .van-checkbox {
+.container .privacy .van-checkbox__icon-wrap {
     margin-right: 16rpx;
 }
 .container .privacy view {

@@ -57,8 +57,9 @@
             <text>{{tips}}</text>
         </view>
         <view class="privacy">
-        <van-checkbox value="{{ record }}" shape="square" icon-size="36rpx" bind:change="recordoOnChange" checked-color="#002fa7">
-        </van-checkbox>已阅读并同意<text bindtap="toPrivacy">隐私声明</text>
+        <van-checkbox value="{{ record }}" shape="square" icon-size="30rpx" bind:change="recordoOnChange" checked-color="#002fa7">
+            已阅读并同意<text catchtap="toPrivacy">隐私声明</text>
+        </van-checkbox>
     </view>
     </view>
     <view class="commit">

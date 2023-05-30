@@ -115,8 +115,9 @@
         </view>
     </view>
     <view class="privacy">
-        <van-checkbox value="{{ privacyState }}" shape="square" icon-size="36rpx" bind:change="privacyStateOnChange" checked-color="#002fa7">
-        </van-checkbox>已阅读并同意<text bindtap="toPrivacy">隐私声明</text>
+        <van-checkbox value="{{ privacyState }}" shape="square" icon-size="30rpx" bind:change="privacyStateOnChange" checked-color="#002fa7">
+            已阅读并同意<text catchtap="toPrivacy">隐私声明</text>
+        </van-checkbox>
     </view>
     <view class="commit">
         <button class="meeting-reset" bindtap="reset">重置</button>

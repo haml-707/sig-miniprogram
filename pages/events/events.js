@@ -132,6 +132,12 @@ Page({
     },
     navigateTo(e) {
         const url = e.currentTarget.dataset.url;
+        if (url.includes('publish') && !sessionUtil.getUserInfoByKey('access')) {
+            wx.navigateTo({
+                url: '/pages/auth/auth'
+            })
+            return;
+        }
         if ((this.data.level === 1) && url.includes('publish')) {
             this.setData({
                 noAuthDialogShow: true

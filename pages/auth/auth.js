@@ -56,7 +56,7 @@ Page(mixin({
     bindGetUserProfile() {
         if (!this.data.record) {
             wx.showToast({
-                title: '请勾选同意隐式声明',
+                title: '请先阅读并同意隐私声明',
                 icon: "none",
                 duration: 2000
             }, 100);

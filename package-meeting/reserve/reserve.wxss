@@ -247,6 +247,7 @@ input {
 }
 .container .privacy {
     display: flex;
+    align-items: center;
     justify-content: center;
     color: #6d7278;
     font-size: 28rpx;
