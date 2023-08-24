@@ -26,7 +26,6 @@ let remoteMethods = {
         });
     },
     reject: function (_callback) {
-
         appAjax.postJson({
             autoShowWait: true,
             type: 'PUT',
@@ -40,7 +39,6 @@ let remoteMethods = {
         });
     },
     resolve: function (_callback) {
-
         appAjax.postJson({
             autoShowWait: true,
             type: 'PUT',
@@ -151,7 +149,7 @@ Page({
             })
             let arr = [];
             JSON.parse(res.schedules).forEach(item => {
-                if(item.speakerList){
+                if (item.speakerList) {
                     arr.push({
                         duration: item.start + '-' + item.end,
                         title: item.topic,
@@ -167,7 +165,7 @@ Page({
                         }]
                     })
                 }
-                
+
             });
             this.setData({
                 steps: arr
@@ -235,15 +233,9 @@ Page({
         })
     },
     toSignUp() {
-        if (!sessionUtil.getUserInfoByKey('access')) {
-            wx.navigateTo({
-                url: '/pages/auth/auth'
-            })
-            return;
-        }
-        wx.navigateTo({
-            url: `/package-events/sign-up/sign-up?id=${this.data.info.id}&title=${this.data.info.title}&poster=${this.data.info.poster}`
-        })
+        this.setData({
+            showRegister: true,
+        });
     },
     onShareAppMessage() {
         return {
@@ -268,7 +260,7 @@ Page({
         })
     },
     redrictLogin() {
-        if(this.data.scene){
+        if (this.data.scene) {
             wx.navigateTo({
                 url: '/pages/auth/auth?id=' + that.data.id
             })
@@ -279,28 +271,44 @@ Page({
         }
     },
     collect() {
-        if(!this.data.info.collection_id){
+        if (!this.data.info.collection_id) {
             remoteMethods.collect(() => {
                 this.onShow();
-            })    
+            })
         } else {
             remoteMethods.unCollect(() => {
                 this.onShow();
             })
         }
-        
+
     },
     clickVideo() {
         this.data.videoInstance.requestFullScreen({
             direction: 90
         });
     },
+    copyLink(e) {
+        let link = e.currentTarget.dataset.link;
+        let that = this;
+        wx.setClipboardData({
+            data: link,
+            success: function () {
+                that.setData({
+                    showDialog: false,
+                    showReplay: false,
+                    showRegister: false,
+                });
+            },
+            fail: function () {
+                that.setData({
+                    showDialog: false,
+                    showReplay: false,
+                    showRegister: false,
+                });
+            },
+        });
+    },
     fullScreenChange() {
-        // if (this.data.videoHidden) {
-        //     this.data.videoInstance.play();
-        // } else {
-        //     this.data.videoInstance.pause();
-        // }
         this.setData({
             videoHidden: !this.data.videoHidden
         })

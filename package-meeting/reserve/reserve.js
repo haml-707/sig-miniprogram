@@ -84,7 +84,17 @@ Page({
         record: false,
         sendDev: false,
         meetingType: 'Zoom',
-        typeList: ['Zoom', 'WeLink（蓝版）'],
+        typeList: ['Zoom', 'WeLink（蓝版）', '腾讯会议'],
+        // typeList: [{
+        //     label: 'Zoom',
+        //     value: 'zoom'
+        // }, {
+        //     label: 'WeLink（蓝版）',
+        //     value: 'welink'
+        // }, {
+        //     label: '腾讯会议',
+        //     value: 'tencent'
+        // }, ],
         topic: '',
         sponsor: '',
         groupName: '',
@@ -124,9 +134,6 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
-
-    },
     recordoOnChange: function (event) {
         this.setData({
             record: event.detail
@@ -171,7 +178,13 @@ Page({
             tmplIds: ['2xSske0tAcOVKNG9EpBjlb1I-cjPWSZrpwPDTgqAmWI'],
             success(res) {
                 let platform = '';
-                that.data.meetingType.includes('WeLink') ? platform = that.data.meetingType.slice(0, 6) : platform = that.data.meetingType
+                if (that.data.meetingType.includes('WeLink')) {
+                    platform = 'welink';
+                } else if (that.data.meetingType.includes('腾讯')) {
+                    platform = 'tencent';
+                } else {
+                    platform = 'zoom';
+                }
                 let email = null;
                 if (that.data.sendDev) {
                     if (that.data.emaillist.charAt(that.data.emaillist.length - 1) == ';' || that.data.emaillist.charAt(that.data.emaillist.length - 1) == '；' || that.data.emaillist.charAt(that.data.emaillist.length - 1) == '') {
@@ -283,6 +296,7 @@ Page({
         });
     },
     typeRadioOnChange: function (e) {
+        console.log(e);
         this.setData({
             meetingType: e.detail
         });

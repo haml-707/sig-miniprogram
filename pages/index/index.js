@@ -59,7 +59,7 @@ Page(mixin({
     onShow: function () {
         this.getTabBar().setData({
             _tabbat: 0
-        })
+        });
     },
     onPullDownRefresh: function () {
         wx.stopPullDownRefresh();

@@ -7,8 +7,7 @@
                     <text>会议名称</text>
                     <text class="require">*</text>
                 </text>
-                <input value="{{topic}}" maxlength="{{100}}" bindinput="sigNameInput" placeholder-class="placeholder"
-                    placeholder="请输入会议名称"></input>
+                <input value="{{topic}}" maxlength="{{100}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
             </view>
             <view class="form-item" bindtap="onTypeShow">
                 <text class="label">
@@ -22,8 +21,7 @@
             </view>
             <view class="form-item">
                 <text class="label">发起人</text>
-                <input value="{{sponsor}}" disabled="{{true}}" placeholder-class="placeholder"
-                    placeholder="gitee ID"></input>
+                <input value="{{sponsor}}" disabled="{{true}}" placeholder-class="placeholder" placeholder="gitee ID"></input>
             </view>
             <view class="form-item" bindtap="selSig">
                 <text class="label">
@@ -59,13 +57,12 @@
             <view class="form-item">
                 <text class="label">Etherpad链接</text>
                 <!-- <text class="etherpad">{{etherpad}}</text> -->
-                <input value="{{etherpad}}" maxlength="{{100}}"  placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input>
+                <input value="{{etherpad}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="etherInput" placeholder="请输入Etherpad链接"></input>
             </view>
             <view class="form-item">
                 <text class="label">自动录制会议</text>
                 <view class="arrow record">
-                    <van-checkbox value="{{ record }}" icon-size="46rpx" bind:change="recordoOnChange"
-                        checked-color="#002fa7"></van-checkbox>
+                    <van-checkbox value="{{ record }}" icon-size="46rpx" bind:change="recordoOnChange" checked-color="#002fa7"></van-checkbox>
                 </view>
             </view>
         </view>
@@ -77,22 +74,19 @@
         </view>
         <view class="form-item meeting-desc">
             <text class="label">会议内容</text>
-            <textarea value="{{agenda}}" hidden="{{sigPopShow||datePopShow||timePopShow||endTimePopShow}}"
-                maxlength="{{100}}" placeholder-class="placeholder" bindinput="agendaInput" placeholder="请输入会议内容">
+            <textarea value="{{agenda}}" hidden="{{sigPopShow||datePopShow||timePopShow||endTimePopShow}}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="agendaInput" placeholder="请输入会议内容">
                 <text class="hint">{{agenda.length}}/100</text>
             </textarea>
         </view>
         <view class="email-box">
             <view class="form-item">
                 <text class="label">邮件地址</text>
-                <input value="{{ emaillist }}" maxlength="{{100}}" placeholder-class="placeholder"
-                    bindinput="emailInput" placeholder="请输入电子邮件地址"></input>
+                <input value="{{ emaillist }}" maxlength="{{100}}" placeholder-class="placeholder" bindinput="emailInput" placeholder="请输入电子邮件地址"></input>
             </view>
             <view class="form-item">
                 <text class="label">发送给dev@openeuler.org</text>
                 <view class="arrow record">
-                    <van-checkbox value="{{ sendDev }}" icon-size="46rpx" bind:change="devOnChange"
-                        checked-color="#002fa7"></van-checkbox>
+                    <van-checkbox value="{{ sendDev }}" icon-size="46rpx" bind:change="devOnChange" checked-color="#002fa7"></van-checkbox>
                 </view>
             </view>
             <!-- <view class="form-item" wx:if="{{ sigEmail!=='dev@openeuler.org' }}">
@@ -142,8 +136,7 @@
         </view>
     </van-popup>
     <view class="sig-pop-wrapper">
-        <t-date-time-picker title="选择预定会议日期" visible="{{datePopShow}}" mode="date" defaultValue="{{curDate}}"
-            format="YYYY-MM-DD" bindpick="dateOnInput" start="{{minDate}}">
+        <t-date-time-picker title="选择预定会议日期" visible="{{datePopShow}}" mode="date" defaultValue="{{curDate}}" format="YYYY-MM-DD" bindpick="dateOnInput" start="{{minDate}}">
             <view slot="footer" name="footer">
                 <view class="btn-wrapper">
                     <button class="confirm" bindtap="dateConfirm">确定</button>
@@ -154,8 +147,7 @@
     </view>
 
     <view class="sig-pop-wrapper">
-        <t-date-time-picker title="选择会议开始时间" visible="{{timePopShow}}" mode="{{['null', 'minute']}}" value="{{start}}"
-            format="HH:mm" start="{{minTime}}" bindpick="timeOnInput">
+        <t-date-time-picker title="选择会议开始时间" visible="{{timePopShow}}" mode="{{['null', 'minute']}}" value="{{start}}" format="HH:mm" start="{{minTime}}" bindpick="timeOnInput">
             <view slot="footer" name="footer">
                 <view class="btn-wrapper">
                     <button class="confirm" bindtap="timeConfirm">确定</button>
@@ -165,8 +157,7 @@
         </t-date-time-picker>
     </view>
     <view class="sig-pop-wrapper">
-        <t-date-time-picker title="选择会议结束时间" visible="{{endTimePopShow}}" mode="{{['null', 'minute']}}" value="{{end}}"
-            format="HH:mm" start="{{minEndTime}}" bindpick="endTimeOnInput">
+        <t-date-time-picker title="选择会议结束时间" visible="{{endTimePopShow}}" mode="{{['null', 'minute']}}" value="{{end}}" format="HH:mm" start="{{minEndTime}}" bindpick="endTimeOnInput">
             <view slot="footer" name="footer">
                 <view class="btn-wrapper">
                     <button class="confirm" bindtap="endTimeConfirm">确定</button>
@@ -178,8 +169,7 @@
     <!-- <van-popup show="{{ endTimePopShow }}" round position="bottom" bind:click-overlay="endTimeCancel">
 
     </van-popup> -->
-    <van-dialog use-slot title="提示" show-confirm-button="{{false}}" show-cancel-button="{{false}}"
-        show="{{ showDialogWarn }}" class-name="sig-dialog">
+    <van-dialog use-slot title="提示" show-confirm-button="{{false}}" show-cancel-button="{{false}}" show="{{ showDialogWarn }}" class-name="sig-dialog">
         <view class="dialog-slot-content">
             <text>当前您不属于任何SIG组，请先在SIG管理中关联SIG组</text>
             <view>
@@ -194,7 +184,7 @@
             <van-radio-group value="{{ meetingType }}" bind:change="typeRadioOnChange">
                 <block wx:for="{{typeList}}" wx:key="index">
                     <view class="item">
-                        <van-radio icon-size="46rpx" custom-class="radio" checked-color="#002fa7" name="{{item}}">
+                        <van-radio icon-size="46rpx" custom-class="radio" checked-color="#002fa7" index="{{index}}" name="{{item}}">
                             <view class="name">{{item}}</view>
                         </van-radio>
                     </view>

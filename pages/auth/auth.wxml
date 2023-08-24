@@ -21,4 +21,15 @@
             已阅读并同意<text catchtap="toPrivacy">隐私声明</text>
         </van-checkbox>
     </view>
+    <van-dialog use-slot show-confirm-button="{{false}}" show-cancel-button="{{false}}" show="{{ isPrivecyShown }}" class-name="sig-dialog">
+        <view class="dialog-slot-content">
+            <view>隐私政策更新通知</view>
+            <image src="https://openeuler-website.obs.ap-southeast-1.myhuaweicloud.com/privacy policy-1.png">
+            </image>
+        </view>
+        <view class="btn-box">
+            <button bindtap="handleClick">我已阅读并同意</button>
+            <button bindtap="handleDotAgree">不同意</button>
+        </view>
+    </van-dialog>
 </view>
