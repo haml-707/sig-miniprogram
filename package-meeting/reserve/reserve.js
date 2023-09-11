@@ -83,18 +83,8 @@ Page({
         privacyState: false,
         record: false,
         sendDev: false,
-        meetingType: 'Zoom',
+        meetingType: 'zoom',
         typeList: ['Zoom', 'WeLink（蓝版）', '腾讯会议'],
-        // typeList: [{
-        //     label: 'Zoom',
-        //     value: 'zoom'
-        // }, {
-        //     label: 'WeLink（蓝版）',
-        //     value: 'welink'
-        // }, {
-        //     label: '腾讯会议',
-        //     value: 'tencent'
-        // }, ],
         topic: '',
         sponsor: '',
         groupName: '',
@@ -177,14 +167,6 @@ Page({
         wx.requestSubscribeMessage({
             tmplIds: ['2xSske0tAcOVKNG9EpBjlb1I-cjPWSZrpwPDTgqAmWI'],
             success(res) {
-                let platform = '';
-                if (that.data.meetingType.includes('WeLink')) {
-                    platform = 'welink';
-                } else if (that.data.meetingType.includes('腾讯')) {
-                    platform = 'tencent';
-                } else {
-                    platform = 'zoom';
-                }
                 let email = null;
                 if (that.data.sendDev) {
                     if (that.data.emaillist.charAt(that.data.emaillist.length - 1) == ';' || that.data.emaillist.charAt(that.data.emaillist.length - 1) == '；' || that.data.emaillist.charAt(that.data.emaillist.length - 1) == '') {
@@ -203,7 +185,7 @@ Page({
                     date: that.data.date,
                     start: that.data.start,
                     end: that.data.end,
-                    platform: platform,
+                    platform: that.data.meetingType,
                     etherpad: that.data.etherpad,
                     agenda: that.data.agenda,
                     emaillist: email,
@@ -296,10 +278,14 @@ Page({
         });
     },
     typeRadioOnChange: function (e) {
-        console.log(e);
         this.setData({
             meetingType: e.detail
         });
+    },
+    radioOnChange(e) {
+        this.setData({
+            meetingType: e.detail,
+        })
     },
     /**
      * 生命周期函数--监听页面显示
@@ -323,6 +309,7 @@ Page({
             sigResult: e.detail
         })
     },
+    
     selSig: function () {
         if (!this.data.sigList.length) {
             this.setData({

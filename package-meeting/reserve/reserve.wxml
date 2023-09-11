@@ -9,15 +9,26 @@
                 </text>
                 <input value="{{topic}}" maxlength="{{100}}" bindinput="sigNameInput" placeholder-class="placeholder" placeholder="请输入会议名称"></input>
             </view>
-            <view class="form-item" bindtap="onTypeShow">
+            <view class="form-item">
                 <text class="label">
                     <text>会议平台</text>
                     <text class="require">*</text>
                 </text>
-                <view class="arrow">
+                <!-- <view class="arrow">
                     <text class="sel-data">{{meetingType}}</text>
                     <image src="./../../static/common/arrow-right.svg" />
-                </view>
+                </view> -->
+                <van-radio-group value="{{meetingType}}" bind:change="radioOnChange" direction="horizontal">
+                    <van-radio label-class="radio-class" name="zoom" icon-size="40rpx" checked-color="#002fa7">
+                        Zoom
+                    </van-radio>
+                    <van-radio label-class="radio-class" name="tencent" icon-size="40rpx" checked-color="#002fa7">
+                        腾讯会议
+                    </van-radio>
+                    <van-radio label-class="radio-class" name="welink" icon-size="40rpx" checked-color="#002fa7">
+                        WeLink（蓝版）
+                    </van-radio>
+                </van-radio-group>
             </view>
             <view class="form-item">
                 <text class="label">发起人</text>

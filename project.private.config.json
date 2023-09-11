@@ -26,6 +26,13 @@
                     "pathName": "pages/my/my",
                     "query": "",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "package-meeting/reserve/reserve",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
